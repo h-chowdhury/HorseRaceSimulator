@@ -7,7 +7,7 @@
  * the methods provided.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.0 
+ * @version Version 1.1
  */
 public class Horse
 {
@@ -81,8 +81,9 @@ public class Horse
 
     public void setConfidence(double newConfidence)
     {
-        this.horseConfidence = newConfidence;
-        return;
+        if (newConfidence >= 0 && newConfidence <= 1) {
+            this.horseConfidence = newConfidence;
+        }
     }
     
     public void setSymbol(char newSymbol)
