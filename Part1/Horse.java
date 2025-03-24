@@ -33,7 +33,10 @@ public class Horse
      */
     public void fall()
     {
-        this.fallen = true;
+        if (fallen != true)
+        {
+            this.fallen = true;
+        }
     }
     
 
