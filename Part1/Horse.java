@@ -2,7 +2,7 @@
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class Horse
 {
@@ -33,7 +33,7 @@ public class Horse
      */
     public void fall()
     {
-        if (fallen != true)
+        if (!fallen)
         {
             this.fallen = true;
         }
@@ -82,10 +82,12 @@ public class Horse
 
     /**
      * Resets the horse's distance travelled to 0.
+     * Resets the horse's fallen state by default.
      */
     public void goBackToStart()
     {
         this.distanceTravelled = 0;
+        this.fallen = false;
     }
     
 
