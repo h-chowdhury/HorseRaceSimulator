@@ -115,7 +115,7 @@ public class Horse
      */
     public void setConfidence(double newConfidence)
     {
-        if (newConfidence >= 0 && newConfidence <= 1) {
+        if (newConfidence > 0 && newConfidence < 1) {
             this.horseConfidence = newConfidence;
         }
     }
