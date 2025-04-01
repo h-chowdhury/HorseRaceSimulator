@@ -33,7 +33,7 @@ public class Horse
      */
     public void fall()
     {
-        if (!fallen)
+        if (this.distanceTravelled != 0)
         {
             this.fallen = true;
         }
