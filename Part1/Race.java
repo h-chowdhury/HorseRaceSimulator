@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 1.0
+ * @version 1.1
  */
 public class Race
 {
@@ -86,6 +86,20 @@ public class Race
             if ( raceWonBy(lane1Horse) || raceWonBy(lane2Horse) || raceWonBy(lane3Horse) )
             {
                 finished = true;
+
+                // print winning horse
+                if (raceWonBy(lane1Horse)) 
+                {
+                    System.out.println(lane1Horse.getName() + " has won the race!");
+                }
+                else if (raceWonBy(lane2Horse))
+                {
+                    System.out.println(lane2Horse.getName() + " has won the race!");
+                }
+                else if (raceWonBy(lane3Horse))
+                {
+                    System.out.println(lane3Horse.getName() + " has won the race!");
+                }
             }
            
             //wait for 100 milliseconds
