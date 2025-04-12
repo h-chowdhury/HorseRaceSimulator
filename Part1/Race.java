@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 1.1
+ * @version 1.2
  */
 public class Race
 {
@@ -90,15 +90,15 @@ public class Race
                 // print winning horse
                 if (raceWonBy(lane1Horse)) 
                 {
-                    System.out.println(lane1Horse.getName() + " has won the race!");
+                    System.out.println("And the winner is... " + lane1Horse.getName().toUpperCase() + "!");
                 }
                 else if (raceWonBy(lane2Horse))
                 {
-                    System.out.println(lane2Horse.getName() + " has won the race!");
+                    System.out.println("And the winner is... " + lane2Horse.getName().toUpperCase() + "!");
                 }
                 else if (raceWonBy(lane3Horse))
                 {
-                    System.out.println(lane3Horse.getName() + " has won the race!");
+                    System.out.println("And the winner is... " + lane3Horse.getName().toUpperCase() + "!");
                 }
             }
            
@@ -134,6 +134,7 @@ public class Race
             if (Math.random() < (0.1*theHorse.getConfidence()*theHorse.getConfidence()))
             {
                 theHorse.fall();
+                
             }
         }
     }
@@ -161,7 +162,7 @@ public class Race
      */
     private void printRace()
     {
-        System.out.print('\u000C');  //clear the terminal window
+        System.out.print("\033\143");  //clear the terminal window
         
         multiplePrint('=',raceLength+3); //top edge of track
         System.out.println();
