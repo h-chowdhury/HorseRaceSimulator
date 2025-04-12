@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 1.4
+ * @version 1.5
  */
 public class Race
 {
@@ -196,7 +196,13 @@ public class Race
         System.out.print('|');
         
         //print the spaces before the horse
-        multiplePrint(' ',spacesBefore);
+        if (theHorse.getDistanceTravelled() == raceLength)
+        {
+            multiplePrint(' ',spacesBefore +1);
+        }
+        else {
+            multiplePrint(' ',spacesBefore);
+        }
         
         //if the horse has fallen then print dead
         //else print the horse's symbol
@@ -213,7 +219,10 @@ public class Race
         multiplePrint(' ',spacesAfter);
         
         //print the | for the end of the track
-        System.out.print('|');
+        if (theHorse.getDistanceTravelled() != raceLength)
+        {
+            System.out.print('|');
+        }
     }
         
     
