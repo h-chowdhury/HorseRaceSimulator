@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 1.6
+ * @version 1.7
  */
 public class Race
 {
@@ -232,6 +232,10 @@ public class Race
         {
             System.out.print('|');
         }
+
+        //print horse details
+        System.out.print("   " + theHorse.getName().toUpperCase() + " (Current confidence " + theHorse.getConfidence() + ")");
+
     }
         
     
