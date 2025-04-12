@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 1.2
+ * @version 1.4
  */
 public class Race
 {
@@ -134,7 +134,6 @@ public class Race
             if (Math.random() < (0.1*theHorse.getConfidence()*theHorse.getConfidence()))
             {
                 theHorse.fall();
-                
             }
         }
     }
@@ -201,9 +200,9 @@ public class Race
         
         //if the horse has fallen then print dead
         //else print the horse's symbol
-        if(theHorse.hasFallen())
+        if(theHorse.hasFallen() && theHorse.getDistanceTravelled() != raceLength)
         {
-            System.out.print('\u2322');
+            System.out.print('X');
         }
         else
         {
