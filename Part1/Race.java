@@ -2,18 +2,16 @@ import java.util.concurrent.TimeUnit;
 import java.lang.Math;
 
 /**
- * A three-horse race, each horse running in its own lane
+ * A variable-numbered horse race, each horse running in its own lane
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 1.7
+ * @version 1.9
  */
 public class Race
 {
     private int raceLength;
-    private Horse lane1Horse;
-    private Horse lane2Horse;
-    private Horse lane3Horse;
+    private Horse[] laneHorses;
 
     /**
      * Constructor for objects of class Race
@@ -21,14 +19,14 @@ public class Race
      * 
      * @param distance the length of the racetrack (in metres/yards...)
      */
-    public Race(int distance)
+    public Race(int distance, int noOfHorses)
     {
         // initialise instance variables
         raceLength = distance;
-        lane1Horse = null;
-        lane2Horse = null;
-        lane3Horse = null;
-    }
+
+        for (int i=0; i<noOfHorses; i++) {
+            laneHorses[i] = null;
+        }
     
     /**
      * Adds a horse to the race in a given lane
