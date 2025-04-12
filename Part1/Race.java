@@ -140,7 +140,7 @@ public class Race
             //the probability that the horse will fall is very small (max is 0.1)
             //but will also will depends exponentially on confidence 
             //so if you double the confidence, the probability that it will fall is *2
-            if (Math.random() < (0.1*theHorse.getConfidence()*theHorse.getConfidence()))
+            if (Math.random() < (0.1*theHorse.getConfidence()/4))
             {
                 theHorse.fall();
             }
