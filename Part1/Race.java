@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.3
+ * @version 2.4
  */
 public class Race
 {
@@ -57,9 +57,7 @@ public class Race
         while (!finished)
         {
             //move each horse
-            for (int i=0; i<laneHorses.length; i++) {
-                moveHorse(laneHorses[i]);
-            }
+            moveHorses();
           
             //print the race positions
             printRace();
@@ -96,6 +94,7 @@ public class Race
 
     /***
      * Reset all lane horse distances to 0
+     * Uses goBackToStart() method
      */
     private void resetLanes() {
         for (int i=0; i<laneHorses.length; i++) {
@@ -131,6 +130,18 @@ public class Race
             }
         }
     }
+
+    /**
+     * Randomly make all horses move forward or fall depending
+     * on their confidence rating
+     * Uses moveHorse() method
+     */
+    private void moveHorses () {
+        for (int i=0; i<laneHorses.length; i++) {
+            moveHorse(laneHorses[i]);
+        }
+    }
+
         
     /** 
      * Determines if a horse has won the race
