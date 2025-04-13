@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,7 +16,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.4
+ * @version Version 1.5
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -45,6 +44,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     noOfHorsesSlider.setPaintLabels(true);
     noOfHorsesSlider.addChangeListener(this);
     noOfHorsesLabel.setText("Number of horses: " + noOfHorsesSlider.getValue());
+    noOfHorsesLabel.setFont(new Font("Dialog", Font.BOLD, 25));
 
     // Slider to select length of track
     lengthOfTrackLabel = new JLabel();
@@ -57,6 +57,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     lengthOfTrackSlider.setPaintLabels(true);
     lengthOfTrackSlider.addChangeListener(this);
     lengthOfTrackLabel.setText("Length of track: " + noOfHorsesSlider.getValue() + "m");
+    lengthOfTrackLabel.setFont(new Font("Dialog", Font.BOLD, 25));
 
     // Slider to select number of lanes
     numberOfLanesLabel = new JLabel();
@@ -69,6 +70,15 @@ public class TrackSelection extends JFrame implements ChangeListener {
     numberOfLanesSlider.setPaintLabels(true);
     numberOfLanesSlider.addChangeListener(this);
     numberOfLanesLabel.setText("Number of lanes: " + noOfHorsesSlider.getValue() + "m");
+    numberOfLanesLabel.setFont(new Font("Dialog", Font.BOLD, 25));
+
+    // Select track shape
+    JLabel trackShapeTitle = new JLabel("Select track shape");
+    trackShapeTitle.setFont(new Font("Dialog", Font.BOLD, 25));
+
+    // Select weather conditions
+    JLabel weatherConditionTitle = new JLabel("Select weather");
+    weatherConditionTitle.setFont(new Font("Dialog", Font.BOLD, 25));
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator"); 
@@ -78,7 +88,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(5, 5));
-
+        
 
     // --------------------- sub panels ---------------------
 
@@ -101,6 +111,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     selectHorseNumPanel.add(noOfHorsesSlider);
 
     JPanel selectTrackPanel = new JPanel();
+    selectTrackPanel.add(trackShapeTitle);
 
     contentColumn1.add(selectHorseNumPanel);
     contentColumn1.add(selectTrackPanel);
@@ -129,6 +140,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     contentColumn3.setLayout(new BorderLayout());
 
     JPanel selectConditionPanel = new JPanel();
+    selectConditionPanel.add(weatherConditionTitle);
 
     contentColumn3.add(selectConditionPanel);
     contentPanel.add(contentColumn3);
