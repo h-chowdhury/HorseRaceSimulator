@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.0
+ * @version 2.1
  */
 public class Race
 {
@@ -23,7 +23,7 @@ public class Race
     {
         // initialise instance variables
         raceLength = distance;
-        laneHorses = new Horse[distance];
+        laneHorses = new Horse[noOfHorses];
         for (int i=0; i<noOfHorses; i++) {
             laneHorses[i] = null;
         }
@@ -37,7 +37,7 @@ public class Race
      */
     public void addHorse(Horse theHorse, int laneNumber)
     {
-        laneHorses[laneNumber+1] = theHorse;
+        laneHorses[laneNumber] = theHorse;
     }
     
     /**
