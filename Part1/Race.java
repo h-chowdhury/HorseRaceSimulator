@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.5
+ * @version 2.6
  */
 public class Race
 {
@@ -63,13 +63,10 @@ public class Race
             printRace();
 
             
-            //if any of the three horses has won the race is finished
-            for (int i=0; i<laneHorses.length; i++) {
-                if (raceWonBy(laneHorses[i]) == true) {
-                    finished = true;
-                    System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
-                }
-            }
+            //if any of the horses has won the race is finished
+            // finished will be set to true if a horse has won
+            // or set to false otherwise
+            finished = raceWonByAny();
 
             //if all of the three horses have fallen the race is finished
             // finished will be set to true if all horses have fallen
@@ -134,7 +131,6 @@ public class Race
         }
     }
 
-        
     /** 
      * Determines if a horse has won the race
      *
@@ -151,6 +147,22 @@ public class Race
         {
             return false;
         }
+    }
+
+    /** 
+     * Determines if any horse has won the race
+     * Uses the raceWonBy method
+     */
+    private boolean raceWonByAny()
+    {
+        for (int i=0; i<laneHorses.length; i++) {
+            if (raceWonBy(laneHorses[i]) == true) {
+                System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /** 
