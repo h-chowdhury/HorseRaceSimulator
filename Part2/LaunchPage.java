@@ -15,13 +15,25 @@ import javax.swing.JPanel;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.1
+ * @version Version 1.2
  */
 public class LaunchPage {
   
   public static void main(String[] args) {
 
+    JLabel title = new JLabel("Welcome to the Horse Racing Simulator!");
+    title.setHorizontalAlignment(JLabel.CENTER);
+    title.setVerticalAlignment(JLabel.CENTER);
+    title.setFont(new Font("Dialog", Font.BOLD, 50));
 
+    JLabel description = new JLabel("<html><body>This simulation runs <br>a race on a set of horses.</body></html>");
+    description.setHorizontalAlignment(JLabel.CENTER);
+    description.setVerticalAlignment(JLabel.CENTER);
+    description.setFont(new Font("Dialog", Font.BOLD, 25));
+
+    JButton startButton = new JButton("Start Simulation");
+    startButton.setSize(200, 100);
+    startButton.setFont(new Font("Dialog", Font.BOLD, 30));
 
     JFrame frame = new JFrame();
     frame.setTitle("Horse Racing Simulator"); 
@@ -62,7 +74,10 @@ public class LaunchPage {
     frame.add(titlePanel);
     frame.add(contentPanel);
 
+    titlePanel.add(title);
 
+    panel1.add(description);
+    panel2.add(startButton);
 }
 
 }
