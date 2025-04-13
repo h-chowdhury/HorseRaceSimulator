@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.7
+ * @version 2.8
  */
 public class Race
 {
@@ -37,7 +37,7 @@ public class Race
      */
     public void addHorse(Horse theHorse, int laneNumber)
     {
-        laneHorses[laneNumber] = theHorse;
+        laneHorses[laneNumber-1] = theHorse;
     }
     
     /**
