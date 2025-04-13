@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.2
+ * @version 2.3
  */
 public class Race
 {
@@ -52,9 +52,7 @@ public class Race
         boolean finished = false;
         
         //reset all the lanes (all horses not fallen and back to 0). 
-        for (int i=0; i<laneHorses.length; i++) {
-            laneHorses[i].goBackToStart();
-        }
+        resetLanes();
                       
         while (!finished)
         {
@@ -93,6 +91,15 @@ public class Race
             try{ 
                 TimeUnit.MILLISECONDS.sleep(100);
             }catch(Exception e){}
+        }
+    }
+
+    /***
+     * Reset all lane horse distances to 0
+     */
+    private void resetLanes() {
+        for (int i=0; i<laneHorses.length; i++) {
+            laneHorses[i].goBackToStart();
         }
     }
     
