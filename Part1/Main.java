@@ -5,7 +5,7 @@ import java.util.Scanner;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.1
+ * @version Version 1.2
  */
 public class Main
 {
