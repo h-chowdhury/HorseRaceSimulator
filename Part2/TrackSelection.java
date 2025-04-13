@@ -17,7 +17,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.3
+ * @version Version 1.4
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -25,6 +25,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
   JSlider noOfHorsesSlider;
   JLabel lengthOfTrackLabel;
   JSlider lengthOfTrackSlider;
+  JLabel numberOfLanesLabel;
+  JSlider numberOfLanesSlider;
 
   public TrackSelection() {
 
@@ -56,7 +58,17 @@ public class TrackSelection extends JFrame implements ChangeListener {
     lengthOfTrackSlider.addChangeListener(this);
     lengthOfTrackLabel.setText("Length of track: " + noOfHorsesSlider.getValue() + "m");
 
-    
+    // Slider to select number of lanes
+    numberOfLanesLabel = new JLabel();
+    numberOfLanesSlider = new JSlider(0, 20, 1);
+    numberOfLanesSlider.setPreferredSize(new Dimension(300, 100));
+    numberOfLanesSlider.setPaintTicks(true);
+    numberOfLanesSlider.setMinorTickSpacing(1);
+    numberOfLanesSlider.setPaintTrack(true);
+    numberOfLanesSlider.setMajorTickSpacing(5);
+    numberOfLanesSlider.setPaintLabels(true);
+    numberOfLanesSlider.addChangeListener(this);
+    numberOfLanesLabel.setText("Number of lanes: " + noOfHorsesSlider.getValue() + "m");
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator"); 
@@ -104,6 +116,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
     selectLengthPanel.add(lengthOfTrackSlider);
 
     JPanel selectLaneNumPanel = new JPanel();
+    selectLaneNumPanel.add(numberOfLanesLabel);
+    selectLaneNumPanel.add(numberOfLanesSlider);
 
     contentColumn2.add(selectLengthPanel);
     contentColumn2.add(selectLaneNumPanel);
@@ -136,6 +150,9 @@ public class TrackSelection extends JFrame implements ChangeListener {
     }
     else if (source == lengthOfTrackSlider) {
       lengthOfTrackLabel.setText("Length of track: " + lengthOfTrackSlider.getValue() + "m");
+    }
+    else if (source == numberOfLanesSlider) {
+      numberOfLanesLabel.setText("Number of lanes: " + numberOfLanesSlider.getValue());
     }
   }
   
