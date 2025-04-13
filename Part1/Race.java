@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.1
+ * @version 2.2
  */
 public class Race
 {
@@ -118,7 +118,7 @@ public class Race
             //the probability that the horse will fall is very small (max is 0.1)
             //but will also will depends exponentially on confidence 
             //so if you double the confidence, the probability that it will fall is *2
-            if (Math.random() < (0.1*theHorse.getConfidence()/4))
+            if (Math.random() < (0.1*theHorse.getConfidence()/16))
             {
                 theHorse.fall();
             }
