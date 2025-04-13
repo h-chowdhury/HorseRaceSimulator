@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +17,7 @@ import javax.swing.JPanel;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class LaunchPage {
   
@@ -34,7 +36,7 @@ public class LaunchPage {
     JButton startButton = new JButton("Start Simulation");
     startButton.setSize(200, 100);
     startButton.setFont(new Font("Dialog", Font.BOLD, 30));
-
+    
     JFrame frame = new JFrame();
     frame.setTitle("Horse Racing Simulator"); 
     frame.setVisible(true); 
@@ -42,24 +44,32 @@ public class LaunchPage {
     frame.setResizable(false); // prevents resizing window
     frame.setLayout(new java.awt.GridLayout(2, 1, 5, 5));
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.getContentPane().setBackground(new Color(220, 10, 10));
+    frame.getContentPane().setBackground(Color.black);
 
     JPanel titlePanel = new JPanel();
     JPanel contentPanel = new JPanel();
 
-    titlePanel.setBackground(Color.orange);
-    contentPanel.setBackground(Color.black);
+    titlePanel.setBackground(Color.white);
 
     titlePanel.setPreferredSize(new Dimension(100, 100));
     contentPanel.setPreferredSize(new Dimension(100, 100));
+
+    startButton.addActionListener (new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        TrackSelection trackSelectionPage = new TrackSelection();
+        trackSelectionPage.setVisible(true);
+        frame.dispose();
+      }
+    });
 
     // --------------------- sub panels ---------------------
 
     JPanel panel1 = new JPanel();
     JPanel panel2 = new JPanel(); 
 
-    panel1.setBackground(Color.yellow);
-    panel2.setBackground(Color.pink);
+    panel1.setBackground(Color.gray);
+    panel2.setBackground(Color.darkGray);
 
     contentPanel.setLayout(new GridLayout(1, 2, 5, 5));
 
@@ -78,7 +88,7 @@ public class LaunchPage {
 
     panel1.add(description);
     panel2.add(startButton);
-}
+  }
 
 }
 
