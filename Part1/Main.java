@@ -52,9 +52,8 @@ public class Main
 
 
     // Add horses to the race
-    for (int i=1; i<=noOfHorses; i++) {
-      race.addHorse(horses[i-1], i);
- 
+    for (int i=0; i<noOfHorses; i++) {
+      race.addHorse(horses[i], i);
     }
 
     // Start the race
