@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.4
+ * @version 2.5
  */
 public class Race
 {
@@ -72,17 +72,9 @@ public class Race
             }
 
             //if all of the three horses have fallen the race is finished
-            boolean allHaveFallen = true;
-            for (int i=0; i<laneHorses.length; i++) {
-                if (laneHorses[i].hasFallen() != true) {
-                    allHaveFallen = false;
-                }  
-            }
-
-            if (allHaveFallen) {
-                finished = true;
-                System.out.println("All horses have fallen! There is no winner.");
-            }
+            // finished will be set to true if all horses have fallen
+            // or set to false otherwise
+            finished = allHaveFallen();
 
         
             //wait for 100 milliseconds
@@ -159,6 +151,21 @@ public class Race
         {
             return false;
         }
+    }
+
+    /** 
+     * Determines if all horses have fallen
+     * Ends the race if this is true.
+     */
+    private boolean allHaveFallen() {
+        for (int i=0; i<laneHorses.length; i++) {
+            if (laneHorses[i].hasFallen() != true) {
+                return false;
+            }  
+        }
+
+        System.out.println("All horses have fallen! There is no winner.");
+        return true;
     }
     
     /***
