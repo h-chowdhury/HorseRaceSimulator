@@ -17,12 +17,14 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
-  JLabel noOfTracksLabel;
-  JSlider noOfTracksSlider;
+  JLabel noOfHorsesLabel;
+  JSlider noOfHorsesSlider;
+  JLabel lengthOfTrackLabel;
+  JSlider lengthOfTrackSlider;
 
   public TrackSelection() {
 
@@ -31,16 +33,30 @@ public class TrackSelection extends JFrame implements ChangeListener {
     title.setFont(new Font("Dialog", Font.BOLD, 50));
 
     // Slider to select number of horses
-    noOfTracksLabel = new JLabel();
-    noOfTracksSlider = new JSlider(1, 15, 1);
-    noOfTracksSlider.setPreferredSize(new Dimension(400, 200));
-    noOfTracksSlider.setPaintTicks(true);
-    noOfTracksSlider.setMinorTickSpacing(1);
-    noOfTracksSlider.setPaintTrack(true);
-    noOfTracksSlider.setMajorTickSpacing(1);
-    noOfTracksSlider.setPaintLabels(true);
-    noOfTracksSlider.addChangeListener(this);
-    noOfTracksLabel.setText(noOfTracksSlider.getValue() + " horses");
+    noOfHorsesLabel = new JLabel();
+    noOfHorsesSlider = new JSlider(0, 15, 1);
+    noOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
+    noOfHorsesSlider.setPaintTicks(true);
+    noOfHorsesSlider.setMinorTickSpacing(1);
+    noOfHorsesSlider.setPaintTrack(true);
+    noOfHorsesSlider.setMajorTickSpacing(5);
+    noOfHorsesSlider.setPaintLabels(true);
+    noOfHorsesSlider.addChangeListener(this);
+    noOfHorsesLabel.setText("Number of horses: " + noOfHorsesSlider.getValue());
+
+    // Slider to select length of track
+    lengthOfTrackLabel = new JLabel();
+    lengthOfTrackSlider = new JSlider(0, 500, 1);
+    lengthOfTrackSlider.setPreferredSize(new Dimension(300, 100));
+    lengthOfTrackSlider.setPaintTicks(true);
+    lengthOfTrackSlider.setMinorTickSpacing(50);
+    lengthOfTrackSlider.setPaintTrack(true);
+    lengthOfTrackSlider.setMajorTickSpacing(100);
+    lengthOfTrackSlider.setPaintLabels(true);
+    lengthOfTrackSlider.addChangeListener(this);
+    lengthOfTrackLabel.setText("Length of track: " + noOfHorsesSlider.getValue() + "m");
+
+    
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator"); 
@@ -54,53 +70,73 @@ public class TrackSelection extends JFrame implements ChangeListener {
 
     // --------------------- sub panels ---------------------
 
+    // Title panel
     JPanel titlePanel = new JPanel();
     titlePanel.add(title);
 
+
+    // Content panel
     JPanel contentPanel = new JPanel();
     contentPanel.setLayout(new GridLayout(1, 3));
 
+
+    // Column 1 - (2 stacked panels)
     JPanel contentColumn1 = new JPanel();
     contentColumn1.setLayout(new GridLayout(2, 1));
 
-    JPanel contentColumn2 = new JPanel();
-    contentColumn2.setLayout(new GridLayout(2, 1));
-
-    JPanel contentColumn3 = new JPanel();
-    contentColumn3.setLayout(new BorderLayout());
-
     JPanel selectHorseNumPanel = new JPanel();
-    selectHorseNumPanel.add(noOfTracksLabel);
-    selectHorseNumPanel.add(noOfTracksSlider);
+    selectHorseNumPanel.add(noOfHorsesLabel);
+    selectHorseNumPanel.add(noOfHorsesSlider);
 
     JPanel selectTrackPanel = new JPanel();
 
+    contentColumn1.add(selectHorseNumPanel);
+    contentColumn1.add(selectTrackPanel);
+    contentPanel.add(contentColumn1);
+
+
+    // Column 2 - (2 stacked panels)
+    JPanel contentColumn2 = new JPanel();
+    contentColumn2.setLayout(new GridLayout(2, 1));
+
     JPanel selectLengthPanel = new JPanel();
+    selectLengthPanel.add(lengthOfTrackLabel);
+    selectLengthPanel.add(lengthOfTrackSlider);
 
     JPanel selectLaneNumPanel = new JPanel();
 
+    contentColumn2.add(selectLengthPanel);
+    contentColumn2.add(selectLaneNumPanel);
+    contentPanel.add(contentColumn2);
+
+
+    // Column 3 - (1 panel)
+    JPanel contentColumn3 = new JPanel();
+    contentColumn3.setLayout(new BorderLayout());
+
     JPanel selectConditionPanel = new JPanel();
+
+    contentColumn3.add(selectConditionPanel);
+    contentPanel.add(contentColumn3);
 
 
     // -------------------------------------------------------
 
     this.add(titlePanel, BorderLayout.NORTH);
     this.add(contentPanel, BorderLayout.CENTER);
-
-    contentPanel.add(contentColumn1);
-    contentPanel.add(contentColumn2);
-    contentPanel.add(contentColumn3);
-
-    contentColumn1.add(selectHorseNumPanel);
-    contentColumn1.add(selectTrackPanel);
-    contentColumn2.add(selectLengthPanel);
-    contentColumn2.add(selectLaneNumPanel);
-    contentColumn3.add(selectConditionPanel);
+  
   } 
 
   @Override 
   public void stateChanged(ChangeEvent e) {
-    noOfTracksLabel.setText(noOfTracksSlider.getValue() + " horses");
+    Object source = e.getSource();
+
+    if (source == noOfHorsesSlider) {
+      noOfHorsesLabel.setText("Number of horses: " + noOfHorsesSlider.getValue());
+    }
+    else if (source == lengthOfTrackSlider) {
+      lengthOfTrackLabel.setText("Length of track: " + lengthOfTrackSlider.getValue() + "m");
+    }
   }
   
 }
