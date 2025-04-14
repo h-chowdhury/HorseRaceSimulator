@@ -8,13 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.7
+ * @version Version 1.8
  */
 public class HorseSelection extends JFrame {
 
@@ -25,6 +26,7 @@ public class HorseSelection extends JFrame {
     // Storing the selection values from previous page
     raceData = RD;
 
+    
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Horse Selection"); 
     this.setVisible(true); 
@@ -34,12 +36,16 @@ public class HorseSelection extends JFrame {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(10, 10));
 
+
     // Title panel
     JPanel titlePanel = new JPanel();
     titlePanel.setPreferredSize(new Dimension(100, 100));
 
-    this.add(titlePanel, BorderLayout.NORTH);
+    JLabel title = new JLabel("Horse Customisation");
+    title.setFont(new Font("Dialog", Font.BOLD, 50));
 
+    this.add(titlePanel, BorderLayout.NORTH);
+    titlePanel.add(title);
 
 
     // Left column
