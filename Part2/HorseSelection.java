@@ -20,7 +20,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.9
+ * @version Version 2.0
  */
 public class HorseSelection extends JFrame {
 
@@ -71,10 +71,17 @@ public class HorseSelection extends JFrame {
         nameBox.add(nameLabel);
         nameBox.add(nameInput);
 
- 
+        // Confidence input
+        JPanel confidenceBox = new JPanel();
+        confidenceBox.setLayout(new GridLayout(2, 1));
+          JLabel confidenceLabel = new JLabel("Horse Confidence");
+          confidenceLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+          JSpinner confidenceInput = new JSpinner(new SpinnerNumberModel(0.1, 0.1, 0.9, 0.1));
+        confidenceBox.add(confidenceLabel);
+        confidenceBox.add(confidenceInput);
 
       leftInputBox.add(nameBox);
-
+      leftInputBox.add(confidenceBox);
 
     leftColumnPanel.add(leftInputBox);
     this.add(leftColumnPanel, BorderLayout.WEST);
