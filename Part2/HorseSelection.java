@@ -8,20 +8,16 @@ import javax.swing.JFrame;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class HorseSelection extends JFrame {
 
-  private int numberOfHorses;
-  private int lengthOfTrack;
-  private int numberOfLanes;
+  private RaceData raceData;
 
-  public HorseSelection(RaceData raceData) {
+  public HorseSelection(RaceData RD) {
 
     // Storing the selection values from previous page
-    this.numberOfHorses = raceData.getNumberOfHorses();
-    this.lengthOfTrack = raceData.getLengthOfTrack();
-    this.numberOfLanes = raceData.getNumberOfLanes();
+    raceData = RD;
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator"); 
@@ -33,6 +29,4 @@ public class HorseSelection extends JFrame {
     this.setLayout(new BorderLayout(5, 5));
   }
 
-
-  
 }
