@@ -5,7 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,12 +19,13 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.7
+ * @version Version 1.8
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
-  JLabel noOfHorsesLabel;
-  JSlider noOfHorsesSlider;
+  // Labels and sliders for input
+  JLabel numberOfHorsesLabel;
+  JSlider numberOfHorsesSlider;
   JLabel lengthOfTrackLabel;
   JSlider lengthOfTrackSlider;
   JLabel numberOfLanesLabel;
@@ -36,17 +38,17 @@ public class TrackSelection extends JFrame implements ChangeListener {
     title.setFont(new Font("Dialog", Font.BOLD, 50));
 
     // Slider to select number of horses
-    noOfHorsesLabel = new JLabel();
-    noOfHorsesSlider = new JSlider(0, 15, 1);
-    noOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
-    noOfHorsesSlider.setPaintTicks(true);
-    noOfHorsesSlider.setMinorTickSpacing(1);
-    noOfHorsesSlider.setPaintTrack(true);
-    noOfHorsesSlider.setMajorTickSpacing(5);
-    noOfHorsesSlider.setPaintLabels(true);
-    noOfHorsesSlider.addChangeListener(this);
-    noOfHorsesLabel.setText("Number of horses: " + noOfHorsesSlider.getValue());
-    noOfHorsesLabel.setFont(new Font("Dialog", Font.BOLD, 25));
+    numberOfHorsesLabel = new JLabel();
+    numberOfHorsesSlider = new JSlider(0, 15, 1);
+    numberOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
+    numberOfHorsesSlider.setPaintTicks(true);
+    numberOfHorsesSlider.setMinorTickSpacing(1);
+    numberOfHorsesSlider.setPaintTrack(true);
+    numberOfHorsesSlider.setMajorTickSpacing(5);
+    numberOfHorsesSlider.setPaintLabels(true);
+    numberOfHorsesSlider.addChangeListener(this);
+    numberOfHorsesLabel.setText("Number of horses: " + numberOfHorsesSlider.getValue());
+    numberOfHorsesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
 
     // Slider to select length of track
     lengthOfTrackLabel = new JLabel();
@@ -58,8 +60,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
     lengthOfTrackSlider.setMajorTickSpacing(100);
     lengthOfTrackSlider.setPaintLabels(true);
     lengthOfTrackSlider.addChangeListener(this);
-    lengthOfTrackLabel.setText("Length of track: " + noOfHorsesSlider.getValue() + "m");
-    lengthOfTrackLabel.setFont(new Font("Dialog", Font.BOLD, 25));
+    lengthOfTrackLabel.setText("Length of track: " + numberOfHorsesSlider.getValue() + "m");
+    lengthOfTrackLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
 
     // Slider to select number of lanes
     numberOfLanesLabel = new JLabel();
@@ -71,21 +73,37 @@ public class TrackSelection extends JFrame implements ChangeListener {
     numberOfLanesSlider.setMajorTickSpacing(5);
     numberOfLanesSlider.setPaintLabels(true);
     numberOfLanesSlider.addChangeListener(this);
-    numberOfLanesLabel.setText("Number of lanes: " + noOfHorsesSlider.getValue() + "m");
-    numberOfLanesLabel.setFont(new Font("Dialog", Font.BOLD, 25));
+    numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue() + "m");
+    numberOfLanesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
 
     // Select track shape
     JLabel trackShapeTitle = new JLabel("Select track shape");
-    trackShapeTitle.setFont(new Font("Dialog", Font.BOLD, 25));
+    trackShapeTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
 
     // Select weather conditions
     JLabel weatherConditionTitle = new JLabel("Select weather");
-    weatherConditionTitle.setFont(new Font("Dialog", Font.BOLD, 25));
+    weatherConditionTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
 
     // Submit button - submit all data
     JButton submitButton = new JButton("Submit");
     submitButton.setSize(200, 100);
     submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
+
+    // This allows for the submit button to process the input data
+    // and display the HorseSelection window
+    submitButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed (ActionEvent e) {
+        submitButton.setEnabled(false);
+
+        int numberOfHorses = numberOfHorsesSlider.getValue();
+        int lengthOfTrack = lengthOfTrackSlider.getValue();
+        int numberOfLanes = numberOfLanesSlider.getValue();
+
+        HorseSelection horseSelectionPage = new HorseSelection(numberOfHorses, lengthOfTrack, numberOfLanes);
+        horseSelectionPage.setVisible(true);
+      }
+    });
 
 
 
@@ -117,8 +135,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
     contentColumn1.setLayout(new GridLayout(2, 1));
 
     JPanel selectHorseNumPanel = new JPanel();
-    selectHorseNumPanel.add(noOfHorsesLabel);
-    selectHorseNumPanel.add(noOfHorsesSlider);
+    selectHorseNumPanel.add(numberOfHorsesLabel);
+    selectHorseNumPanel.add(numberOfHorsesSlider);
 
     JPanel selectTrackPanel = new JPanel();
     selectTrackPanel.add(trackShapeTitle);
@@ -168,15 +186,16 @@ public class TrackSelection extends JFrame implements ChangeListener {
   
   } 
 
+  // This method allows for the sliders to be processed dynamically
   @Override 
   public void stateChanged(ChangeEvent e) {
     Object source = e.getSource();
 
-    if (source == noOfHorsesSlider) {
-      if (noOfHorsesSlider.getValue() == 0) {
-        noOfHorsesSlider.setValue(1);
+    if (source == numberOfHorsesSlider) {
+      if (numberOfHorsesSlider.getValue() == 0) {
+        numberOfHorsesSlider.setValue(1);
       }
-      noOfHorsesLabel.setText("Number of horses: " + noOfHorsesSlider.getValue());
+      numberOfHorsesLabel.setText("Number of horses: " + numberOfHorsesSlider.getValue());
     }
     else if (source == lengthOfTrackSlider) {
       if (lengthOfTrackSlider.getValue() == 0) {
