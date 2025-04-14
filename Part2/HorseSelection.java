@@ -4,18 +4,23 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 /**
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.8
+ * @version Version 1.9
  */
 public class HorseSelection extends JFrame {
 
@@ -26,7 +31,7 @@ public class HorseSelection extends JFrame {
     // Storing the selection values from previous page
     raceData = RD;
 
-    
+
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Horse Selection"); 
     this.setVisible(true); 
@@ -51,7 +56,27 @@ public class HorseSelection extends JFrame {
     // Left column
     JPanel leftColumnPanel = new JPanel(); 
     leftColumnPanel.setPreferredSize(new Dimension(400, 100));
+    leftColumnPanel.setLayout(new GridLayout(2, 1));
 
+      JPanel leftInputBox = new JPanel(); 
+      leftInputBox.setLayout(new GridLayout(1, 2));
+
+        // Name input
+        JPanel nameBox = new JPanel();
+        nameBox.setLayout(new GridLayout(2, 1));
+          JLabel nameLabel = new JLabel("Horse Name");
+          nameLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+          JTextArea nameInput = new JTextArea();
+          nameInput.setSize(20, 5);
+        nameBox.add(nameLabel);
+        nameBox.add(nameInput);
+
+ 
+
+      leftInputBox.add(nameBox);
+
+
+    leftColumnPanel.add(leftInputBox);
     this.add(leftColumnPanel, BorderLayout.WEST);
     
 
