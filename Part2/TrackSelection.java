@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.0
+ * @version Version 2.1
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -101,18 +101,30 @@ public class TrackSelection extends JFrame implements ChangeListener {
         int lengthOfTrack = lengthOfTrackSlider.getValue();
         int numberOfLanes = numberOfLanesSlider.getValue();
 
-        RaceData raceData = new RaceData();
-        raceData.setNumberOfHorses(numberOfHorses);
-        raceData.setLengthOfTrack(lengthOfTrack);
-        raceData.setNumberOfLanes(numberOfLanes);
-
-        HorseSelection horseSelectionPage = new HorseSelection(raceData);
-        horseSelectionPage.setVisible(true);
+        // Check if lanes are less than horses
+        if (numberOfLanes < numberOfHorses) {
+          javax.swing.JOptionPane.showMessageDialog(null, 
+          "Number of lanes must be equal to or greater than the number of horses.",
+          "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
+      
+          // Re-enable the button since submission was stopped
+          submitButton.setEnabled(true);
+          return;
+        } else {
+          RaceData raceData = new RaceData();
+          raceData.setNumberOfHorses(numberOfHorses);
+          raceData.setLengthOfTrack(lengthOfTrack);
+          raceData.setNumberOfLanes(numberOfLanes);
+  
+          HorseSelection horseSelectionPage = new HorseSelection(raceData);
+          horseSelectionPage.setVisible(true);
+          dispose();
+        }
       }
     });
 
     // Creating main frame
-    this.setTitle("Horse Racing Simulator"); 
+    this.setTitle("Horse Racing Simulator - Track Selection"); 
     this.setVisible(true); 
     this.setSize(1000, 800);
     this.setResizable(false); // prevents resizing window
