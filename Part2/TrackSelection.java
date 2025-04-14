@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.8
+ * @version Version 1.9
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -100,7 +100,12 @@ public class TrackSelection extends JFrame implements ChangeListener {
         int lengthOfTrack = lengthOfTrackSlider.getValue();
         int numberOfLanes = numberOfLanesSlider.getValue();
 
-        HorseSelection horseSelectionPage = new HorseSelection(numberOfHorses, lengthOfTrack, numberOfLanes);
+        RaceData raceData = new RaceData();
+        raceData.setNumberOfHorses(numberOfHorses);
+        raceData.setLengthOfTrack(lengthOfTrack);
+        raceData.setNumberOfLanes(numberOfLanes);
+
+        HorseSelection horseSelectionPage = new HorseSelection(raceData);
         horseSelectionPage.setVisible(true);
       }
     });
