@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,7 +18,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.5
+ * @version Version 1.6
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -80,6 +82,14 @@ public class TrackSelection extends JFrame implements ChangeListener {
     JLabel weatherConditionTitle = new JLabel("Select weather");
     weatherConditionTitle.setFont(new Font("Dialog", Font.BOLD, 25));
 
+    // Submit button - submit all data
+    JButton submitButton = new JButton("Submit");
+    submitButton.setSize(200, 100);
+    submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
+
+
+
+
     // Creating main frame
     this.setTitle("Horse Racing Simulator"); 
     this.setVisible(true); 
@@ -135,15 +145,20 @@ public class TrackSelection extends JFrame implements ChangeListener {
     contentPanel.add(contentColumn2);
 
 
-    // Column 3 - (1 panel)
+    // Column 3 - (2 panel)
     JPanel contentColumn3 = new JPanel();
-    contentColumn3.setLayout(new BorderLayout());
+    contentColumn3.setLayout(new GridLayout(2, 1));
 
     JPanel selectConditionPanel = new JPanel();
     selectConditionPanel.add(weatherConditionTitle);
 
+    JPanel submitButtonPanel = new JPanel();
+    submitButtonPanel.add(submitButton);
+
     contentColumn3.add(selectConditionPanel);
+    contentColumn3.add(submitButtonPanel);
     contentPanel.add(contentColumn3);
+
 
 
     // -------------------------------------------------------
