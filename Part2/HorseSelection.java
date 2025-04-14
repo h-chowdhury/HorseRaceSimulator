@@ -8,7 +8,7 @@ import javax.swing.JFrame;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.3
+ * @version Version 1.4
  */
 public class HorseSelection extends JFrame {
 
@@ -27,6 +27,10 @@ public class HorseSelection extends JFrame {
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(5, 5));
+  }
+
+  public RaceData getRaceData () {
+    return this.raceData;
   }
 
 }
