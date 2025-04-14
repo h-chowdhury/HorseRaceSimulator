@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.1
+ * @version Version 2.3
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -73,7 +73,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     numberOfLanesSlider.setMajorTickSpacing(5);
     numberOfLanesSlider.setPaintLabels(true);
     numberOfLanesSlider.addChangeListener(this);
-    numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue() + "m");
+    numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue());
     numberOfLanesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
 
     // Select track shape
