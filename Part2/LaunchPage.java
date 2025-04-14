@@ -17,26 +17,30 @@ import javax.swing.JPanel;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.3
+ * @version Version 1.4
  */
 public class LaunchPage {
   
   public static void main(String[] args) {
 
+    // Title label
     JLabel title = new JLabel("Welcome to the Horse Racing Simulator!");
     title.setHorizontalAlignment(JLabel.CENTER);
     title.setVerticalAlignment(JLabel.CENTER);
     title.setFont(new Font("Dialog", Font.BOLD, 50));
 
+    // Description label
     JLabel description = new JLabel("<html><body>This simulation runs <br>a race on a set of horses.</body></html>");
     description.setHorizontalAlignment(JLabel.CENTER);
     description.setVerticalAlignment(JLabel.CENTER);
     description.setFont(new Font("Dialog", Font.BOLD, 25));
 
+    // Start button
     JButton startButton = new JButton("Start Simulation");
     startButton.setSize(200, 100);
     startButton.setFont(new Font("Dialog", Font.BOLD, 30));
     
+    // Main frame
     JFrame frame = new JFrame();
     frame.setTitle("Horse Racing Simulator"); 
     frame.setVisible(true); 
@@ -46,14 +50,15 @@ public class LaunchPage {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setBackground(Color.black);
 
+    // Frame panels
     JPanel titlePanel = new JPanel();
     JPanel contentPanel = new JPanel();
 
     titlePanel.setBackground(Color.white);
-
     titlePanel.setPreferredSize(new Dimension(100, 100));
     contentPanel.setPreferredSize(new Dimension(100, 100));
 
+    // Start button function - redirects to track selection page
     startButton.addActionListener (new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
