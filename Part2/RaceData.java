@@ -6,14 +6,14 @@ package Part2;
  * and setters.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.1
+ * @version Version 1.2
  */
 public class RaceData {
   private int numberOfHorses;
   private int lengthOfTrack;
   private int numberOfLanes;
-  private String trackShape;
-  private String weather;
+  // private String trackShape;
+  // private String weather;
 
   
   // Getters
@@ -29,13 +29,13 @@ public class RaceData {
       return numberOfLanes;
   }
 
-  public String getTrackShape() {
+  /* public String getTrackShape() {
       return trackShape;
-  }
+  } */
 
-  public String getWeather() {
+  /* public String getWeather() {
       return weather;
-  }
+  } */
 
 
   // Setters
@@ -51,12 +51,12 @@ public class RaceData {
       this.numberOfLanes = numberOfLanes;
   }
 
-  public void setTrackShape(String trackShape) {
+  /* public void setTrackShape(String trackShape) {
       this.trackShape = trackShape;
-  }
+  } */
 
-  public void setWeather(String weather) {
+  /* public void setWeather(String weather) {
       this.weather = weather;
-  }
+  } */
   
 }
