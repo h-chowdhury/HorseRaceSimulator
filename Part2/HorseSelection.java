@@ -22,7 +22,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.1
+ * @version Version 2.2
  */
 public class HorseSelection extends JFrame {
 
@@ -84,7 +84,7 @@ public class HorseSelection extends JFrame {
           JComponent editor = confidenceInput.getEditor();
           JFormattedTextField tf = ((JSpinner.DefaultEditor) editor).getTextField();
           tf.setEditable(false);
-          
+
         confidenceBox.add(confidenceLabel);
         confidenceBox.add(confidenceInput);
 
@@ -138,6 +138,9 @@ public class HorseSelection extends JFrame {
     submitButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed (ActionEvent e) {
+        String horseName = nameInput.getText();
+        double horseConfidence = (double) confidenceInput.getValue();
+
         submitButton.setEnabled(false);
         RaceDisplay raceDisplayPage = new RaceDisplay(raceData);
         raceDisplayPage.setVisible(true);
