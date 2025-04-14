@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +22,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.0
+ * @version Version 2.1
  */
 public class HorseSelection extends JFrame {
 
@@ -77,6 +79,12 @@ public class HorseSelection extends JFrame {
           JLabel confidenceLabel = new JLabel("Horse Confidence");
           confidenceLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
           JSpinner confidenceInput = new JSpinner(new SpinnerNumberModel(0.1, 0.1, 0.9, 0.1));
+          
+          // Prevent user from directly typing in confidence level
+          JComponent editor = confidenceInput.getEditor();
+          JFormattedTextField tf = ((JSpinner.DefaultEditor) editor).getTextField();
+          tf.setEditable(false);
+          
         confidenceBox.add(confidenceLabel);
         confidenceBox.add(confidenceInput);
 
