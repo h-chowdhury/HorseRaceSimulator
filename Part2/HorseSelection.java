@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.6
+ * @version Version 1.7
  */
 public class HorseSelection extends JFrame {
 
@@ -34,23 +34,52 @@ public class HorseSelection extends JFrame {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(10, 10));
 
+    // Title panel
     JPanel titlePanel = new JPanel();
-    JPanel leftColumnPanel = new JPanel(); 
-    JPanel rightColumnPanel = new JPanel();
-    JPanel bottomPanel = new JPanel();
-    JPanel centerPanel = new JPanel();
-
     titlePanel.setPreferredSize(new Dimension(100, 100));
-    leftColumnPanel.setPreferredSize(new Dimension(400, 100));
-    rightColumnPanel.setPreferredSize(new Dimension(400, 100));
-    bottomPanel.setPreferredSize(new Dimension(100, 200));
-    centerPanel.setPreferredSize(new Dimension(100, 100));
 
     this.add(titlePanel, BorderLayout.NORTH);
+
+
+
+    // Left column
+    JPanel leftColumnPanel = new JPanel(); 
+    leftColumnPanel.setPreferredSize(new Dimension(400, 100));
+
     this.add(leftColumnPanel, BorderLayout.WEST);
+    
+
+
+
+    // Right column
+    JPanel rightColumnPanel = new JPanel();
+    rightColumnPanel.setPreferredSize(new Dimension(400, 100));
+
     this.add(rightColumnPanel, BorderLayout.EAST);
+
+
+
+    // Bottom panel
+    JPanel bottomPanel = new JPanel();
+    bottomPanel.setPreferredSize(new Dimension(100, 200));
+
     this.add(bottomPanel, BorderLayout.SOUTH);
+
+
+
+    // Center panel
+    JPanel centerPanel = new JPanel();
+    centerPanel.setPreferredSize(new Dimension(100, 100));
+
     this.add(centerPanel, BorderLayout.CENTER);
+
+
+
+
+
+
+
+
 
     // Submit button - submit all data
     JButton submitButton = new JButton("Submit");
