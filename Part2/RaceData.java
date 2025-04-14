@@ -6,7 +6,7 @@ package Part2;
  * and setters.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.0
+ * @version Version 1.1
  */
 public class RaceData {
   private int numberOfHorses;
@@ -14,5 +14,49 @@ public class RaceData {
   private int numberOfLanes;
   private String trackShape;
   private String weather;
-  private String raceName;
+
+  
+  // Getters
+  public int getNumberOfHorses() {
+    return numberOfHorses;
+  }
+
+  public int getLengthOfTrack() {
+      return lengthOfTrack;
+  }
+
+  public int getNumberOfLanes() {
+      return numberOfLanes;
+  }
+
+  public String getTrackShape() {
+      return trackShape;
+  }
+
+  public String getWeather() {
+      return weather;
+  }
+
+
+  // Setters
+  public void setNumberOfHorses(int numberOfHorses) {
+      this.numberOfHorses = numberOfHorses;
+  }
+
+  public void setLengthOfTrack(int lengthOfTrack) {
+      this.lengthOfTrack = lengthOfTrack;
+  }
+
+  public void setNumberOfLanes(int numberOfLanes) {
+      this.numberOfLanes = numberOfLanes;
+  }
+
+  public void setTrackShape(String trackShape) {
+      this.trackShape = trackShape;
+  }
+
+  public void setWeather(String weather) {
+      this.weather = weather;
+  }
+  
 }
