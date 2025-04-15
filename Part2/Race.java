@@ -168,12 +168,11 @@ public class Race
     private boolean raceWonByAny()
     {
         for (int i=0; i<laneHorses.length; i++) {
-            if (laneHorses[i] != null) {
-                if (raceWonBy(laneHorses[i]) == true) {
-                    System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
-                    return true;
-                }
+            if (laneHorses[i] != null && raceWonBy(laneHorses[i]) == true) {
+                System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
+                return true;
             }
+            
         }
         return false;
     }
@@ -184,7 +183,7 @@ public class Race
      */
     private boolean allHaveFallen() {
         for (int i=0; i<laneHorses.length; i++) {
-            if (laneHorses[i].hasFallen() != true) {
+            if (laneHorses[i] != null && laneHorses[i].hasFallen() != true) {
                 return false;
             }  
         }
