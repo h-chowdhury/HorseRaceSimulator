@@ -19,9 +19,10 @@ public class Main
     System.out.println("Welcome to the Horse Race Simulator!\n");
     int distance = inputHelper.getPosInt("\nEnter the distance of the race (m): ");
     int noOfHorses = inputHelper.getPosInt("\nEnter the number of horses: ");
+    int noOfLanes = inputHelper.getLargerInt(noOfHorses, "\nEnter the number of lanes (>horses): ");
 
     // Create race object
-    Race race = new Race(distance, noOfHorses);
+    Race race = new Race(distance, noOfHorses, noOfLanes);
 
     // Create Horse objects
     Horse horse;
