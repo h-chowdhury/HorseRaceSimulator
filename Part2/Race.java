@@ -203,13 +203,11 @@ public class Race
         System.out.println();
 
         for (int i=0; i<laneHorses.length; i++) {
-            printLane(laneHorses[i]);
-            System.out.println();
-        }
-
-        if (laneCount > laneHorses.length) {
-            for (int i=laneHorses.length; i<laneCount; i++) {
+            if (laneHorses[i] == null) {
                 printLane(null);
+                System.out.println();
+            } else {
+                printLane(laneHorses[i]);
                 System.out.println();
             }
         }
