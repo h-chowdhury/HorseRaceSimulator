@@ -19,7 +19,7 @@ public class RaceDisplay extends JFrame {
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Race Display"); 
     this.setVisible(true); 
-    this.setSize(1000, 800);
+    this.setSize(1500, 800);
     this.setResizable(false); // prevents resizing window
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
