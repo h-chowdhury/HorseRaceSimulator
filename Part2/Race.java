@@ -31,11 +31,11 @@ public class Race
         
         // initialise instance variables
         raceLength = distance;
-        laneHorses = new Horse[numberOfHorses];
+        laneCount = numberOfLanes;
+        laneHorses = new Horse[laneCount];
         for (int i=0; i<numberOfHorses; i++) {
             laneHorses[i] = null;
         }
-        laneCount = numberOfLanes;
     }
     
     /**
@@ -95,7 +95,9 @@ public class Race
      */
     private void resetLanes() {
         for (int i=0; i<laneHorses.length; i++) {
-            laneHorses[i].goBackToStart();
+            if (laneHorses[i] != null) {
+                laneHorses[i].goBackToStart();
+            }
         }
     }
     
