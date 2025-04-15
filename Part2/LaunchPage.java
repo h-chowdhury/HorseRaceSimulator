@@ -44,7 +44,7 @@ public class LaunchPage {
     JFrame frame = new JFrame();
     frame.setTitle("Horse Racing Simulator"); 
     frame.setVisible(true); 
-    frame.setSize(1000, 800);
+    frame.setSize(1500, 800);
     frame.setResizable(false); // prevents resizing window
     frame.setLayout(new java.awt.GridLayout(2, 1, 5, 5));
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
