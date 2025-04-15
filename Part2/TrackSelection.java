@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.3
+ * @version Version 2.4
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -126,7 +126,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Track Selection"); 
     this.setVisible(true); 
-    this.setSize(1000, 800);
+    this.setSize(1500, 800);
     this.setResizable(false); // prevents resizing window
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
