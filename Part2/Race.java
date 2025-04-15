@@ -168,12 +168,13 @@ public class Race
     private boolean raceWonByAny()
     {
         for (int i=0; i<laneHorses.length; i++) {
-            if (raceWonBy(laneHorses[i]) == true) {
-                System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
-                return true;
+            if (laneHorses[i] != null) {
+                if (raceWonBy(laneHorses[i]) == true) {
+                    System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
+                    return true;
+                }
             }
         }
-
         return false;
     }
 
