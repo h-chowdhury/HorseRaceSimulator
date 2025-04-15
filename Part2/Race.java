@@ -8,7 +8,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 3.2
+ * @version 3.3
  */
 public class Race
 {
@@ -137,7 +137,9 @@ public class Race
      */
     private void moveHorses () {
         for (int i=0; i<laneHorses.length; i++) {
-            moveHorse(laneHorses[i]);
+            if (laneHorses[i] != null) {
+                moveHorse(laneHorses[i]);
+            }
         }
     }
 
