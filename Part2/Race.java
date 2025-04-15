@@ -8,7 +8,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 3.1
+ * @version 3.2
  */
 public class Race
 {
@@ -204,7 +204,7 @@ public class Race
         }
 
         if (laneCount > laneHorses.length) {
-            for (int i=laneHorses.length; i<=laneCount; i++) {
+            for (int i=laneHorses.length; i<laneCount; i++) {
                 printLane(null);
                 System.out.println();
             }
