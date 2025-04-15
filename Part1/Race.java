@@ -6,7 +6,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.9
+ * @version 3.0
  */
 public class Race
 {
@@ -19,6 +19,9 @@ public class Race
      * Initially there are no horses in the lanes
      * 
      * @param distance the length of the racetrack (in metres/yards...)
+     * @param numberOfHorses the number of horses participating in the race
+     * @param numberOfLanes the number of lanes on the track, it should be
+     * equal to or exceed the number of horses.
      */
     public Race(int distance, int numberOfHorses, int numberOfLanes)
     {
