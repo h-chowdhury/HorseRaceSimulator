@@ -1,3 +1,5 @@
+package Part2;
+
 import java.util.concurrent.TimeUnit;
 import java.lang.Math;
 
@@ -6,7 +8,7 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 3.0
+ * @version 3.1
  */
 public class Race
 {
@@ -18,13 +20,15 @@ public class Race
      * Constructor for objects of class Race
      * Initially there are no horses in the lanes
      * 
-     * @param distance the length of the racetrack (in metres/yards...)
-     * @param numberOfHorses the number of horses participating in the race
-     * @param numberOfLanes the number of lanes on the track, it should be
+     * @param RD the RaceData object holding information about the race
      * equal to or exceed the number of horses.
      */
-    public Race(int distance, int numberOfHorses, int numberOfLanes)
+    public Race(RaceData RD)
     {
+        int distance = RD.getLengthOfTrack();
+        int numberOfHorses = RD.getNumberOfHorses();
+        int numberOfLanes = RD.getNumberOfLanes();
+        
         // initialise instance variables
         raceLength = distance;
         laneHorses = new Horse[numberOfHorses];
