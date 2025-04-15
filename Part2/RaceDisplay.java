@@ -5,15 +5,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.SpinnerNumberModel;
 
 /**
  * This class defines the race display window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class RaceDisplay extends JFrame {
 
@@ -40,6 +45,28 @@ public class RaceDisplay extends JFrame {
     this.add(titlePanel, BorderLayout.NORTH);
     titlePanel.add(title);
 
+    
+    // Left column
+    JPanel leftColumnPanel = new JPanel(); 
+    leftColumnPanel.setPreferredSize(new Dimension(200, 100));
+    this.add(leftColumnPanel, BorderLayout.WEST);
+
+
+    // Right column
+    JPanel rightColumnPanel = new JPanel();
+    rightColumnPanel.setPreferredSize(new Dimension(200, 100));
+    this.add(rightColumnPanel, BorderLayout.EAST);
+
+
+    // Bottom panel
+    JPanel bottomPanel = new JPanel();
+    bottomPanel.setPreferredSize(new Dimension(30, 100));
+    this.add(bottomPanel, BorderLayout.SOUTH);
+
+
+    // Race panel (center panel)
+    JPanel racePanel = new JPanel();
+    this.add(racePanel, BorderLayout.CENTER);
 
   }
 }
