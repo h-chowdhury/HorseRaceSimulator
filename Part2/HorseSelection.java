@@ -160,7 +160,10 @@ public class HorseSelection extends JFrame {
       public void actionPerformed (ActionEvent e) {
         String horseName = nameInput.getText();
         double horseConfidence = (double) confidenceInput.getValue();
+        horseConfidence = Math.round(horseConfidence * 100.0) / 100.0;
         int horseLane = (int) laneInput.getValue();
+
+        System.out.println(horseConfidence + " " + horseLane);
 
         submitButton.setEnabled(false);
         RaceDisplay raceDisplayPage = new RaceDisplay(raceData);
