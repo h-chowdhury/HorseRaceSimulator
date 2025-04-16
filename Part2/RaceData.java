@@ -6,7 +6,7 @@ package Part2;
  * and setters.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.3
+ * @version Version 1.4
  */
 public class RaceData {
   private int numberOfHorses;
@@ -46,6 +46,7 @@ public class RaceData {
   // Setters
   public void setNumberOfHorses(int numberOfHorses) {
       this.numberOfHorses = numberOfHorses;
+      initialiseHorsesArray();
   }
 
   public void setLengthOfTrack(int lengthOfTrack) {
@@ -67,5 +68,12 @@ public class RaceData {
   /* public void setWeather(String weather) {
       this.weather = weather;
   } */
+
+
+  private void initialiseHorsesArray () {
+    for (int i=0; i<numberOfHorses; i++) {
+        horses[i] = null;
+    }
+  }
   
 }
