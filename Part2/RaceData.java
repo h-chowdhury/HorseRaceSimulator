@@ -6,7 +6,7 @@ package Part2;
  * and setters.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class RaceData {
   private int numberOfHorses;
@@ -14,6 +14,7 @@ public class RaceData {
   private int numberOfLanes;
   // private String trackShape;
   // private String weather;
+  private Horse[] horses;
 
   
   // Getters
@@ -28,6 +29,10 @@ public class RaceData {
   public int getNumberOfLanes() {
       return numberOfLanes;
   }
+
+  public Horse[] getHorsesArray() {
+    return horses;
+}
 
   /* public String getTrackShape() {
       return trackShape;
@@ -50,6 +55,10 @@ public class RaceData {
   public void setNumberOfLanes(int numberOfLanes) {
       this.numberOfLanes = numberOfLanes;
   }
+
+  public void setHorsesArray(Horse h, int index) {
+    this.horses[index] = h;
+}
 
   /* public void setTrackShape(String trackShape) {
       this.trackShape = trackShape;
