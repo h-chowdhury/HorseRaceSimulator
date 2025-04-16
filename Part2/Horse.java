@@ -4,7 +4,7 @@ package Part2;
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.5
+ * @version Version 1.6
  */
 public class Horse
 {
@@ -12,6 +12,7 @@ public class Horse
     private char horseSymbol;
     private final String horseName;
     private double horseConfidence;
+    private int horseLane;
     private int distanceTravelled;
     private boolean fallen;
 
@@ -20,11 +21,12 @@ public class Horse
     /**
      * Constructor for objects of class Horse
      */
-    public Horse(char horseSymbol, String horseName, double horseConfidence)
+    public Horse(char horseSymbol, String horseName, double horseConfidence, int horseLane)
     {
        this.horseSymbol = horseSymbol;
        this.horseName = horseName;
        this.horseConfidence = horseConfidence;
+       this.horseLane = horseLane;
        this.distanceTravelled = 0;
        this.fallen = false;
     }
@@ -80,6 +82,16 @@ public class Horse
     {
         return this.horseSymbol;
     }
+
+
+    /**
+     * Gets the lane the horse is riding in.
+     * @return An integer representing the lane number.
+     */
+    public int getLane()
+    {
+        return this.horseLane;
+    }
     
 
     /**
@@ -132,6 +144,16 @@ public class Horse
     public void setSymbol(char newSymbol)
     {
         this.horseSymbol = newSymbol;
+    }
+
+
+    /**
+     * Sets the lane the horse is riding in.
+     * @param laneNumber An integer representing the lane number.
+     */
+    public void setLane(int laneNumber)
+    {
+        this.horseLane = laneNumber;
     }
 
 
