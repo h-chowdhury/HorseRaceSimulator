@@ -22,7 +22,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.3
+ * @version Version 2.4
  */
 public class HorseSelection extends JFrame {
 
@@ -34,7 +34,6 @@ public class HorseSelection extends JFrame {
     // Storing the selection values from previous page
     raceData = RD;
     numberOfLanes = raceData.getNumberOfLanes();
-
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Horse Selection"); 
@@ -158,17 +157,30 @@ public class HorseSelection extends JFrame {
     submitButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed (ActionEvent e) {
-        String horseName = nameInput.getText();
-        double horseConfidence = (double) confidenceInput.getValue();
-        horseConfidence = Math.round(horseConfidence * 100.0) / 100.0;
-        int horseLane = (int) laneInput.getValue();
+        
+        // check if chosen lane is taken
+        if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null) {
+          javax.swing.JOptionPane.showMessageDialog(null, 
+          "The chosen lane has already been filled. Please enter a different lane.",
+          "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
+      
+          // Re-enable the button since submission was stopped
+          submitButton.setEnabled(true);
+          return;
+        } else {
+          String horseName = nameInput.getText();
+          double horseConfidence = (double) confidenceInput.getValue();
+          horseConfidence = Math.round(horseConfidence * 100.0) / 100.0;
+          int horseLane = (int) laneInput.getValue();
 
-        System.out.println(horseConfidence + " " + horseLane);
-
-        submitButton.setEnabled(false);
-        RaceDisplay raceDisplayPage = new RaceDisplay(raceData);
-        raceDisplayPage.setVisible(true);
-        dispose();
+          Horse horse = new Horse('#', horseName, horseConfidence, horseLane);
+          raceData.setLanes(horse, horseLane-1);
+  
+          submitButton.setEnabled(false);
+          RaceDisplay raceDisplayPage = new RaceDisplay(raceData);
+          raceDisplayPage.setVisible(true);
+          dispose();
+        }
       }
     });
 
