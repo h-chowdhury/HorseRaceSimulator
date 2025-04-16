@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.1
+ * @version Version 1.2
  */
 public class RacePanel extends JPanel implements ActionListener {
   final int PANEL_HEIGHT = 620;
@@ -24,7 +24,8 @@ public class RacePanel extends JPanel implements ActionListener {
 
   Image horse;
   Timer timer;
-
+  int xVelocity = 5;
+  int yVelocity = 1;
   int x = 0;
   int y = 0;
 
@@ -48,7 +49,10 @@ public class RacePanel extends JPanel implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-
+    if (x<= PANEL_WIDTH-80) {
+      x = x + xVelocity;
+      repaint();
+    }
   }
 
 }
