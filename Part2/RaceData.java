@@ -30,8 +30,8 @@ public class RaceData {
       return numberOfLanes;
   }
 
-  public Horse[] getHorsesArray() {
-    return horses;
+  public Horse[] getLanesArray() {
+    return lanes;
 }
 
   /* public String getTrackShape() {
