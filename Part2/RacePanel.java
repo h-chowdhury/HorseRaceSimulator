@@ -24,8 +24,8 @@ public class RacePanel extends JPanel implements ActionListener {
 
   private RaceData raceData;
   private int numberOfHorses;
-  private int trackLength;
-  int FINISH_LINE_X;
+  int trackLength;
+  double FINISH_LINE_X;
 
   Image[] horseSymbols;
   Timer timer;
@@ -41,7 +41,7 @@ public class RacePanel extends JPanel implements ActionListener {
     numberOfHorses = raceData.getNumberOfHorses();
     trackLength = raceData.getLengthOfTrack();
     horseSymbols = new Image[numberOfHorses];
-    FINISH_LINE_X = (PANEL_WIDTH-60) * (trackLength/500); // PANEL_WIDTH-60 is full length (500m)
+    FINISH_LINE_X = (PANEL_WIDTH-60) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
 
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     this.setBackground(Color.green);
