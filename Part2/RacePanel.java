@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.7
+ * @version Version 1.8
  */
 public class RacePanel extends JPanel implements ActionListener {
   final int PANEL_HEIGHT = 620;
@@ -26,6 +26,7 @@ public class RacePanel extends JPanel implements ActionListener {
   private int numberOfHorses;
   private int trackLength;
   private int laneCount;
+  private Horse[] lanes;
   final int MAX_LANES = 20;
   double FINISH_LINE_X;
 
@@ -48,14 +49,15 @@ public class RacePanel extends JPanel implements ActionListener {
     numberOfHorses = raceData.getNumberOfHorses();
     trackLength = raceData.getLengthOfTrack();
     laneCount = raceData.getNumberOfLanes();
-    horseSymbols = new Image[numberOfHorses];
+    lanes = raceData.getLanesArray();
+    horseSymbols = new Image[laneCount];
     FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
 
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     this.setBackground(new Color(0xE7D176));
 
     // set placeholder images into image array
-    for (int i=0; i<numberOfHorses; i++) {
+    for (int i=0; i<laneCount; i++) {
       horseSymbols[i]= new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\placeholder.png").getImage();
     }
 
@@ -79,8 +81,10 @@ public class RacePanel extends JPanel implements ActionListener {
       g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
 
     // update each horse repeatedly
-    for (int  i=0; i<numberOfHorses; i++) {
-      g2D.drawImage(horseSymbols[i], xPosHorse[i], yPosHorse[i], null);
+    for (int  i=0; i<laneCount; i++) {
+      if (lanes[i] != null) {
+        g2D.drawImage(horseSymbols[i], xPosHorse[i], yPosHorse[i], null);
+      }
     }
     
   }
@@ -89,8 +93,8 @@ public class RacePanel extends JPanel implements ActionListener {
   public void actionPerformed(ActionEvent e) {
 
     // update each horses x position repeatedly
-    for (int i=0; i<numberOfHorses; i++) {
-      if (xPosHorse[i]<= FINISH_LINE_X) {
+    for (int i=0; i<laneCount; i++) {
+      if (lanes[i] != null && xPosHorse[i]<= FINISH_LINE_X) {
         xPosHorse[i] = xPosHorse[i] + xVelocity[i];
       }
     }
