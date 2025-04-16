@@ -33,8 +33,13 @@ public class RacePanel extends JPanel implements ActionListener {
 
   int[] xVelocity = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
   int[] yVelocity = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-  int[] xPos = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-  int[] yPos = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
+  
+  int[] xPosHorse = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+  int[] yPosHorse = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
+
+  int[] xPosTrack = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+  int[] yPosTrack = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
+
 
   RacePanel (RaceData RD) {
 
@@ -63,7 +68,7 @@ public class RacePanel extends JPanel implements ActionListener {
 
     // update each horse repeatedly
     for (int  i=0; i<numberOfHorses; i++) {
-      g2D.drawImage(horseSymbols[i], xPos[i], yPos[i], null);
+      g2D.drawImage(horseSymbols[i], xPosHorse[i], yPosHorse[i], null);
     }
     
   }
@@ -73,8 +78,8 @@ public class RacePanel extends JPanel implements ActionListener {
 
     // update each horses x position repeatedly
     for (int i=0; i<numberOfHorses; i++) {
-      if (xPos[i]<= FINISH_LINE_X) {
-        xPos[i] = xPos[i] + xVelocity[i];
+      if (xPosHorse[i]<= FINISH_LINE_X) {
+        xPosHorse[i] = xPosHorse[i] + xVelocity[i];
       }
     }
     repaint();
