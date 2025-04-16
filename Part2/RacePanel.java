@@ -25,6 +25,7 @@ public class RacePanel extends JPanel implements ActionListener {
   private RaceData raceData;
   private int numberOfHorses;
   private int trackLength;
+  private int laneCount;
   final int MAX_LANES = 20;
   double FINISH_LINE_X;
 
@@ -35,7 +36,7 @@ public class RacePanel extends JPanel implements ActionListener {
   int[] yVelocity = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
   
   int[] xPosHorse = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-  int[] yPosHorse = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
+  int[] yPosHorse = {7, 32, 57, 82, 107, 132, 157, 182, 207, 232, 257, 282, 307, 332, 357, 382, 407, 432, 457, 482};
 
   int[] xPosTrack = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
   int[] yPosTrack = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
@@ -46,8 +47,9 @@ public class RacePanel extends JPanel implements ActionListener {
     raceData = RD;
     numberOfHorses = raceData.getNumberOfHorses();
     trackLength = raceData.getLengthOfTrack();
+    laneCount = raceData.getNumberOfLanes();
     horseSymbols = new Image[numberOfHorses];
-    FINISH_LINE_X = (PANEL_WIDTH-60) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
+    FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
 
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     this.setBackground(new Color(0xE7D176));
@@ -65,6 +67,16 @@ public class RacePanel extends JPanel implements ActionListener {
   public void paintComponent(Graphics g) {
     super.paintComponent(g); // paints bg
     Graphics2D g2D = (Graphics2D) g;
+
+    // draw track lines
+    for (int i=0; i<=laneCount; i++) {
+      g2D.drawLine(xPosTrack[i], yPosTrack[i], (int) FINISH_LINE_X, yPosTrack[i]);
+    }
+      // draw start line
+      g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
+
+      // draw finish line
+      g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
 
     // update each horse repeatedly
     for (int  i=0; i<numberOfHorses; i++) {
