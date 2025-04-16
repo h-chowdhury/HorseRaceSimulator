@@ -157,16 +157,28 @@ public class HorseSelection extends JFrame {
     submitButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed (ActionEvent e) {
+        // check if chosen lane is taken OR name is empty
+        if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null || nameInput.getText().trim().isEmpty()) {
+
+          // if chosen lane is taken
+          if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null) {
+            javax.swing.JOptionPane.showMessageDialog(null, 
+            "The chosen lane has already been filled. Please enter a different lane.",
+            "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
         
-        // check if chosen lane is taken
-        if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null) {
-          javax.swing.JOptionPane.showMessageDialog(null, 
-          "The chosen lane has already been filled. Please enter a different lane.",
-          "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
-      
-          // Re-enable the button since submission was stopped
-          submitButton.setEnabled(true);
-          return;
+            // Re-enable the button since submission was stopped
+            submitButton.setEnabled(true);
+            return;
+          }
+          else if (nameInput.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, 
+            "Please enter a name.",
+            "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
+        
+            // Re-enable the button since submission was stopped
+            submitButton.setEnabled(true);
+            return;
+          }
         } else {
           String horseName = nameInput.getText();
           double horseConfidence = (double) confidenceInput.getValue();
