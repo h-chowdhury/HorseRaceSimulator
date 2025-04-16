@@ -30,7 +30,11 @@ public class RaceData {
       return numberOfLanes;
   }
 
-  public Horse[] getLanesArray() {
+  public Horse getLanes(int index) {
+    return lanes[index];
+}
+
+public Horse[] getLanesArray() {
     return lanes;
 }
 
@@ -46,7 +50,6 @@ public class RaceData {
   // Setters
   public void setNumberOfHorses(int numberOfHorses) {
       this.numberOfHorses = numberOfHorses;
-      initialiseLanesArray();
   }
 
   public void setLengthOfTrack(int lengthOfTrack) {
@@ -55,9 +58,11 @@ public class RaceData {
 
   public void setNumberOfLanes(int numberOfLanes) {
       this.numberOfLanes = numberOfLanes;
+      lanes = new Horse[numberOfLanes];
+      initialiseLanesArray();
   }
 
-  public void setLanesArray(Horse h, int index) {
+  public void setLanes(Horse h, int index) {
     this.lanes[index] = h;
 }
 
