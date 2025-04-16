@@ -22,16 +22,18 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.2
+ * @version Version 2.3
  */
 public class HorseSelection extends JFrame {
 
   private RaceData raceData;
+  private int numberOfLanes;
 
   public HorseSelection(RaceData RD) {
 
     // Storing the selection values from previous page
     raceData = RD;
+    numberOfLanes = raceData.getNumberOfLanes();
 
 
     // Creating main frame
@@ -73,6 +75,7 @@ public class HorseSelection extends JFrame {
         nameBox.add(nameLabel);
         nameBox.add(nameInput);
 
+
         // Confidence input
         JPanel confidenceBox = new JPanel();
         confidenceBox.setLayout(new GridLayout(2, 1));
@@ -88,10 +91,27 @@ public class HorseSelection extends JFrame {
         confidenceBox.add(confidenceLabel);
         confidenceBox.add(confidenceInput);
 
-      leftInputBox.add(nameBox);
+        
+        // Lane input
+        JPanel laneBox = new JPanel();
+        laneBox.setLayout(new GridLayout(2, 1));
+          JLabel laneLabel = new JLabel("Horse Lane");
+          laneLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+          JSpinner laneInput = new JSpinner(new SpinnerNumberModel(1, 1, numberOfLanes, 1));
+          
+          // Prevent user from directly typing in the lane
+          JComponent editor2 = laneInput.getEditor();
+          JFormattedTextField tf2 = ((JSpinner.DefaultEditor) editor2).getTextField();
+          tf2.setEditable(false);
+
+        laneBox.add(laneLabel);
+        laneBox.add(laneInput);
+
       leftInputBox.add(confidenceBox);
+      leftInputBox.add(laneBox);
 
     leftColumnPanel.add(leftInputBox);
+    leftColumnPanel.add(nameBox);
     this.add(leftColumnPanel, BorderLayout.WEST);
     
 
@@ -140,6 +160,7 @@ public class HorseSelection extends JFrame {
       public void actionPerformed (ActionEvent e) {
         String horseName = nameInput.getText();
         double horseConfidence = (double) confidenceInput.getValue();
+        int horseLane = (int) laneInput.getValue();
 
         submitButton.setEnabled(false);
         RaceDisplay raceDisplayPage = new RaceDisplay(raceData);
