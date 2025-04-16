@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.5
+ * @version Version 1.6
  */
 public class RacePanel extends JPanel implements ActionListener {
   final int PANEL_HEIGHT = 620;
@@ -44,7 +44,7 @@ public class RacePanel extends JPanel implements ActionListener {
     FINISH_LINE_X = (PANEL_WIDTH-60) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
 
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-    this.setBackground(Color.green);
+    this.setBackground(new Color(0xE7D176));
 
     // set placeholder images into image array
     for (int i=0; i<numberOfHorses; i++) {
