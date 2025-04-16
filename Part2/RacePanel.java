@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.6
+ * @version Version 1.7
  */
 public class RacePanel extends JPanel implements ActionListener {
   final int PANEL_HEIGHT = 620;
@@ -24,7 +24,8 @@ public class RacePanel extends JPanel implements ActionListener {
 
   private RaceData raceData;
   private int numberOfHorses;
-  int trackLength;
+  private int trackLength;
+  final int MAX_LANES = 20;
   double FINISH_LINE_X;
 
   Image[] horseSymbols;
@@ -32,8 +33,8 @@ public class RacePanel extends JPanel implements ActionListener {
 
   int[] xVelocity = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
   int[] yVelocity = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-  int[] xPos = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-  int[] yPos = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355};
+  int[] xPos = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+  int[] yPos = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
 
   RacePanel (RaceData RD) {
 
