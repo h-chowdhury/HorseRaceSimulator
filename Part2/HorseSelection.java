@@ -22,7 +22,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.5
+ * @version Version 2.6
  */
 public class HorseSelection extends JFrame {
 
@@ -37,7 +37,6 @@ public class HorseSelection extends JFrame {
     raceData = RD;
     numberOfLanes = raceData.getNumberOfLanes();
     numberOfHorses = raceData.getNumberOfHorses();
-    horsesProcessed = 0;
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Horse Selection"); 
@@ -191,10 +190,10 @@ public class HorseSelection extends JFrame {
 
           Horse horse = new Horse('#', horseName, horseConfidence, horseLane);
           raceData.setLanes(horse, horseLane-1);
-          horsesProcessed++;
+          raceData.increaseHorsesProcessed();
   
           // display new HorseSelection window for each horse
-          if (horsesProcessed < numberOfHorses) {
+          if (raceData.getHorsesProcessed() < numberOfHorses) {
             HorseSelection horseSelectionPage = new HorseSelection(raceData);
             horseSelectionPage.setVisible(true);
             dispose();
