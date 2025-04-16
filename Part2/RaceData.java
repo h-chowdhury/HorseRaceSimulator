@@ -46,7 +46,7 @@ public class RaceData {
   // Setters
   public void setNumberOfHorses(int numberOfHorses) {
       this.numberOfHorses = numberOfHorses;
-      initialiseHorsesArray();
+      initialiseLanesArray();
   }
 
   public void setLengthOfTrack(int lengthOfTrack) {
@@ -70,7 +70,7 @@ public class RaceData {
   } */
 
 
-  private void initialiseHorsesArray () {
+  private void initialiseLanesArray () {
     for (int i=0; i<numberOfLanes; i++) {
         lanes[i] = null;
     }
