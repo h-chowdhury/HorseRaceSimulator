@@ -16,9 +16,12 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.2
+ * @version Version 1.3
  */
 public class RacePanel extends JPanel implements ActionListener {
+
+  private RaceData raceData;
+
   final int PANEL_HEIGHT = 620;
   final int PANEL_WIDTH = 1090;
 
@@ -29,7 +32,10 @@ public class RacePanel extends JPanel implements ActionListener {
   int x = 0;
   int y = 0;
 
-  RacePanel () {
+  RacePanel (RaceData RD) {
+
+    this.raceData = RD;
+
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     this.setBackground(Color.green);
 
