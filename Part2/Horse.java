@@ -4,7 +4,7 @@ package Part2;
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.6
+ * @version Version 1.7
  */
 public class Horse
 {
@@ -13,7 +13,6 @@ public class Horse
     private final String horseName;
     private double horseConfidence;
     private int horseLane;
-    private int distanceTravelled;
     private boolean fallen;
 
 
@@ -27,7 +26,6 @@ public class Horse
        this.horseName = horseName;
        this.horseConfidence = horseConfidence;
        this.horseLane = horseLane;
-       this.distanceTravelled = 0;
        this.fallen = false;
     }
     
@@ -37,10 +35,7 @@ public class Horse
      */
     public void fall()
     {
-        if (this.distanceTravelled != 0)
-        {
-            this.fallen = true;
-        }
+        this.fallen = true;
     }
     
 
@@ -51,16 +46,6 @@ public class Horse
     public double getConfidence()
     {
         return this.horseConfidence;
-    }
-
-
-    /**
-     * Gets the distance travelled by the horse.
-     * @return An integer representing the distance travelled in metres.
-     */
-    public int getDistanceTravelled()
-    {
-        return this.distanceTravelled;
     }
 
     
@@ -100,7 +85,6 @@ public class Horse
      */
     public void goBackToStart()
     {
-        this.distanceTravelled = 0;
         this.fallen = false;
     }
     
@@ -113,15 +97,6 @@ public class Horse
     public boolean hasFallen()
     {
         return this.fallen;
-    }
-
-
-    /**
-     * Increments the horse's distance travelled by 1 metre.
-     */
-    public void moveForward()
-    {
-        this.distanceTravelled++;
     }
 
 
