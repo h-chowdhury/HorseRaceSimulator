@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.8
+ * @version Version 1.9
  */
 public class RacePanel extends JPanel implements ActionListener {
   final int PANEL_HEIGHT = 620;
@@ -74,11 +74,12 @@ public class RacePanel extends JPanel implements ActionListener {
     for (int i=0; i<=laneCount; i++) {
       g2D.drawLine(xPosTrack[i], yPosTrack[i], (int) FINISH_LINE_X, yPosTrack[i]);
     }
-      // draw start line
-      g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
 
-      // draw finish line
-      g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
+    // draw start line
+    g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
+
+    // draw finish line
+    g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
 
     // update each horse repeatedly
     for (int  i=0; i<laneCount; i++) {
@@ -86,7 +87,6 @@ public class RacePanel extends JPanel implements ActionListener {
         g2D.drawImage(horseSymbols[i], xPosHorse[i], yPosHorse[i], null);
       }
     }
-    
   }
 
   @Override
@@ -94,8 +94,23 @@ public class RacePanel extends JPanel implements ActionListener {
 
     // update each horses x position repeatedly
     for (int i=0; i<laneCount; i++) {
-      if (lanes[i] != null && xPosHorse[i]<= FINISH_LINE_X) {
-        xPosHorse[i] = xPosHorse[i] + xVelocity[i];
+      // Check if the lane value is null (empty lane)
+      if (lanes[i] != null && xPosHorse[i]<= FINISH_LINE_X && (lanes[i].hasFallen() == false)) {
+
+        //the probability that the horse will move forward depends on the confidence;
+        if (Math.random() < lanes[i].getConfidence())
+        {
+          xPosHorse[i] = xPosHorse[i] + xVelocity[i];
+        }
+        
+        //the probability that the horse will fall is very small (max is 0.1)
+        //but will also will depends exponentially on confidence 
+        //so if you double the confidence, the probability that it will fall is *2
+        if (Math.random() < (0.1*lanes[i].getConfidence()/16))
+        {
+          lanes[i].fall();
+        }
+        
       }
     }
     repaint();
