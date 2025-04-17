@@ -109,6 +109,8 @@ public class RacePanel extends JPanel implements ActionListener {
         if (Math.random() < (0.1*lanes[i].getConfidence()/16))
         {
           lanes[i].fall();
+          // Set horse icon to an X to indicate it has fallen
+          horseSymbols[i]= new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\cross.png").getImage();
         }
         
       }
