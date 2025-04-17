@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.9
+ * @version Version 2.0
  */
 public class RacePanel extends JPanel implements ActionListener {
   final int PANEL_HEIGHT = 620;
@@ -71,15 +71,15 @@ public class RacePanel extends JPanel implements ActionListener {
     Graphics2D g2D = (Graphics2D) g;
 
     // draw track lines
-    for (int i=0; i<=laneCount; i++) {
+    for (int i=0; i<laneCount; i++) {
       g2D.drawLine(xPosTrack[i], yPosTrack[i], (int) FINISH_LINE_X, yPosTrack[i]);
     }
 
     // draw start line
-    g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
+    g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount-1]);
 
     // draw finish line
-    g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
+    g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount-1]);
 
     // update each horse repeatedly
     for (int  i=0; i<laneCount; i++) {
