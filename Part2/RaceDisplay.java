@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.util.Timer;
-
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
@@ -21,12 +20,15 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the race display window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.4
+ * @version Version 1.5
  */
 public class RaceDisplay extends JFrame {
 
   RacePanel racePanel;
 
+  /**
+   * Constructor of RaceDisplay
+   */
   public RaceDisplay (RaceData RD) {
 
     RaceData raceData = RD;
@@ -61,12 +63,6 @@ public class RaceDisplay extends JFrame {
     JPanel rightColumnPanel = new JPanel();
     rightColumnPanel.setPreferredSize(new Dimension(200, 100));
     this.add(rightColumnPanel, BorderLayout.EAST);
-
-
-    // Bottom panel
-    JPanel bottomPanel = new JPanel();
-    bottomPanel.setPreferredSize(new Dimension(30, 70));
-    this.add(bottomPanel, BorderLayout.SOUTH);
 
 
     // Race panel (center panel)
