@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.1
+ * @version Version 2.2
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -25,36 +25,47 @@ public class RacePanel extends JPanel implements ActionListener {
   private int numberOfHorses;
   private int trackLength;
   private int laneCount;
-  private Horse[] lanes;
-  final int MAX_LANES = 20;
-  double FINISH_LINE_X;
 
-  Image[] horseSymbols;
-  Timer timer;
+  private Horse[] lanes;
+  private Image[] horseSymbols;
+
+  private double FINISH_LINE_X;
+
+  private Timer timer;
 
   final int PANEL_HEIGHT = 620;
   final int PANEL_WIDTH = 1090;
 
-  // Positional values for horses and track lines
-  int[] xVelocity = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-  int[] yVelocity = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-  
-  int[] xPosHorse = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-  int[] yPosHorse = {7, 32, 57, 82, 107, 132, 157, 182, 207, 232, 257, 282, 307, 332, 357, 382, 407, 432, 457, 482};
-
-  int[] xPosTrack = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-  int[] yPosTrack = {5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 330, 355, 380, 405, 430, 455, 480};
+  int[] xPosTrack;
+  int[] yPosTrack;
 
 
+  /**
+   * Constructor of RacePanel
+   */
   RacePanel (RaceData RD) {
 
     raceData = RD;
+
     numberOfHorses = raceData.getNumberOfHorses();
     trackLength = raceData.getLengthOfTrack();
     laneCount = raceData.getNumberOfLanes();
     lanes = raceData.getLanesArray();
+
     horseSymbols = new Image[laneCount];
     FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
+
+
+    // Positional values for horses and track lines
+      // Set velocity values (default = 5)
+      setHorseVelocities();
+
+      // Set positional values of horses (x and y)
+      setHorsePositions();
+
+      // Set positional values of track (x and y)
+      setTrackPositions();
+
 
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     this.setBackground(new Color(0xE7D176));
@@ -158,6 +169,46 @@ public class RacePanel extends JPanel implements ActionListener {
       }
     }
     repaint();
+  }
+
+
+  /**
+   * Sets the values of each horses velocity
+   * Current default values are xVel=5, yVel=1
+   */
+  public void setHorseVelocities () {
+    for (int i=0; i<laneCount; i++) {
+      // Check if the lane value is null (empty lane)
+      if (lanes[i] != null) {
+        lanes[i].setXVelocity(5);
+        lanes[i].setYVelocity(1);
+      }
+    }
+  }
+
+
+  /**
+   * Sets the values of each horses x and y positions
+   */
+  public void setHorsePositions () {
+    for (int i=1; i<=laneCount; i++) {
+      // Check if the lane value is null (empty lane)
+      if (lanes[i] != null) {
+        lanes[i].setXpos(5);
+        lanes[i].setYpos(7 + (i*25)); 
+      }
+    }
+  }
+
+
+  /**
+   * Sets the values of track x and y positions
+   */
+  public void setTrackPositions () {
+    for (int i=0; i<laneCount; i++) {
+      xPosTrack[i] = 5;
+      yPosTrack[i] = 5 + (i*25);
+    }
   }
 
 }
