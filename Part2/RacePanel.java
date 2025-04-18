@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.4
+ * @version Version 2.6
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -54,7 +54,7 @@ public class RacePanel extends JPanel implements ActionListener {
     lanes = raceData.getLanesArray();
 
     horseSymbols = new Image[laneCount];
-    FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-60 is full length (500m)
+    FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-45 is full length (500m)
 
 
     // Positional values for horses and track lines
@@ -104,6 +104,21 @@ public class RacePanel extends JPanel implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     moveHorses();
+
+    //if any of the horses has won the race is finished
+    //if all of the three horses have fallen the race is finished
+    if (allHaveFallen() || raceWonByAny()) {
+        timer.stop();
+
+        // Return null if there is no winner
+        if (allHaveFallen()) {
+          raceWinner = null;
+        }
+        else {
+          raceWinner = getWinner();
+        }
+    }
+  
   }
 
 
@@ -172,10 +187,6 @@ public class RacePanel extends JPanel implements ActionListener {
           // Set horse icon to an X to indicate it has fallen
           horseSymbols[i]= new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\cross.png").getImage();
         }
-
-        // Check if any horses have won
-
-        
       }
     }
     repaint();
@@ -232,17 +243,9 @@ public class RacePanel extends JPanel implements ActionListener {
    * @return true if the horse has won, false otherwise.
    */
   private boolean raceWonBy(Horse theHorse) {
-    for (int i=0; i<lanes.length; i++) {
-      if (lanes[i] != null) { 
-        if (theHorse.getXpos() == FINISH_LINE_X)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-      }
+    if (theHorse.getXpos() >= FINISH_LINE_X)
+    {
+      return true;
     }
     return false;
   }
@@ -276,6 +279,17 @@ public class RacePanel extends JPanel implements ActionListener {
           }  
       }
       return true;
+  }
+
+
+  private String getWinner() {
+    for (int i=0; i<lanes.length; i++) {
+      if (lanes[i] != null && lanes[i].getXpos() >= FINISH_LINE_X) {
+          return lanes[i].getName();
+      }  
+    }
+    // fall-back return type in case of error
+    return null;
   }
 
 
