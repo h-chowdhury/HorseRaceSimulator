@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.2
+ * @version Version 2.4
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -117,11 +117,15 @@ public class RacePanel extends JPanel implements ActionListener {
       g2D.drawLine(xPosTrack[i], yPosTrack[i], (int) FINISH_LINE_X, yPosTrack[i]);
     }
 
+    // draw one extra line at bottom to close the last lane
+    int lastY = yPosTrack[laneCount]; // add lane height
+    g2D.drawLine(xPosTrack[0], lastY, (int) FINISH_LINE_X, lastY);
+
     // draw start line
-    g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount-1]);
+    g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
 
     // draw finish line
-    g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount-1]);
+    g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
   }
 
 
@@ -133,7 +137,7 @@ public class RacePanel extends JPanel implements ActionListener {
     // update each horse repeatedly
     for (int  i=0; i<laneCount; i++) {
       if (lanes[i] != null) {
-        g2D.drawImage(horseSymbols[i], xPosHorse[i], yPosHorse[i], null);
+        g2D.drawImage(horseSymbols[i], lanes[i].getXpos(), lanes[i].getYpos(), null);
       }
     }
   }
@@ -148,12 +152,14 @@ public class RacePanel extends JPanel implements ActionListener {
     // update each horses x position repeatedly
     for (int i=0; i<laneCount; i++) {
       // Check if the lane value is null (empty lane)
-      if (lanes[i] != null && xPosHorse[i]<= FINISH_LINE_X && (lanes[i].hasFallen() == false)) {
+      if (lanes[i] != null && lanes[i].getXpos() <= FINISH_LINE_X && (lanes[i].hasFallen() == false)) {
 
         //the probability that the horse will move forward depends on the confidence;
         if (Math.random() < lanes[i].getConfidence())
         {
-          xPosHorse[i] = xPosHorse[i] + xVelocity[i];
+          int xPos = lanes[i].getXpos();
+          int xVelocity = lanes[i].getXVelocity();
+          lanes[i].setXpos(xPos + xVelocity);
         }
         
         //the probability that the horse will fall is very small (max is 0.1)
@@ -191,7 +197,7 @@ public class RacePanel extends JPanel implements ActionListener {
    * Sets the values of each horses x and y positions
    */
   public void setHorsePositions () {
-    for (int i=1; i<=laneCount; i++) {
+    for (int i=0; i<laneCount; i++) {
       // Check if the lane value is null (empty lane)
       if (lanes[i] != null) {
         lanes[i].setXpos(5);
@@ -205,7 +211,10 @@ public class RacePanel extends JPanel implements ActionListener {
    * Sets the values of track x and y positions
    */
   public void setTrackPositions () {
-    for (int i=0; i<laneCount; i++) {
+    xPosTrack = new int[laneCount + 1];
+    yPosTrack = new int[laneCount + 1];
+    
+    for (int i=0; i<=laneCount; i++) {
       xPosTrack[i] = 5;
       yPosTrack[i] = 5 + (i*25);
     }
