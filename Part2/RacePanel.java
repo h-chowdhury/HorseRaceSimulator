@@ -30,6 +30,7 @@ public class RacePanel extends JPanel implements ActionListener {
   private Image[] horseSymbols;
 
   private double FINISH_LINE_X;
+  private String raceWinner;
 
   private Timer timer;
 
@@ -171,6 +172,9 @@ public class RacePanel extends JPanel implements ActionListener {
           // Set horse icon to an X to indicate it has fallen
           horseSymbols[i]= new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\cross.png").getImage();
         }
+
+        // Check if any horses have won
+
         
       }
     }
@@ -207,7 +211,7 @@ public class RacePanel extends JPanel implements ActionListener {
   }
 
 
-  /**
+   /**
    * Sets the values of track x and y positions
    */
   public void setTrackPositions () {
@@ -219,5 +223,60 @@ public class RacePanel extends JPanel implements ActionListener {
       yPosTrack[i] = 5 + (i*25);
     }
   }
+
+
+  /** 
+   * Determines if a horse has won the race
+   *
+   * @param theHorse The horse we are testing
+   * @return true if the horse has won, false otherwise.
+   */
+  private boolean raceWonBy(Horse theHorse) {
+    for (int i=0; i<lanes.length; i++) {
+      if (lanes[i] != null) { 
+        if (theHorse.getXpos() == FINISH_LINE_X)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+      }
+    }
+    return false;
+  }
+
+
+  /** 
+   * Determines if any horse has won the race
+   * Uses the raceWonBy method
+   */
+  private boolean raceWonByAny()
+  {
+      for (int i=0; i<lanes.length; i++) {
+          if (lanes[i] != null && raceWonBy(lanes[i]) == true) {
+              raceWinner = lanes[i].getName();
+              return true;
+          }
+          
+      }
+      return false;
+  }
+
+
+  /** 
+   * Determines if all horses have fallen
+   * Ends the race if this is true.
+   */
+  private boolean allHaveFallen() {
+      for (int i=0; i<lanes.length; i++) {
+          if (lanes[i] != null && lanes[i].hasFallen() != true) {
+              return false;
+          }  
+      }
+      return true;
+  }
+
 
 }
