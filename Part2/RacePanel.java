@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.6
+ * @version Version 2.7
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -30,7 +30,6 @@ public class RacePanel extends JPanel implements ActionListener {
   private int laneCount;
 
   private Horse[] lanes;
-  private Image[] horseSymbols;
 
   private double FINISH_LINE_X;
   private String raceWinner;
@@ -72,25 +71,17 @@ public class RacePanel extends JPanel implements ActionListener {
     laneCount = raceData.getNumberOfLanes();
     lanes = raceData.getLanesArray();
 
-    horseSymbols = new Image[laneCount];
     FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-45 is full length (500m)
 
 
-    // Positional values for horses and track lines
-      // Set velocity values (default = 5)
-      setHorseVelocities();
+    // Set velocity values (default = 5)
+    setHorseVelocities();
 
-      // Set positional values of horses (x and y)
-      setHorsePositions();
+    // Set positional values of horses (x and y)
+    setHorsePositions();
 
-      // Set positional values of track (x and y)
-      setTrackPositions();
-
-
-    // set placeholder images into image array
-    for (int i=0; i<laneCount; i++) {
-      horseSymbols[i]= new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\placeholder.png").getImage();
-    }
+    // Set positional values of track (x and y)
+    setTrackPositions();
 
     timer = new Timer(100, this);
     timer.start();
@@ -171,7 +162,7 @@ public class RacePanel extends JPanel implements ActionListener {
     // update each horse repeatedly
     for (int  i=0; i<laneCount; i++) {
       if (lanes[i] != null) {
-        g2D.drawImage(horseSymbols[i], lanes[i].getXpos(), lanes[i].getYpos(), null);
+        g2D.drawImage(lanes[i].getSymbol(), lanes[i].getXpos(), lanes[i].getYpos(), null);
       }
     }
   }
@@ -203,7 +194,7 @@ public class RacePanel extends JPanel implements ActionListener {
         {
           lanes[i].fall();
           // Set horse icon to an X to indicate it has fallen
-          horseSymbols[i]= new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\cross.png").getImage();
+          lanes[i].setSymbol(new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\cross.png").getImage());
         }
       }
     }
@@ -215,7 +206,7 @@ public class RacePanel extends JPanel implements ActionListener {
    * Sets the values of each horses velocity
    * Current default values are xVel=5, yVel=1
    */
-  public void setHorseVelocities () {
+  private void setHorseVelocities () {
     for (int i=0; i<laneCount; i++) {
       // Check if the lane value is null (empty lane)
       if (lanes[i] != null) {
@@ -229,7 +220,7 @@ public class RacePanel extends JPanel implements ActionListener {
   /**
    * Sets the values of each horses x and y positions
    */
-  public void setHorsePositions () {
+  private void setHorsePositions () {
     for (int i=0; i<laneCount; i++) {
       // Check if the lane value is null (empty lane)
       if (lanes[i] != null) {
@@ -243,7 +234,7 @@ public class RacePanel extends JPanel implements ActionListener {
    /**
    * Sets the values of track x and y positions
    */
-  public void setTrackPositions () {
+  private void setTrackPositions () {
     xPosTrack = new int[laneCount + 1];
     yPosTrack = new int[laneCount + 1];
     
@@ -309,6 +300,5 @@ public class RacePanel extends JPanel implements ActionListener {
     // fall-back return type in case of error
     return null;
   }
-
 
 }
