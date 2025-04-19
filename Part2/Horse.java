@@ -4,7 +4,7 @@ package Part2;
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.7
+ * @version Version 1.8
  */
 public class Horse
 {
@@ -14,6 +14,11 @@ public class Horse
     private double horseConfidence;
     private int horseLane;
     private boolean fallen;
+
+    private int xPos;
+    private int yPos;
+    private int xVelocity;
+    private int yVelocity;
 
 
     // Constructor of class Horse
@@ -66,6 +71,46 @@ public class Horse
     public char getSymbol()
     {
         return this.horseSymbol;
+    }
+
+
+    /**
+     * Gets the horses X position.
+     * @return A integer representing the horses X position.
+     */
+    public int getXpos()
+    {
+        return this.xPos;
+    }
+
+
+    /**
+     * Gets the horses Y position.
+     * @return A integer representing the horses Y position.
+     */
+    public int getYpos()
+    {
+        return this.yPos;
+    }
+
+
+    /**
+     * Gets the horses X velocity.
+     * @return A integer representing the horses X velocity.
+     */
+    public int getXVelocity()
+    {
+        return this.xVelocity;
+    }
+
+
+    /**
+     * Gets the horses Y velocity.
+     * @return A integer representing the horses Y velocity.
+     */
+    public int getYVelocity()
+    {
+        return this.yVelocity;
     }
 
 
@@ -129,6 +174,46 @@ public class Horse
     public void setLane(int laneNumber)
     {
         this.horseLane = laneNumber;
+    }
+
+
+    /**
+     * Sets the horses X position.
+     * @param A integer representing the horses X position.
+     */
+    public void setXpos(int x)
+    {
+        this.xPos = x;
+    }
+
+
+    /**
+     * Sets the horses Y position.
+     * @param A integer representing the horses Y position.
+     */
+    public void setYpos(int y)
+    {
+        this.yPos = y;
+    }
+
+    
+    /**
+     * Sets the horses X velocity.
+     * @param A integer representing the horses X velocity.
+     */
+    public void setXVelocity(int x)
+    {
+        this.xVelocity = x;
+    }
+
+
+    /**
+     * Sets the horses Y velocity.
+     * @param A integer representing the horses Y velocity.
+     */
+    public void setYVelocity(int y)
+    {
+        this.yVelocity = y;
     }
 
 
