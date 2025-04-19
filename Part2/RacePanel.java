@@ -1,7 +1,9 @@
 package Part2;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -9,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -31,6 +34,7 @@ public class RacePanel extends JPanel implements ActionListener {
 
   private double FINISH_LINE_X;
   private String raceWinner;
+  private JLabel winnerLabel;
 
   private Timer timer;
 
@@ -45,6 +49,21 @@ public class RacePanel extends JPanel implements ActionListener {
    * Constructor of RacePanel
    */
   RacePanel (RaceData RD) {
+
+    this.setLayout(new BorderLayout(5, 5));
+
+    // Bottom panel
+    JPanel bottomPanel = new JPanel();
+    bottomPanel.setPreferredSize(new Dimension(30, 70));
+
+      // Label to display winner
+      winnerLabel = new JLabel();
+      winnerLabel.setFont(new Font("Dialog", Font.BOLD, 20));
+      bottomPanel.add(winnerLabel);
+
+    this.add(bottomPanel, BorderLayout.SOUTH);
+    this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+    this.setBackground(new Color(0xE7D176));
 
     raceData = RD;
 
@@ -67,9 +86,6 @@ public class RacePanel extends JPanel implements ActionListener {
       // Set positional values of track (x and y)
       setTrackPositions();
 
-
-    this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-    this.setBackground(new Color(0xE7D176));
 
     // set placeholder images into image array
     for (int i=0; i<laneCount; i++) {
@@ -113,9 +129,11 @@ public class RacePanel extends JPanel implements ActionListener {
         // Return null if there is no winner
         if (allHaveFallen()) {
           raceWinner = null;
+          winnerLabel.setText("All horses have fallen, there is no winner!");
         }
         else {
           raceWinner = getWinner();
+          winnerLabel.setText(raceWinner.toUpperCase() + " has won the race!");
         }
     }
   
