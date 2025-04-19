@@ -1,15 +1,17 @@
 package Part2;
 
+import java.awt.Image;
+
 /**
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.8
+ * @version Version 1.9
  */
 public class Horse
 {
     //Fields of class Horse
-    private char horseSymbol;
+    private Image horseSymbol;
     private final String horseName;
     private double horseConfidence;
     private int horseLane;
@@ -25,7 +27,7 @@ public class Horse
     /**
      * Constructor for objects of class Horse
      */
-    public Horse(char horseSymbol, String horseName, double horseConfidence, int horseLane)
+    public Horse(Image horseSymbol, String horseName, double horseConfidence, int horseLane)
     {
        this.horseSymbol = horseSymbol;
        this.horseName = horseName;
@@ -68,7 +70,7 @@ public class Horse
      * Gets the symbol representing the horse.
      * @return A char symbol representing the horse.
      */
-    public char getSymbol()
+    public Image getSymbol()
     {
         return this.horseSymbol;
     }
@@ -161,7 +163,7 @@ public class Horse
      * Sets the symbol representing the horse to a new character.
      * @param newSymbol The new representing symbol.
      */
-    public void setSymbol(char newSymbol)
+    public void setSymbol(Image newSymbol)
     {
         this.horseSymbol = newSymbol;
     }
