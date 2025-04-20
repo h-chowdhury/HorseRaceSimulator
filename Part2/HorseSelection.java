@@ -152,7 +152,28 @@ public class HorseSelection extends JFrame {
       saddleBox.add(s3);
 
 
+      // Horseshoe input
+      JPanel horseshoeBox = new JPanel();
+      horseshoeBox.setLayout(new GridLayout(5, 1));
+
+        JLabel horseshoeLabel = new JLabel("Horseshoe");
+        horseshoeLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup horseshoeButtons = new ButtonGroup();
+          JRadioButton hs1 = new JRadioButton("Option 1");
+          JRadioButton hs2 = new JRadioButton("Option 2");
+          JRadioButton hs3 = new JRadioButton("Option 3");
+          horseshoeButtons.add(hs1);
+          horseshoeButtons.add(hs2);
+          horseshoeButtons.add(hs3);
+      
+        horseshoeBox.add(horseshoeLabel);
+        horseshoeBox.add(hs1);
+        horseshoeBox.add(hs2);
+        horseshoeBox.add(hs3);
+
     rightColumnPanel.add(saddleBox);
+    rightColumnPanel.add(horseshoeBox);
 
     this.add(rightColumnPanel, BorderLayout.EAST);
 
