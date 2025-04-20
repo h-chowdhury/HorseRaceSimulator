@@ -27,7 +27,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.7
+ * @version Version 2.8
  */
 public class HorseSelection extends JFrame {
 
@@ -129,8 +129,34 @@ public class HorseSelection extends JFrame {
     // Right column
     JPanel rightColumnPanel = new JPanel();
     rightColumnPanel.setPreferredSize(new Dimension(400, 100));
+    rightColumnPanel.setLayout(new GridLayout(3, 1));
+
+      // Saddle input
+      JPanel saddleBox = new JPanel();
+      saddleBox.setLayout(new GridLayout(5, 1));
+
+        JLabel saddleLabel = new JLabel("Saddle");
+        saddleLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup saddleButtons = new ButtonGroup();
+          JRadioButton s1 = new JRadioButton("Option 1");
+          JRadioButton s2 = new JRadioButton("Option 2");
+          JRadioButton s3 = new JRadioButton("Option 3");
+          saddleButtons.add(s1);
+          saddleButtons.add(s2);
+          saddleButtons.add(s3);
+      
+      saddleBox.add(saddleLabel);
+      saddleBox.add(s1);
+      saddleBox.add(s2);
+      saddleBox.add(s3);
+
+
+    rightColumnPanel.add(saddleBox);
 
     this.add(rightColumnPanel, BorderLayout.EAST);
+
+
 
 
 
@@ -191,7 +217,6 @@ public class HorseSelection extends JFrame {
         hairBox.add(h2);
         hairBox.add(h3);
         hairBox.add(h4);
-
 
     bottomPanel.add(coatBox);
     bottomPanel.add(submitButton);
