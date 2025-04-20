@@ -131,6 +131,7 @@ public class HorseSelection extends JFrame {
     rightColumnPanel.setPreferredSize(new Dimension(400, 100));
     rightColumnPanel.setLayout(new GridLayout(3, 1));
 
+    
       // Saddle input
       JPanel saddleBox = new JPanel();
       saddleBox.setLayout(new GridLayout(5, 1));
@@ -172,8 +173,31 @@ public class HorseSelection extends JFrame {
         horseshoeBox.add(hs2);
         horseshoeBox.add(hs3);
 
+    
+      // Accessory input
+      JPanel accessoryBox = new JPanel();
+      accessoryBox.setLayout(new GridLayout(5, 1));
+
+        JLabel accessoryLabel = new JLabel("Accessory");
+        accessoryLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup accessoryButtons = new ButtonGroup();
+          JRadioButton a1 = new JRadioButton("Option 1");
+          JRadioButton a2 = new JRadioButton("Option 2");
+          JRadioButton a3 = new JRadioButton("Option 3");
+          accessoryButtons.add(a1);
+          accessoryButtons.add(a2);
+          accessoryButtons.add(a3);
+      
+        accessoryBox.add(accessoryLabel);
+        accessoryBox.add(a1);
+        accessoryBox.add(a2);
+        accessoryBox.add(a3);
+
+
     rightColumnPanel.add(saddleBox);
     rightColumnPanel.add(horseshoeBox);
+    rightColumnPanel.add(accessoryBox);
 
     this.add(rightColumnPanel, BorderLayout.EAST);
 
