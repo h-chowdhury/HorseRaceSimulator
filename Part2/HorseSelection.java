@@ -162,8 +162,15 @@ public class HorseSelection extends JFrame {
         coatBox.add(c3);
         coatBox.add(c4);
 
-      bottomPanel.add(coatBox);
 
+      // Submit button
+      JButton submitButton = new JButton("Submit");
+      submitButton.setSize(200, 100);
+      submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
+
+
+    bottomPanel.add(coatBox);
+    bottomPanel.add(submitButton);
 
     this.add(bottomPanel, BorderLayout.SOUTH);
 
@@ -180,23 +187,18 @@ public class HorseSelection extends JFrame {
 
 
 
-
-
-
-    // Submit button - submit all data
-    JButton submitButton = new JButton("Submit");
-    submitButton.setSize(200, 100);
-    submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
-
-    // This allows for the submit button store data in an object of type RaceData, pass this object 
-    // to a RaceDisplay object, and display the RaceDisplay window
+    /* 
+     * Function for submit button.
+     * Allows for storage of horse data in a RaceData object.
+     * Passes this object and data to RaceDisplay.
+     */
     submitButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed (ActionEvent e) {
-        // check if chosen lane is taken OR name is empty
+        // Check if chosen lane is taken OR name is empty
         if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null || nameInput.getText().trim().isEmpty()) {
 
-          // if chosen lane is taken, display error
+          // If chosen lane is taken, display error
           if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null) {
             javax.swing.JOptionPane.showMessageDialog(null, 
             "The chosen lane has already been filled. Please enter a different lane.",
@@ -249,12 +251,6 @@ public class HorseSelection extends JFrame {
       }
     });
 
-    bottomPanel.add(submitButton);
-
-  }
-
-  public RaceData getRaceData () {
-    return this.raceData;
   }
 
 }
