@@ -169,8 +169,33 @@ public class HorseSelection extends JFrame {
       submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
 
 
+      // Hair colour input
+      JPanel hairBox = new JPanel();
+      hairBox.setLayout(new GridLayout(5, 1));
+
+        JLabel hairLabel = new JLabel("Hair colour");
+        hairLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup hairButtons = new ButtonGroup();
+          JRadioButton h1 = new JRadioButton("Black");
+          JRadioButton h2 = new JRadioButton("Brown");
+          JRadioButton h3 = new JRadioButton("Grey");
+          JRadioButton h4 = new JRadioButton("White");
+          hairButtons.add(h1);
+          hairButtons.add(h2);
+          hairButtons.add(h3);
+          hairButtons.add(h4);
+      
+        hairBox.add(hairLabel);
+        hairBox.add(h1);
+        hairBox.add(h2);
+        hairBox.add(h3);
+        hairBox.add(h4);
+
+
     bottomPanel.add(coatBox);
     bottomPanel.add(submitButton);
+    bottomPanel.add(hairBox);
 
     this.add(bottomPanel, BorderLayout.SOUTH);
 
