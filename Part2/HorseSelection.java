@@ -5,14 +5,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
@@ -22,15 +27,17 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.6
+ * @version Version 2.7
  */
 public class HorseSelection extends JFrame {
 
   private RaceData raceData;
   private int numberOfLanes;
   private int numberOfHorses;
-  private int horsesProcessed;
 
+  /**
+   * Constructor of HorseSelection
+   */
   public HorseSelection(RaceData RD) {
 
     // Storing the selection values from previous page
@@ -130,6 +137,33 @@ public class HorseSelection extends JFrame {
     // Bottom panel
     JPanel bottomPanel = new JPanel();
     bottomPanel.setPreferredSize(new Dimension(100, 200));
+    bottomPanel.setLayout(new GridLayout(1, 3));
+
+      // Coat colour input
+      JPanel coatBox = new JPanel();
+      coatBox.setLayout(new GridLayout(5, 1));
+
+        JLabel coatLabel = new JLabel("Coat colour");
+        laneLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup coatButtons = new ButtonGroup();
+          JRadioButton c1 = new JRadioButton("Black");
+          JRadioButton c2 = new JRadioButton("Brown");
+          JRadioButton c3 = new JRadioButton("Grey");
+          JRadioButton c4 = new JRadioButton("White");
+          coatButtons.add(c1);
+          coatButtons.add(c2);
+          coatButtons.add(c3);
+          coatButtons.add(c4);
+      
+        coatBox.add(coatLabel);
+        coatBox.add(c1);
+        coatBox.add(c2);
+        coatBox.add(c3);
+        coatBox.add(c4);
+
+      bottomPanel.add(coatBox);
+
 
     this.add(bottomPanel, BorderLayout.SOUTH);
 
@@ -154,16 +188,15 @@ public class HorseSelection extends JFrame {
     submitButton.setSize(200, 100);
     submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
 
-    // This allows for the submit button to process the input data, store it in an
-    // object of type RaceData, pass this object to a RaceDisplay object, and
-    // display the RaceDisplay window
+    // This allows for the submit button store data in an object of type RaceData, pass this object 
+    // to a RaceDisplay object, and display the RaceDisplay window
     submitButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed (ActionEvent e) {
         // check if chosen lane is taken OR name is empty
         if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null || nameInput.getText().trim().isEmpty()) {
 
-          // if chosen lane is taken
+          // if chosen lane is taken, display error
           if ((raceData.getLanes(((int) laneInput.getValue()) - 1)) != null) {
             javax.swing.JOptionPane.showMessageDialog(null, 
             "The chosen lane has already been filled. Please enter a different lane.",
@@ -173,6 +206,7 @@ public class HorseSelection extends JFrame {
             submitButton.setEnabled(true);
             return;
           }
+          // If name is empty, display error
           else if (nameInput.getText().trim().isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(null, 
             "Please enter a name.",
@@ -182,22 +216,29 @@ public class HorseSelection extends JFrame {
             submitButton.setEnabled(true);
             return;
           }
+          // If all inputs are valid
         } else {
+          // Store horse data in variables
           String horseName = nameInput.getText();
           double horseConfidence = (double) confidenceInput.getValue();
           horseConfidence = Math.round(horseConfidence * 100.0) / 100.0;
           int horseLane = (int) laneInput.getValue();
 
-          Horse horse = new Horse('#', horseName, horseConfidence, horseLane);
+          // Placeholder image
+          ImageIcon symbol = new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\placeholder.png");
+          
+          // Create horse object, assign it to a lane 
+          Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
           raceData.setLanes(horse, horseLane-1);
           raceData.increaseHorsesProcessed();
   
-          // display new HorseSelection window for each horse
+          // Display new HorseSelection window for each horse
           if (raceData.getHorsesProcessed() < numberOfHorses) {
             HorseSelection horseSelectionPage = new HorseSelection(raceData);
             horseSelectionPage.setVisible(true);
             dispose();
           } else {
+            // Redirect to RaceDisplay window when all horses are processed
             submitButton.setEnabled(false);
             RaceDisplay raceDisplayPage = new RaceDisplay(raceData);
             raceDisplayPage.setVisible(true);
