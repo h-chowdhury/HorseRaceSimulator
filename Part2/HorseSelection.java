@@ -27,7 +27,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.0
+ * @version Version 3.1
  */
 public class HorseSelection extends JFrame {
 
@@ -143,6 +143,9 @@ public class HorseSelection extends JFrame {
           JRadioButton s1 = new JRadioButton("Option 1");
           JRadioButton s2 = new JRadioButton("Option 2");
           JRadioButton s3 = new JRadioButton("Option 3");
+          s1.setToolTipText("Adds effect xyz");
+          s2.setToolTipText("Adds effect xyz");
+          s3.setToolTipText("Adds effect xyz");
           saddleButtons.add(s1);
           saddleButtons.add(s2);
           saddleButtons.add(s3);
@@ -164,6 +167,9 @@ public class HorseSelection extends JFrame {
           JRadioButton hs1 = new JRadioButton("Option 1");
           JRadioButton hs2 = new JRadioButton("Option 2");
           JRadioButton hs3 = new JRadioButton("Option 3");
+          hs1.setToolTipText("Adds effect xyz");
+          hs2.setToolTipText("Adds effect xyz");
+          hs3.setToolTipText("Adds effect xyz");
           horseshoeButtons.add(hs1);
           horseshoeButtons.add(hs2);
           horseshoeButtons.add(hs3);
@@ -185,6 +191,9 @@ public class HorseSelection extends JFrame {
           JRadioButton a1 = new JRadioButton("Option 1");
           JRadioButton a2 = new JRadioButton("Option 2");
           JRadioButton a3 = new JRadioButton("Option 3");
+          a1.setToolTipText("Adds effect xyz");
+          a2.setToolTipText("Adds effect xyz");
+          a3.setToolTipText("Adds effect xyz");
           accessoryButtons.add(a1);
           accessoryButtons.add(a2);
           accessoryButtons.add(a3);
@@ -221,6 +230,9 @@ public class HorseSelection extends JFrame {
           JRadioButton b1 = new JRadioButton("Option 1");
           JRadioButton b2 = new JRadioButton("Option 2");
           JRadioButton b3 = new JRadioButton("Option 3");
+          b1.setToolTipText("Adds effect xyz");
+          b2.setToolTipText("Adds effect xyz");
+          b3.setToolTipText("Adds effect xyz");
           breedButtons.add(b1);
           breedButtons.add(b2);
           breedButtons.add(b3);
@@ -248,6 +260,9 @@ public class HorseSelection extends JFrame {
           JRadioButton h1 = new JRadioButton("Black");
           JRadioButton h2 = new JRadioButton("Brown");
           JRadioButton h3 = new JRadioButton("Blonde");
+          h1.setToolTipText("Adds effect xyz");
+          h2.setToolTipText("Adds effect xyz");
+          h3.setToolTipText("Adds effect xyz");
           hairButtons.add(h1);
           hairButtons.add(h2);
           hairButtons.add(h3);
