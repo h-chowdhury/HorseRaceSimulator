@@ -27,7 +27,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.8
+ * @version Version 2.9
  */
 public class HorseSelection extends JFrame {
 
@@ -131,7 +131,7 @@ public class HorseSelection extends JFrame {
     rightColumnPanel.setPreferredSize(new Dimension(400, 100));
     rightColumnPanel.setLayout(new GridLayout(3, 1));
 
-    
+
       // Saddle input
       JPanel saddleBox = new JPanel();
       saddleBox.setLayout(new GridLayout(5, 1));
@@ -324,8 +324,15 @@ public class HorseSelection extends JFrame {
           // Placeholder image
           ImageIcon symbol = new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\placeholder.png");
           
-          // Create horse object, assign it to a lane 
+          // Create horse object
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
+          
+          // Store customisation data
+          HorseCustomisation horseCustomisation = new HorseCustomisation();
+          horse.setHorseCustomisation(horseCustomisation);
+          // ** TO BE ADDED ** //
+
+          // Assign horse to lane
           raceData.setLanes(horse, horseLane-1);
           raceData.increaseHorsesProcessed();
   
