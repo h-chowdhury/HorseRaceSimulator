@@ -27,7 +27,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.9
+ * @version Version 3.0
  */
 public class HorseSelection extends JFrame {
 
@@ -210,28 +210,25 @@ public class HorseSelection extends JFrame {
     bottomPanel.setPreferredSize(new Dimension(100, 200));
     bottomPanel.setLayout(new GridLayout(1, 3));
 
-      // Coat colour input
-      JPanel coatBox = new JPanel();
-      coatBox.setLayout(new GridLayout(5, 1));
+      // Breed input
+      JPanel breedBox = new JPanel();
+      breedBox.setLayout(new GridLayout(5, 1));
 
-        JLabel coatLabel = new JLabel("Coat colour");
-        laneLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        JLabel breedLabel = new JLabel("Breed");
+        breedLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
-        ButtonGroup coatButtons = new ButtonGroup();
-          JRadioButton c1 = new JRadioButton("Black");
-          JRadioButton c2 = new JRadioButton("Brown");
-          JRadioButton c3 = new JRadioButton("Grey");
-          JRadioButton c4 = new JRadioButton("White");
-          coatButtons.add(c1);
-          coatButtons.add(c2);
-          coatButtons.add(c3);
-          coatButtons.add(c4);
+        ButtonGroup breedButtons = new ButtonGroup();
+          JRadioButton b1 = new JRadioButton("Option 1");
+          JRadioButton b2 = new JRadioButton("Option 2");
+          JRadioButton b3 = new JRadioButton("Option 3");
+          breedButtons.add(b1);
+          breedButtons.add(b2);
+          breedButtons.add(b3);
       
-        coatBox.add(coatLabel);
-        coatBox.add(c1);
-        coatBox.add(c2);
-        coatBox.add(c3);
-        coatBox.add(c4);
+        breedBox.add(breedLabel);
+        breedBox.add(b1);
+        breedBox.add(b2);
+        breedBox.add(b3);
 
 
       // Submit button
@@ -250,20 +247,17 @@ public class HorseSelection extends JFrame {
         ButtonGroup hairButtons = new ButtonGroup();
           JRadioButton h1 = new JRadioButton("Black");
           JRadioButton h2 = new JRadioButton("Brown");
-          JRadioButton h3 = new JRadioButton("Grey");
-          JRadioButton h4 = new JRadioButton("White");
+          JRadioButton h3 = new JRadioButton("Blonde");
           hairButtons.add(h1);
           hairButtons.add(h2);
           hairButtons.add(h3);
-          hairButtons.add(h4);
       
         hairBox.add(hairLabel);
         hairBox.add(h1);
         hairBox.add(h2);
         hairBox.add(h3);
-        hairBox.add(h4);
 
-    bottomPanel.add(coatBox);
+    bottomPanel.add(breedBox);
     bottomPanel.add(submitButton);
     bottomPanel.add(hairBox);
 
