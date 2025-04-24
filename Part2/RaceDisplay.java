@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.Timer;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
@@ -20,18 +24,24 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the race display window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.5
+ * @version Version 1.6
  */
 public class RaceDisplay extends JFrame {
 
-  RacePanel racePanel;
+  private RacePanel racePanel;
+  private RaceData raceData;
+
+  private int numberOfHorses;
+  private Horse[] lanes;
 
   /**
    * Constructor of RaceDisplay
    */
   public RaceDisplay (RaceData RD) {
 
-    RaceData raceData = RD;
+    raceData = RD;
+    numberOfHorses = raceData.getNumberOfHorses();
+    lanes = raceData.getLanesArray();
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Race Display"); 
@@ -56,7 +66,35 @@ public class RaceDisplay extends JFrame {
     // Left column
     JPanel leftColumnPanel = new JPanel(); 
     leftColumnPanel.setPreferredSize(new Dimension(200, 100));
+    leftColumnPanel.setLayout(new BoxLayout(leftColumnPanel, BoxLayout.Y_AXIS));
     this.add(leftColumnPanel, BorderLayout.WEST);
+
+
+      JPanel horseInfo;
+
+      // Fill left column with horse info
+      for (int i=0; i<numberOfHorses; i++) {
+        if (lanes[i] != null) {
+          horseInfo = new JPanel();
+          horseInfo.setLayout(new BoxLayout(horseInfo, BoxLayout.X_AXIS));
+  
+          Horse currentHorse = lanes[i];
+          JLabel horseSymbol = new JLabel(currentHorse.getSymbol());
+          JLabel horseName = new JLabel(currentHorse.getName());
+          JLabel horseConfidence = new JLabel("" + currentHorse.getConfidence());
+
+          horseInfo.add(horseSymbol);
+          horseInfo.add(Box.createRigidArea(new Dimension(10, 0))); // Space between symbol and name
+
+          horseInfo.add(horseName);
+          horseInfo.add(Box.createRigidArea(new Dimension(30, 0))); // Space between name and confidence
+
+          horseInfo.add(horseConfidence);
+
+          leftColumnPanel.add(horseInfo);
+          leftColumnPanel.add(Box.createVerticalStrut(10));
+        }
+      }
 
 
     // Right column
