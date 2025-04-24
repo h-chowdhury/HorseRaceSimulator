@@ -1,17 +1,17 @@
 package Part2;
 
-import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.9
+ * @version Version 2.0
  */
 public class Horse
 {
     //Fields of class Horse
-    private Image horseSymbol;
+    private ImageIcon horseSymbol;
     private final String horseName;
     private double horseConfidence;
     private int horseLane;
@@ -22,12 +22,14 @@ public class Horse
     private int xVelocity;
     private int yVelocity;
 
+    private HorseCustomisation horseCustomisation;
+
 
     // Constructor of class Horse
     /**
      * Constructor for objects of class Horse
      */
-    public Horse(Image horseSymbol, String horseName, double horseConfidence, int horseLane)
+    public Horse(ImageIcon horseSymbol, String horseName, double horseConfidence, int horseLane)
     {
        this.horseSymbol = horseSymbol;
        this.horseName = horseName;
@@ -70,7 +72,7 @@ public class Horse
      * Gets the symbol representing the horse.
      * @return A char symbol representing the horse.
      */
-    public Image getSymbol()
+    public ImageIcon getSymbol()
     {
         return this.horseSymbol;
     }
@@ -124,6 +126,15 @@ public class Horse
     {
         return this.horseLane;
     }
+
+
+    /**
+     * Gets the HorseCustomisation object belonging to the Horse.
+     * @return A HorseCustomisation object.
+     */
+    public HorseCustomisation getHorseCustomisation () {
+        return this.horseCustomisation;
+    }
     
 
     /**
@@ -163,7 +174,7 @@ public class Horse
      * Sets the symbol representing the horse to a new character.
      * @param newSymbol The new representing symbol.
      */
-    public void setSymbol(Image newSymbol)
+    public void setSymbol(ImageIcon newSymbol)
     {
         this.horseSymbol = newSymbol;
     }
@@ -216,6 +227,15 @@ public class Horse
     public void setYVelocity(int y)
     {
         this.yVelocity = y;
+    }
+
+
+    /**
+     * Gets the HorseCustomisation object belonging to the Horse.
+     * @return A Horse object.
+     */
+    public void setHorseCustomisation (HorseCustomisation horseCustomisation) {
+        this.horseCustomisation = horseCustomisation;
     }
 
 
