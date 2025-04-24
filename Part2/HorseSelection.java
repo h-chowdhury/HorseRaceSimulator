@@ -322,8 +322,8 @@ public class HorseSelection extends JFrame {
             submitButton.setEnabled(true);
             return;
           }
-          // If all inputs are valid
-        } else {
+        } else {  // If all inputs are valid
+
           // Store horse data in variables
           String horseName = nameInput.getText();
           double horseConfidence = (double) confidenceInput.getValue();
@@ -331,7 +331,7 @@ public class HorseSelection extends JFrame {
           int horseLane = (int) laneInput.getValue();
 
           // Placeholder image
-          ImageIcon symbol = new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\placeholder.png");
+          ImageIcon symbol = new ImageIcon("Part2\\images\\placeholder.png");
           
           // Create horse object
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
