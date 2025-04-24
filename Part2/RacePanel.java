@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +33,9 @@ public class RacePanel extends JPanel implements ActionListener {
   private Horse[] lanes;
 
   private double FINISH_LINE_X;
-  private String raceWinner;
+  private Horse raceWinner;
   private JLabel winnerLabel;
+  private JLabel winnerSymbol;
 
   private Timer timer;
 
@@ -54,11 +56,16 @@ public class RacePanel extends JPanel implements ActionListener {
     // Bottom panel
     JPanel bottomPanel = new JPanel();
     bottomPanel.setPreferredSize(new Dimension(30, 70));
+    bottomPanel.setLayout(new GridLayout(1, 2));
 
       // Label to display winner
       winnerLabel = new JLabel();
       winnerLabel.setFont(new Font("Dialog", Font.BOLD, 20));
       bottomPanel.add(winnerLabel);
+
+      // Label to display winner
+      winnerSymbol = new JLabel(new ImageIcon());
+      bottomPanel.add(winnerSymbol);
 
     this.add(bottomPanel, BorderLayout.SOUTH);
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
@@ -121,10 +128,12 @@ public class RacePanel extends JPanel implements ActionListener {
         if (allHaveFallen()) {
           raceWinner = null;
           winnerLabel.setText("All horses have fallen, there is no winner!");
+          winnerSymbol.setIcon(new ImageIcon("Part2\\images\\cross.png"));
         }
         else {
           raceWinner = getWinner();
-          winnerLabel.setText(raceWinner.toUpperCase() + " has won the race!");
+          winnerLabel.setText(raceWinner.getName().toUpperCase() + " has won the race!");
+          winnerSymbol.setIcon(raceWinner.getSymbol());
         }
     }
   
@@ -162,7 +171,7 @@ public class RacePanel extends JPanel implements ActionListener {
     // update each horse repeatedly
     for (int  i=0; i<laneCount; i++) {
       if (lanes[i] != null) {
-        g2D.drawImage(lanes[i].getSymbol(), lanes[i].getXpos(), lanes[i].getYpos(), null);
+        g2D.drawImage((lanes[i].getSymbol()).getImage(), lanes[i].getXpos(), lanes[i].getYpos(), null);
       }
     }
   }
@@ -194,7 +203,7 @@ public class RacePanel extends JPanel implements ActionListener {
         {
           lanes[i].fall();
           // Set horse icon to an X to indicate it has fallen
-          lanes[i].setSymbol(new ImageIcon("C:\\Users\\hummu\\Documents\\Uni\\Year 1\\Semester B\\Object Oriented Programming\\Project\\HorseRaceSimulator\\Part2\\images\\cross.png").getImage());
+          lanes[i].setSymbol(new ImageIcon("Part2\\images\\cross.png"));
         }
       }
     }
@@ -268,7 +277,7 @@ public class RacePanel extends JPanel implements ActionListener {
   {
       for (int i=0; i<lanes.length; i++) {
           if (lanes[i] != null && raceWonBy(lanes[i]) == true) {
-              raceWinner = lanes[i].getName();
+              raceWinner = lanes[i];
               return true;
           }
           
@@ -291,10 +300,10 @@ public class RacePanel extends JPanel implements ActionListener {
   }
 
 
-  private String getWinner() {
+  private Horse getWinner() {
     for (int i=0; i<lanes.length; i++) {
       if (lanes[i] != null && lanes[i].getXpos() >= FINISH_LINE_X) {
-          return lanes[i].getName();
+          return lanes[i];
       }  
     }
     // fall-back return type in case of error
