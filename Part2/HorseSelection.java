@@ -27,7 +27,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.1
+ * @version Version 3.2
  */
 public class HorseSelection extends JFrame {
 
@@ -293,7 +293,8 @@ public class HorseSelection extends JFrame {
 
     /* 
      * Function for submit button.
-     * Allows for storage of horse data in a RaceData object.
+     * Stores customisation data in a Horse object.
+     * Allows for storage of Horses in a RaceData object.
      * Passes this object and data to RaceDisplay.
      */
     submitButton.addActionListener(new ActionListener() {
@@ -338,8 +339,35 @@ public class HorseSelection extends JFrame {
           
           // Store customisation data
           HorseCustomisation horseCustomisation = new HorseCustomisation();
+
+            JRadioButton selectedRadioButton;
+
+            // Store breed
+            selectedRadioButton = (JRadioButton) breedButtons.getSelection();
+            String breedInput = selectedRadioButton.getText();
+            horseCustomisation.setBreedType(breedInput);
+
+            // Store hair colour
+            selectedRadioButton = (JRadioButton) hairButtons.getSelection();
+            String hairInput = selectedRadioButton.getText();
+            horseCustomisation.setHairType(hairInput);
+
+            // Store saddle type
+            selectedRadioButton = (JRadioButton) saddleButtons.getSelection();
+            String saddleInput = selectedRadioButton.getText();
+            horseCustomisation.setSaddleType(saddleInput);
+
+            // Store horseshoe type
+            selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
+            String horseshoeInput = selectedRadioButton.getText();
+            horseCustomisation.setHorseshoeType(horseshoeInput);
+
+            // Store accessory
+            selectedRadioButton = (JRadioButton) accessoryButtons.getSelection();
+            String accessoryInput = selectedRadioButton.getText();
+            horseCustomisation.setAccessoryType(accessoryInput);
+
           horse.setHorseCustomisation(horseCustomisation);
-          // ** TO BE ADDED ** //
 
           // Assign horse to lane
           raceData.setLanes(horse, horseLane-1);
