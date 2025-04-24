@@ -338,36 +338,30 @@ public class HorseSelection extends JFrame {
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
           
           // Store customisation data
-          HorseCustomisation horseCustomisation = new HorseCustomisation();
-
             JRadioButton selectedRadioButton;
 
             // Store breed
             selectedRadioButton = (JRadioButton) breedButtons.getSelection();
             String breedInput = selectedRadioButton.getText();
-            horseCustomisation.setBreedType(breedInput);
 
             // Store hair colour
             selectedRadioButton = (JRadioButton) hairButtons.getSelection();
             String hairInput = selectedRadioButton.getText();
-            horseCustomisation.setHairType(hairInput);
 
             // Store saddle type
             selectedRadioButton = (JRadioButton) saddleButtons.getSelection();
             String saddleInput = selectedRadioButton.getText();
-            horseCustomisation.setSaddleType(saddleInput);
 
             // Store horseshoe type
             selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
             String horseshoeInput = selectedRadioButton.getText();
-            horseCustomisation.setHorseshoeType(horseshoeInput);
 
             // Store accessory
             selectedRadioButton = (JRadioButton) accessoryButtons.getSelection();
             String accessoryInput = selectedRadioButton.getText();
-            horseCustomisation.setAccessoryType(accessoryInput);
 
-          horse.setHorseCustomisation(horseCustomisation);
+          HorseCustomisation horseCustomisation = new HorseCustomisation(horse, breedInput, hairInput, saddleInput, horseshoeInput, accessoryInput);
+          System.out.println(breedInput + hairInput + saddleInput + horseshoeInput + accessoryInput);
 
           // Assign horse to lane
           raceData.setLanes(horse, horseLane-1);
