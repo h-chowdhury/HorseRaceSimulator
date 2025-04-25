@@ -82,7 +82,7 @@ public class RacePanel extends JPanel implements ActionListener {
     laneCount = raceData.getNumberOfLanes();
     lanes = raceData.getLanesArray();
 
-    FINISH_LINE_X = (PANEL_WIDTH-45) * ((double) trackLength/500.0); // PANEL_WIDTH-45 is full length (500m)
+    FINISH_LINE_X = (PANEL_WIDTH-70) * ((double) trackLength/500.0); // PANEL_WIDTH-45 is full length (500m)
 
 
     // Set velocity values (default = 5)
@@ -231,8 +231,8 @@ public class RacePanel extends JPanel implements ActionListener {
     for (int i=0; i<laneCount; i++) {
       // Check if the lane value is null (empty lane)
       if (lanes[i] != null) {
-        lanes[i].setXpos(5);
-        lanes[i].setYpos(7 + (i*25)); 
+        lanes[i].setXpos(15);
+        lanes[i].setYpos(15 + (i*72)); 
       }
     }
   }
@@ -246,8 +246,8 @@ public class RacePanel extends JPanel implements ActionListener {
     yPosTrack = new int[laneCount + 1];
     
     for (int i=0; i<=laneCount; i++) {
-      xPosTrack[i] = 5;
-      yPosTrack[i] = 5 + (i*25);
+      xPosTrack[i] = 15;
+      yPosTrack[i] = 15 + (i*72);
     }
   }
 
