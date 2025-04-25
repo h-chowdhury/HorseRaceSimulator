@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,7 +27,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.3
+ * @version Version 3.4
  */
 public class HorseSelection extends JFrame {
 
@@ -218,28 +217,28 @@ public class HorseSelection extends JFrame {
         horseshoeBox.add(hs3);
 
     
-      // Accessory input
-      JPanel accessoryBox = new JPanel();
-      accessoryBox.setLayout(new GridLayout(5, 1));
+      // Powerup input
+      JPanel powerupBox = new JPanel();
+      powerupBox.setLayout(new GridLayout(5, 1));
 
-        JLabel accessoryLabel = new JLabel("Accessory");
-        accessoryLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        JLabel powerupLabel = new JLabel("Powerup");
+        powerupLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
-        ButtonGroup accessoryButtons = new ButtonGroup();
-          JRadioButton a1 = new JRadioButton("Option 1");
-          JRadioButton a2 = new JRadioButton("Option 2");
-          JRadioButton a3 = new JRadioButton("Option 3");
-          a1.setToolTipText("Adds effect xyz");
-          a2.setToolTipText("Adds effect xyz");
-          a3.setToolTipText("Adds effect xyz");
-          accessoryButtons.add(a1);
-          accessoryButtons.add(a2);
-          accessoryButtons.add(a3);
+        ButtonGroup powerupButtons = new ButtonGroup();
+          JRadioButton p1 = new JRadioButton("Option 1");
+          JRadioButton p2 = new JRadioButton("Option 2");
+          JRadioButton p3 = new JRadioButton("Option 3");
+          p1.setToolTipText("Adds effect xyz");
+          p2.setToolTipText("Adds effect xyz");
+          p3.setToolTipText("Adds effect xyz");
+          powerupButtons.add(p1);
+          powerupButtons.add(p2);
+          powerupButtons.add(p3);
       
-        accessoryBox.add(accessoryLabel);
-        accessoryBox.add(a1);
-        accessoryBox.add(a2);
-        accessoryBox.add(a3);
+        powerupBox.add(powerupLabel);
+        powerupBox.add(p1);
+        powerupBox.add(p2);
+        powerupBox.add(p3);
 
 
     leftColumnPanel.add(nameBox);
@@ -249,7 +248,7 @@ public class HorseSelection extends JFrame {
     leftColumnPanel.add(laneBox);
     leftColumnPanel.add(horseshoeBox);
     leftColumnPanel.add(breedBox);
-    leftColumnPanel.add(accessoryBox);
+    leftColumnPanel.add(powerupBox);
 
     this.add(leftColumnPanel, BorderLayout.WEST);
     
@@ -343,8 +342,8 @@ public class HorseSelection extends JFrame {
             selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
             String horseshoeInput = selectedRadioButton.getText();
 
-            // Store accessory
-            selectedRadioButton = (JRadioButton) accessoryButtons.getSelection();
+            // Store powerup
+            selectedRadioButton = (JRadioButton) powerupButtons.getSelection();
             String accessoryInput = selectedRadioButton.getText();
 
           HorseCustomisation horseCustomisation = new HorseCustomisation(horse, breedInput, hairInput, saddleInput, horseshoeInput, accessoryInput);
