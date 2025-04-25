@@ -108,7 +108,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
         // Check if lanes are less than horses
         if (numberOfLanes < numberOfHorses) {
           javax.swing.JOptionPane.showMessageDialog(null, 
-          "Number of lanes must be equal to or greater than the number of horses.",
+          "Number of lanes must be >= the number of horses.",
           "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
       
           // Re-enable the button since submission was stopped
