@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.8
+ * @version Version 2.9
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -153,15 +153,6 @@ public class RacePanel extends JPanel implements ActionListener {
    * @param g2D The graphics object that allows for drawing
    */
   private void drawTrackLines(Graphics2D g2D) {
-    // draw track lines
-    for (int i=0; i<laneCount; i++) {
-      g2D.drawLine(xPosTrack[i], yPosTrack[i], (int) FINISH_LINE_X, yPosTrack[i]);
-    }
-
-    // draw one extra line at bottom to close the last lane
-    int lastY = yPosTrack[laneCount]; // add lane height
-    g2D.drawLine(xPosTrack[0], lastY, (int) FINISH_LINE_X, lastY);
-
     // draw start line
     g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
 
