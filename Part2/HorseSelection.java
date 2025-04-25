@@ -22,12 +22,13 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.Border;
 
 /**
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.2
+ * @version Version 3.3
  */
 public class HorseSelection extends JFrame {
 
@@ -47,89 +48,126 @@ public class HorseSelection extends JFrame {
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Horse Selection"); 
-    this.setVisible(true); 
     this.setSize(1500, 800);
     this.setResizable(false); // prevents resizing window
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setLayout(new BorderLayout(10, 10));
+    this.setLayout(new BorderLayout(5, 5));
 
 
     // Title panel
     JPanel titlePanel = new JPanel();
+    titlePanel.setLayout(new BorderLayout());
     titlePanel.setPreferredSize(new Dimension(100, 100));
 
     JLabel title = new JLabel("Horse Customisation");
     title.setFont(new Font("Dialog", Font.BOLD, 50));
 
+      // Submit button
+      JButton submitButton = new JButton("Submit");
+      submitButton.setSize(200, 100);
+      submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
+
+    titlePanel.add(title, BorderLayout.CENTER);
+    titlePanel.add(submitButton, BorderLayout.EAST);
+
     this.add(titlePanel, BorderLayout.NORTH);
-    titlePanel.add(title);
 
 
     // Left column
     JPanel leftColumnPanel = new JPanel(); 
     leftColumnPanel.setPreferredSize(new Dimension(400, 100));
-    leftColumnPanel.setLayout(new GridLayout(2, 1));
+    leftColumnPanel.setLayout(new GridLayout(4, 2, 10, 10));
 
-      JPanel leftInputBox = new JPanel(); 
-      leftInputBox.setLayout(new GridLayout(1, 2));
-
-        // Name input
-        JPanel nameBox = new JPanel();
-        nameBox.setLayout(new GridLayout(2, 1));
-          JLabel nameLabel = new JLabel("Horse Name");
-          nameLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
-          JTextArea nameInput = new JTextArea();
-          nameInput.setSize(20, 5);
-        nameBox.add(nameLabel);
-        nameBox.add(nameInput);
+      // Name input
+      JPanel nameBox = new JPanel();
+      nameBox.setLayout(new GridLayout(2, 1));
+        JLabel nameLabel = new JLabel("Name");
+        nameLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        JTextArea nameInput = new JTextArea();
+        nameInput.setSize(20, 5);
+      nameBox.add(nameLabel);
+      nameBox.add(nameInput);
 
 
-        // Confidence input
-        JPanel confidenceBox = new JPanel();
-        confidenceBox.setLayout(new GridLayout(2, 1));
-          JLabel confidenceLabel = new JLabel("Horse Confidence");
-          confidenceLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
-          JSpinner confidenceInput = new JSpinner(new SpinnerNumberModel(0.1, 0.1, 0.9, 0.1));
-          
-          // Prevent user from directly typing in confidence level
-          JComponent editor = confidenceInput.getEditor();
-          JFormattedTextField tf = ((JSpinner.DefaultEditor) editor).getTextField();
-          tf.setEditable(false);
-
-        confidenceBox.add(confidenceLabel);
-        confidenceBox.add(confidenceInput);
-
+      // Confidence input
+      JPanel confidenceBox = new JPanel();
+      confidenceBox.setLayout(new GridLayout(2, 1));
+        JLabel confidenceLabel = new JLabel("Confidence");
+        confidenceLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        JSpinner confidenceInput = new JSpinner(new SpinnerNumberModel(0.1, 0.1, 0.9, 0.1));
         
-        // Lane input
-        JPanel laneBox = new JPanel();
-        laneBox.setLayout(new GridLayout(2, 1));
-          JLabel laneLabel = new JLabel("Horse Lane");
-          laneLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
-          JSpinner laneInput = new JSpinner(new SpinnerNumberModel(1, 1, numberOfLanes, 1));
-          
-          // Prevent user from directly typing in the lane
-          JComponent editor2 = laneInput.getEditor();
-          JFormattedTextField tf2 = ((JSpinner.DefaultEditor) editor2).getTextField();
-          tf2.setEditable(false);
+        // Prevent user from directly typing in confidence level
+        JComponent editor = confidenceInput.getEditor();
+        JFormattedTextField tf = ((JSpinner.DefaultEditor) editor).getTextField();
+        tf.setEditable(false);
 
-        laneBox.add(laneLabel);
-        laneBox.add(laneInput);
+      confidenceBox.add(confidenceLabel);
+      confidenceBox.add(confidenceInput);
 
-      leftInputBox.add(confidenceBox);
-      leftInputBox.add(laneBox);
+      
+      // Lane input
+      JPanel laneBox = new JPanel();
+      laneBox.setLayout(new GridLayout(2, 1));
+        JLabel laneLabel = new JLabel("Lane");
+        laneLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+        JSpinner laneInput = new JSpinner(new SpinnerNumberModel(1, 1, numberOfLanes, 1));
+        
+        // Prevent user from directly typing in the lane
+        JComponent editor2 = laneInput.getEditor();
+        JFormattedTextField tf2 = ((JSpinner.DefaultEditor) editor2).getTextField();
+        tf2.setEditable(false);
 
-    leftColumnPanel.add(leftInputBox);
-    leftColumnPanel.add(nameBox);
-    this.add(leftColumnPanel, BorderLayout.WEST);
-    
+      laneBox.add(laneLabel);
+      laneBox.add(laneInput);
 
 
+      // Breed input
+      JPanel breedBox = new JPanel();
+      breedBox.setLayout(new GridLayout(5, 1));
 
-    // Right column
-    JPanel rightColumnPanel = new JPanel();
-    rightColumnPanel.setPreferredSize(new Dimension(400, 100));
-    rightColumnPanel.setLayout(new GridLayout(3, 1));
+        JLabel breedLabel = new JLabel("Breed");
+        breedLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup breedButtons = new ButtonGroup();
+          JRadioButton b1 = new JRadioButton("Option 1");
+          JRadioButton b2 = new JRadioButton("Option 2");
+          JRadioButton b3 = new JRadioButton("Option 3");
+          b1.setToolTipText("Adds effect xyz");
+          b2.setToolTipText("Adds effect xyz");
+          b3.setToolTipText("Adds effect xyz");
+          breedButtons.add(b1);
+          breedButtons.add(b2);
+          breedButtons.add(b3);
+      
+        breedBox.add(breedLabel);
+        breedBox.add(b1);
+        breedBox.add(b2);
+        breedBox.add(b3);
+
+
+      // Hair colour input
+      JPanel hairBox = new JPanel();
+      hairBox.setLayout(new GridLayout(5, 1));
+
+        JLabel hairLabel = new JLabel("Hair colour");
+        hairLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+        ButtonGroup hairButtons = new ButtonGroup();
+          JRadioButton h1 = new JRadioButton("Black");
+          JRadioButton h2 = new JRadioButton("Brown");
+          JRadioButton h3 = new JRadioButton("Blonde");
+          h1.setToolTipText("Adds effect xyz");
+          h2.setToolTipText("Adds effect xyz");
+          h3.setToolTipText("Adds effect xyz");
+          hairButtons.add(h1);
+          hairButtons.add(h2);
+          hairButtons.add(h3);
+      
+        hairBox.add(hairLabel);
+        hairBox.add(h1);
+        hairBox.add(h2);
+        hairBox.add(h3);
 
 
       // Saddle input
@@ -204,79 +242,26 @@ public class HorseSelection extends JFrame {
         accessoryBox.add(a3);
 
 
-    rightColumnPanel.add(saddleBox);
-    rightColumnPanel.add(horseshoeBox);
-    rightColumnPanel.add(accessoryBox);
+    leftColumnPanel.add(nameBox);
+    leftColumnPanel.add(hairBox);
+    leftColumnPanel.add(confidenceBox);
+    leftColumnPanel.add(saddleBox);
+    leftColumnPanel.add(laneBox);
+    leftColumnPanel.add(horseshoeBox);
+    leftColumnPanel.add(breedBox);
+    leftColumnPanel.add(accessoryBox);
+
+    this.add(leftColumnPanel, BorderLayout.WEST);
+    
+
+
+    // Right column
+    JPanel rightColumnPanel = new JPanel();
+    rightColumnPanel.setPreferredSize(new Dimension(200, 100));
+    rightColumnPanel.setLayout(new GridLayout(3, 1));
 
     this.add(rightColumnPanel, BorderLayout.EAST);
 
-
-
-
-
-    // Bottom panel
-    JPanel bottomPanel = new JPanel();
-    bottomPanel.setPreferredSize(new Dimension(100, 200));
-    bottomPanel.setLayout(new GridLayout(1, 3));
-
-      // Breed input
-      JPanel breedBox = new JPanel();
-      breedBox.setLayout(new GridLayout(5, 1));
-
-        JLabel breedLabel = new JLabel("Breed");
-        breedLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
-
-        ButtonGroup breedButtons = new ButtonGroup();
-          JRadioButton b1 = new JRadioButton("Option 1");
-          JRadioButton b2 = new JRadioButton("Option 2");
-          JRadioButton b3 = new JRadioButton("Option 3");
-          b1.setToolTipText("Adds effect xyz");
-          b2.setToolTipText("Adds effect xyz");
-          b3.setToolTipText("Adds effect xyz");
-          breedButtons.add(b1);
-          breedButtons.add(b2);
-          breedButtons.add(b3);
-      
-        breedBox.add(breedLabel);
-        breedBox.add(b1);
-        breedBox.add(b2);
-        breedBox.add(b3);
-
-
-      // Submit button
-      JButton submitButton = new JButton("Submit");
-      submitButton.setSize(200, 100);
-      submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
-
-
-      // Hair colour input
-      JPanel hairBox = new JPanel();
-      hairBox.setLayout(new GridLayout(5, 1));
-
-        JLabel hairLabel = new JLabel("Hair colour");
-        hairLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
-
-        ButtonGroup hairButtons = new ButtonGroup();
-          JRadioButton h1 = new JRadioButton("Black");
-          JRadioButton h2 = new JRadioButton("Brown");
-          JRadioButton h3 = new JRadioButton("Blonde");
-          h1.setToolTipText("Adds effect xyz");
-          h2.setToolTipText("Adds effect xyz");
-          h3.setToolTipText("Adds effect xyz");
-          hairButtons.add(h1);
-          hairButtons.add(h2);
-          hairButtons.add(h3);
-      
-        hairBox.add(hairLabel);
-        hairBox.add(h1);
-        hairBox.add(h2);
-        hairBox.add(h3);
-
-    bottomPanel.add(breedBox);
-    bottomPanel.add(submitButton);
-    bottomPanel.add(hairBox);
-
-    this.add(bottomPanel, BorderLayout.SOUTH);
 
 
 
@@ -285,6 +270,8 @@ public class HorseSelection extends JFrame {
     centerPanel.setPreferredSize(new Dimension(100, 100));
 
     this.add(centerPanel, BorderLayout.CENTER);
+
+    this.setVisible(true); 
 
 
 
