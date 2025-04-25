@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,7 +29,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.4
+ * @version Version 3.5
  */
 public class HorseSelection extends JFrame {
 
@@ -58,6 +60,7 @@ public class HorseSelection extends JFrame {
     JPanel titlePanel = new JPanel();
     titlePanel.setLayout(new BorderLayout());
     titlePanel.setPreferredSize(new Dimension(100, 100));
+    titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
     JLabel title = new JLabel("Horse Customisation");
     title.setFont(new Font("Dialog", Font.BOLD, 50));
@@ -76,7 +79,8 @@ public class HorseSelection extends JFrame {
     // Left column
     JPanel leftColumnPanel = new JPanel(); 
     leftColumnPanel.setPreferredSize(new Dimension(400, 100));
-    leftColumnPanel.setLayout(new GridLayout(4, 2, 10, 10));
+    leftColumnPanel.setLayout(new GridLayout(4, 2, 30, 10));
+    leftColumnPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 
       // Name input
       JPanel nameBox = new JPanel();
@@ -129,9 +133,9 @@ public class HorseSelection extends JFrame {
         breedLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup breedButtons = new ButtonGroup();
-          JRadioButton b1 = new JRadioButton("Option 1");
-          JRadioButton b2 = new JRadioButton("Option 2");
-          JRadioButton b3 = new JRadioButton("Option 3");
+          JRadioButton b1 = new JRadioButton("Arabian");
+          JRadioButton b2 = new JRadioButton("Mustang");
+          JRadioButton b3 = new JRadioButton("Friesan");
           b1.setToolTipText("Adds effect xyz");
           b2.setToolTipText("Adds effect xyz");
           b3.setToolTipText("Adds effect xyz");
@@ -177,9 +181,9 @@ public class HorseSelection extends JFrame {
         saddleLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup saddleButtons = new ButtonGroup();
-          JRadioButton s1 = new JRadioButton("Option 1");
-          JRadioButton s2 = new JRadioButton("Option 2");
-          JRadioButton s3 = new JRadioButton("Option 3");
+          JRadioButton s1 = new JRadioButton("Crimson");
+          JRadioButton s2 = new JRadioButton("Verdant");
+          JRadioButton s3 = new JRadioButton("Azure");
           s1.setToolTipText("Adds effect xyz");
           s2.setToolTipText("Adds effect xyz");
           s3.setToolTipText("Adds effect xyz");
@@ -201,9 +205,9 @@ public class HorseSelection extends JFrame {
         horseshoeLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup horseshoeButtons = new ButtonGroup();
-          JRadioButton hs1 = new JRadioButton("Option 1");
-          JRadioButton hs2 = new JRadioButton("Option 2");
-          JRadioButton hs3 = new JRadioButton("Option 3");
+          JRadioButton hs1 = new JRadioButton("Rusted");
+          JRadioButton hs2 = new JRadioButton("Silver");
+          JRadioButton hs3 = new JRadioButton("Golden");
           hs1.setToolTipText("Adds effect xyz");
           hs2.setToolTipText("Adds effect xyz");
           hs3.setToolTipText("Adds effect xyz");
@@ -221,13 +225,13 @@ public class HorseSelection extends JFrame {
       JPanel powerupBox = new JPanel();
       powerupBox.setLayout(new GridLayout(5, 1));
 
-        JLabel powerupLabel = new JLabel("Powerup");
+        JLabel powerupLabel = new JLabel("Power up");
         powerupLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup powerupButtons = new ButtonGroup();
-          JRadioButton p1 = new JRadioButton("Option 1");
-          JRadioButton p2 = new JRadioButton("Option 2");
-          JRadioButton p3 = new JRadioButton("Option 3");
+          JRadioButton p1 = new JRadioButton("Ruby");
+          JRadioButton p2 = new JRadioButton("Emerald");
+          JRadioButton p3 = new JRadioButton("Sapphire");
           p1.setToolTipText("Adds effect xyz");
           p2.setToolTipText("Adds effect xyz");
           p3.setToolTipText("Adds effect xyz");
