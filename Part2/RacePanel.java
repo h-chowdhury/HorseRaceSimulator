@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.7
+ * @version Version 2.8
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -31,6 +31,8 @@ public class RacePanel extends JPanel implements ActionListener {
   private int laneCount;
 
   private Horse[] lanes;
+
+  private ImageIcon trackBackground;
 
   private double FINISH_LINE_X;
   private Horse raceWinner;
@@ -53,6 +55,9 @@ public class RacePanel extends JPanel implements ActionListener {
 
     this.setLayout(new BorderLayout(5, 5));
 
+    // Set background image
+    trackBackground = new ImageIcon("Part2\\images\\straight track background.png");
+
     // Bottom panel
     JPanel bottomPanel = new JPanel();
     bottomPanel.setPreferredSize(new Dimension(30, 70));
@@ -69,7 +74,6 @@ public class RacePanel extends JPanel implements ActionListener {
 
     this.add(bottomPanel, BorderLayout.SOUTH);
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-    this.setBackground(new Color(0xE7D176));
 
     raceData = RD;
 
@@ -100,8 +104,11 @@ public class RacePanel extends JPanel implements ActionListener {
    * @param g the graphics component that allows for drawing.
    */
   public void paintComponent(Graphics g) {
-    super.paintComponent(g); // paints bg
+    super.paintComponent(g);
     Graphics2D g2D = (Graphics2D) g;
+
+    // draw background
+    g2D.drawImage(trackBackground.getImage(), 0, 0, getWidth(), getHeight(), this);
 
     // draw the track lines and start/finish lines
     drawTrackLines(g2D);
