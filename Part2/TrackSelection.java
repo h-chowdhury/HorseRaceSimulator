@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.4
+ * @version Version 2.5
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -31,6 +31,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
   JLabel numberOfLanesLabel;
   JSlider numberOfLanesSlider;
 
+
+  // Constructor for the TrackSelection window
   public TrackSelection() {
 
     // Page title
@@ -39,12 +41,12 @@ public class TrackSelection extends JFrame implements ChangeListener {
 
     // Slider to select number of horses
     numberOfHorsesLabel = new JLabel();
-    numberOfHorsesSlider = new JSlider(0, 15, 1);
+    numberOfHorsesSlider = new JSlider(0, 9, 1);
     numberOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
     numberOfHorsesSlider.setPaintTicks(true);
     numberOfHorsesSlider.setMinorTickSpacing(1);
     numberOfHorsesSlider.setPaintTrack(true);
-    numberOfHorsesSlider.setMajorTickSpacing(5);
+    numberOfHorsesSlider.setMajorTickSpacing(1);
     numberOfHorsesSlider.setPaintLabels(true);
     numberOfHorsesSlider.addChangeListener(this);
     numberOfHorsesLabel.setText("Number of horses: " + numberOfHorsesSlider.getValue());
@@ -65,12 +67,12 @@ public class TrackSelection extends JFrame implements ChangeListener {
 
     // Slider to select number of lanes
     numberOfLanesLabel = new JLabel();
-    numberOfLanesSlider = new JSlider(0, 20, 1);
+    numberOfLanesSlider = new JSlider(0, 9, 1);
     numberOfLanesSlider.setPreferredSize(new Dimension(300, 100));
     numberOfLanesSlider.setPaintTicks(true);
     numberOfLanesSlider.setMinorTickSpacing(1);
     numberOfLanesSlider.setPaintTrack(true);
-    numberOfLanesSlider.setMajorTickSpacing(5);
+    numberOfLanesSlider.setMajorTickSpacing(1);
     numberOfLanesSlider.setPaintLabels(true);
     numberOfLanesSlider.addChangeListener(this);
     numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue());
@@ -93,8 +95,10 @@ public class TrackSelection extends JFrame implements ChangeListener {
     // object of type RaceData, pass this object to a HorseSelection object, and
     // display the HorseSelection window
     submitButton.addActionListener(new ActionListener() {
+
       @Override
       public void actionPerformed (ActionEvent e) {
+
         submitButton.setEnabled(false);
 
         int numberOfHorses = numberOfHorsesSlider.getValue();
@@ -111,11 +115,13 @@ public class TrackSelection extends JFrame implements ChangeListener {
           submitButton.setEnabled(true);
           return;
         } else {
+          // Store track data in a RaceData object
           RaceData raceData = new RaceData();
           raceData.setNumberOfHorses(numberOfHorses);
           raceData.setLengthOfTrack(lengthOfTrack);
           raceData.setNumberOfLanes(numberOfLanes);
   
+          // Display HorseSelection window
           HorseSelection horseSelectionPage = new HorseSelection(raceData);
           horseSelectionPage.setVisible(true);
           dispose();
@@ -206,18 +212,21 @@ public class TrackSelection extends JFrame implements ChangeListener {
   public void stateChanged(ChangeEvent e) {
     Object source = e.getSource();
 
+    // Validation and dynamic code for numberOfHorses slider
     if (source == numberOfHorsesSlider) {
       if (numberOfHorsesSlider.getValue() == 0) {
         numberOfHorsesSlider.setValue(1);
       }
       numberOfHorsesLabel.setText("Number of horses: " + numberOfHorsesSlider.getValue());
     }
+    // Validation and dynamiccode for lengthOfTrack slider
     else if (source == lengthOfTrackSlider) {
       if (lengthOfTrackSlider.getValue() == 0) {
         lengthOfTrackSlider.setValue(1);
       }
       lengthOfTrackLabel.setText("Length of track: " + lengthOfTrackSlider.getValue() + "m");
     }
+    // Validation and dynamic code for numberOfLanes slider
     else if (source == numberOfLanesSlider) {
       if (numberOfLanesSlider.getValue() == 0) {
         numberOfLanesSlider.setValue(1);
