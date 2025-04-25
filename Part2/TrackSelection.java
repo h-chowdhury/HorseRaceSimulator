@@ -41,7 +41,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
 
     // Slider to select number of horses
     numberOfHorsesLabel = new JLabel();
-    numberOfHorsesSlider = new JSlider(1, 9, 1);
+    numberOfHorsesSlider = new JSlider(1, 8, 1);
     numberOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
     numberOfHorsesSlider.setPaintTicks(true);
     numberOfHorsesSlider.setMinorTickSpacing(1);
@@ -67,7 +67,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
 
     // Slider to select number of lanes
     numberOfLanesLabel = new JLabel();
-    numberOfLanesSlider = new JSlider(1, 9, 1);
+    numberOfLanesSlider = new JSlider(1, 8, 1);
     numberOfLanesSlider.setPreferredSize(new Dimension(300, 100));
     numberOfLanesSlider.setPaintTicks(true);
     numberOfLanesSlider.setMinorTickSpacing(1);
