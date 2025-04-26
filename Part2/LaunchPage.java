@@ -17,11 +17,11 @@ import javax.swing.JPanel;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.4
+ * @version Version 1.5
  */
-public class LaunchPage {
+public class LaunchPage extends JFrame {
   
-  public static void main(String[] args) {
+  public LaunchPage () {
 
     // Title label
     JLabel title = new JLabel("Welcome to the Horse Racing Simulator!");
@@ -50,6 +50,9 @@ public class LaunchPage {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setBackground(Color.black);
 
+    // Set window icon
+    frame.setIconImage(new ImageIcon("Part2\\images\\windowIcon.png").getImage());
+    
     // Frame panels
     JPanel titlePanel = new JPanel();
     JPanel contentPanel = new JPanel();
