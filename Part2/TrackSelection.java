@@ -56,12 +56,12 @@ public class TrackSelection extends JFrame implements ChangeListener {
 
     // Slider to select length of track
     lengthOfTrackLabel = new JLabel();
-    lengthOfTrackSlider = new JSlider(0, 500, 1);
+    lengthOfTrackSlider = new JSlider(0, 250, 1);
     lengthOfTrackSlider.setPreferredSize(new Dimension(300, 100));
     lengthOfTrackSlider.setPaintTicks(true);
-    lengthOfTrackSlider.setMinorTickSpacing(50);
+    lengthOfTrackSlider.setMinorTickSpacing(10);
     lengthOfTrackSlider.setPaintTrack(true);
-    lengthOfTrackSlider.setMajorTickSpacing(100);
+    lengthOfTrackSlider.setMajorTickSpacing(50);
     lengthOfTrackSlider.setPaintLabels(true);
     lengthOfTrackSlider.addChangeListener(this);
     lengthOfTrackLabel.setText("Length of track: " + numberOfHorsesSlider.getValue() + "m");
