@@ -8,11 +8,13 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -21,7 +23,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.6
+ * @version Version 2.7
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -84,9 +86,35 @@ public class TrackSelection extends JFrame implements ChangeListener {
     JLabel trackShapeTitle = new JLabel("Select track shape");
     trackShapeTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
 
+
     // Select weather conditions
-    JLabel weatherConditionTitle = new JLabel("Select weather");
-    weatherConditionTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+    JPanel weatherBox = new JPanel();
+    weatherBox.setLayout(new GridLayout(5, 1));
+
+      JLabel weatherConditionTitle = new JLabel("Select weather");
+      weatherConditionTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+  
+      ButtonGroup weatherConditionButtons = new ButtonGroup();
+        JRadioButton w1 = new JRadioButton("None");
+        JRadioButton w2 = new JRadioButton("Rain");
+        JRadioButton w3 = new JRadioButton("Wind");
+        JRadioButton w4 = new JRadioButton("Fog");
+        w1.setToolTipText("Removes all weather effects.");
+        w2.setToolTipText("Horses will be more prone to falling.");
+        w3.setToolTipText("Horses will be more prone to falling and slowness.");
+        w4.setToolTipText("Horses will be more prone to slowness.");
+        w1.setSelected(true);
+        weatherConditionButtons.add(w1);
+        weatherConditionButtons.add(w2);
+        weatherConditionButtons.add(w3);
+        weatherConditionButtons.add(w4);
+    
+      weatherBox.add(weatherConditionTitle);
+      weatherBox.add(w1);
+      weatherBox.add(w2);
+      weatherBox.add(w3);
+      weatherBox.add(w4);
+
 
     // Submit button - submit all data
     JButton submitButton = new JButton("Submit");
@@ -196,7 +224,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
     contentColumn3.setLayout(new GridLayout(2, 1));
 
     JPanel selectConditionPanel = new JPanel();
-    selectConditionPanel.add(weatherConditionTitle);
+    selectConditionPanel.add(weatherBox);
 
     JPanel submitButtonPanel = new JPanel();
     submitButtonPanel.add(submitButton);
