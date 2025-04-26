@@ -24,7 +24,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the race display window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.6
+ * @version Version 1.7
  */
 public class RaceDisplay extends JFrame {
 
@@ -77,6 +77,12 @@ public class RaceDisplay extends JFrame {
       JPanel horseInfo;
 
       // Fill left column with horse info
+
+      JLabel horsesTitle = new JLabel();
+      horsesTitle.setText("Horses participating: ");
+      horsesTitle.setFont(new Font("Dialog", Font.PLAIN, 15));
+      leftColumnPanel.add(horsesTitle);
+  
       for (int i=0; i<numberOfHorses; i++) {
         if (lanes[i] != null) {
           horseInfo = new JPanel();
@@ -105,6 +111,26 @@ public class RaceDisplay extends JFrame {
     JPanel rightColumnPanel = new JPanel();
     rightColumnPanel.setPreferredSize(new Dimension(200, 100));
     this.add(rightColumnPanel, BorderLayout.EAST);
+
+      JLabel trackTitle = new JLabel();
+      trackTitle.setText("Selected Track:");
+      trackTitle.setFont(new Font("Dialog", Font.PLAIN, 15));
+      rightColumnPanel.add(trackTitle);
+
+      JLabel trackSelected = new JLabel();
+      trackSelected.setText("[placeholder]");
+      trackSelected.setFont(new Font("Dialog", Font.PLAIN, 10));
+      rightColumnPanel.add(trackSelected);
+
+      JLabel weatherTitle = new JLabel();
+      weatherTitle.setText("Weather Conditions: ");
+      weatherTitle.setFont(new Font("Dialog", Font.PLAIN, 15));
+      rightColumnPanel.add(weatherTitle);
+
+      JLabel weatherSelected = new JLabel();
+      weatherSelected.setText("[placeholder]");
+      weatherSelected.setFont(new Font("Dialog", Font.PLAIN, 10));
+      rightColumnPanel.add(weatherSelected);
 
 
     // Race panel (center panel)
