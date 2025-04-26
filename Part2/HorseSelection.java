@@ -29,7 +29,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.6
+ * @version Version 3.7
  */
 public class HorseSelection extends JFrame {
 
@@ -66,7 +66,7 @@ public class HorseSelection extends JFrame {
     titlePanel.setPreferredSize(new Dimension(100, 100));
     titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    JLabel title = new JLabel("Horse Customisation");
+    JLabel title = new JLabel("Horse Customisation [" + (((int) raceData.getHorsesProcessed()) + 1) + "/" + numberOfHorses + "]");
     title.setFont(new Font("Dialog", Font.BOLD, 50));
 
       // Submit button
@@ -337,26 +337,26 @@ public class HorseSelection extends JFrame {
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
           
           // Store customisation data
-            JRadioButton selectedRadioButton;
+            //JRadioButton selectedRadioButton;
 
             // Store breed
-            selectedRadioButton = (JRadioButton) breedButtons.getSelection();
+            //selectedRadioButton = (JRadioButton) breedButtons.getSelection();
             String breedInput = null;
 
             // Store hair colour
-            selectedRadioButton = (JRadioButton) hairButtons.getSelection();
+            //selectedRadioButton = (JRadioButton) hairButtons.getSelection();
             String hairInput = null;
 
             // Store saddle type
-            selectedRadioButton = (JRadioButton) saddleButtons.getSelection();
+            //selectedRadioButton = (JRadioButton) saddleButtons.getSelection();
             String saddleInput = null;
 
             // Store horseshoe type
-            selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
+            //selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
             String horseshoeInput = null;
 
             // Store powerup
-            selectedRadioButton = (JRadioButton) powerupButtons.getSelection();
+            //selectedRadioButton = (JRadioButton) powerupButtons.getSelection();
             String accessoryInput = null;
 
           HorseCustomisation horseCustomisation = new HorseCustomisation(horse, breedInput, hairInput, saddleInput, horseshoeInput, accessoryInput);
