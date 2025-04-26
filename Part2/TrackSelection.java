@@ -23,7 +23,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.7
+ * @version Version 2.8
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -82,9 +82,31 @@ public class TrackSelection extends JFrame implements ChangeListener {
     numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue());
     numberOfLanesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
 
+
     // Select track shape
-    JLabel trackShapeTitle = new JLabel("Select track shape");
-    trackShapeTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+    JPanel trackShapeBox = new JPanel();
+    trackShapeBox.setLayout(new GridLayout(4, 1));
+
+      JLabel trackShapeTitle = new JLabel("Select track shape");
+      trackShapeTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+      
+      ButtonGroup trackShapeButtons = new ButtonGroup();
+        JRadioButton ts1 = new JRadioButton("Straight");
+        JRadioButton ts2 = new JRadioButton("Zig-Zag");
+        JRadioButton ts3 = new JRadioButton("Rectangle");
+        ts1.setToolTipText("A set of straight lanes from left to right.");
+        ts2.setToolTipText("A set of angular lanes, alternating in a zig-zag pattern.");
+        ts3.setToolTipText("A set of lanes going round, forming a rectangular shape.");
+        ts1.setSelected(true);
+        trackShapeButtons.add(ts1);
+        trackShapeButtons.add(ts2);
+        trackShapeButtons.add(ts3);
+    
+      trackShapeBox.add(trackShapeTitle);
+      trackShapeBox.add(ts1);
+      trackShapeBox.add(ts2);
+      trackShapeBox.add(ts3);
+
 
 
     // Select weather conditions
@@ -194,11 +216,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
     selectHorseNumPanel.add(numberOfHorsesLabel);
     selectHorseNumPanel.add(numberOfHorsesSlider);
 
-    JPanel selectTrackPanel = new JPanel();
-    selectTrackPanel.add(trackShapeTitle);
-
     contentColumn1.add(selectHorseNumPanel);
-    contentColumn1.add(selectTrackPanel);
+    contentColumn1.add(trackShapeBox);
     contentPanel.add(contentColumn1);
 
 
