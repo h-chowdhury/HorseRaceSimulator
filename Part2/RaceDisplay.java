@@ -52,6 +52,10 @@ public class RaceDisplay extends JFrame {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(5, 5));
 
+    // Set window icon
+    this.setIconImage(new ImageIcon("Part2\\images\\windowIcon.png").getImage());
+
+
     // Title panel
     JPanel titlePanel = new JPanel();
     titlePanel.setPreferredSize(new Dimension(100, 100));
