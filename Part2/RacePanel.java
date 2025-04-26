@@ -111,7 +111,7 @@ public class RacePanel extends JPanel implements ActionListener {
     Graphics2D g2D = (Graphics2D) g;
 
     // draw background
-    g2D.drawImage(trackBackground.getImage(), 0, 0, getWidth(), getHeight(), this);
+    g2D.drawImage(trackBackground.getImage(), 0, 0, getWidth(), getHeight() - 15, this);
 
     // draw start and finish lines
     drawTrackLines(g2D);
