@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -29,7 +28,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.7
+ * @version Version 3.8
  */
 public class HorseSelection extends JFrame {
 
@@ -137,12 +136,12 @@ public class HorseSelection extends JFrame {
         breedLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup breedButtons = new ButtonGroup();
-          JRadioButton b1 = new JRadioButton("Arabian");
-          JRadioButton b2 = new JRadioButton("Mustang");
-          JRadioButton b3 = new JRadioButton("Friesan");
-          b1.setToolTipText("Adds effect xyz");
-          b2.setToolTipText("Adds effect xyz");
-          b3.setToolTipText("Adds effect xyz");
+          JRadioButton b1 = new JRadioButton("Arabian"); // +10% speed
+          JRadioButton b2 = new JRadioButton("Mustang"); // +5% stability
+          JRadioButton b3 = new JRadioButton("Friesan"); // -5% speed, +10% stability
+          b1.setToolTipText("+10% speed");
+          b2.setToolTipText("+5% stability");
+          b3.setToolTipText("-5% speed, +10% stability");
           b1.setSelected(true);
           breedButtons.add(b1);
           breedButtons.add(b2);
@@ -165,9 +164,6 @@ public class HorseSelection extends JFrame {
           JRadioButton h1 = new JRadioButton("Black");
           JRadioButton h2 = new JRadioButton("Brown");
           JRadioButton h3 = new JRadioButton("Blonde");
-          h1.setToolTipText("Adds effect xyz");
-          h2.setToolTipText("Adds effect xyz");
-          h3.setToolTipText("Adds effect xyz");
           h1.setSelected(true);
           hairButtons.add(h1);
           hairButtons.add(h2);
@@ -187,12 +183,12 @@ public class HorseSelection extends JFrame {
         saddleLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup saddleButtons = new ButtonGroup();
-          JRadioButton s1 = new JRadioButton("Crimson");
-          JRadioButton s2 = new JRadioButton("Verdant");
-          JRadioButton s3 = new JRadioButton("Azure");
-          s1.setToolTipText("Adds effect xyz");
-          s2.setToolTipText("Adds effect xyz");
-          s3.setToolTipText("Adds effect xyz");
+          JRadioButton s1 = new JRadioButton("Crimson"); // +5% speed, -5% stability
+          JRadioButton s2 = new JRadioButton("Verdant"); // +10% speed
+          JRadioButton s3 = new JRadioButton("Azure"); // -5% speed, +10% stability
+          s1.setToolTipText("+5% speed, -5% stability");
+          s2.setToolTipText("+10% speed");
+          s3.setToolTipText("-5% speed, +10% stability");
           s1.setSelected(true);
           saddleButtons.add(s1);
           saddleButtons.add(s2);
@@ -212,12 +208,12 @@ public class HorseSelection extends JFrame {
         horseshoeLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup horseshoeButtons = new ButtonGroup();
-          JRadioButton hs1 = new JRadioButton("Rusted");
-          JRadioButton hs2 = new JRadioButton("Silver");
-          JRadioButton hs3 = new JRadioButton("Golden");
-          hs1.setToolTipText("Adds effect xyz");
-          hs2.setToolTipText("Adds effect xyz");
-          hs3.setToolTipText("Adds effect xyz");
+          JRadioButton hs1 = new JRadioButton("Rusted"); // +10% stability
+          JRadioButton hs2 = new JRadioButton("Silver"); // +5% speed
+          JRadioButton hs3 = new JRadioButton("Golden"); // +10% speed, -5% stability
+          hs1.setToolTipText("+10% stability");
+          hs2.setToolTipText("+5% speed");
+          hs3.setToolTipText("+10% speed, -5% stability");
           hs1.setSelected(true);
           horseshoeButtons.add(hs1);
           horseshoeButtons.add(hs2);
@@ -237,12 +233,12 @@ public class HorseSelection extends JFrame {
         powerupLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup powerupButtons = new ButtonGroup();
-          JRadioButton p1 = new JRadioButton("Ruby");
-          JRadioButton p2 = new JRadioButton("Emerald");
-          JRadioButton p3 = new JRadioButton("Sapphire");
-          p1.setToolTipText("Adds effect xyz");
-          p2.setToolTipText("Adds effect xyz");
-          p3.setToolTipText("Adds effect xyz");
+          JRadioButton p1 = new JRadioButton("Ruby Patch"); // +20% speed for first 3 seconds
+          JRadioButton p2 = new JRadioButton("Emerald Patch"); // Cancel one fall during the race
+          JRadioButton p3 = new JRadioButton("Sapphire Patch"); // +5% chance each second to ignore falls
+          p1.setToolTipText("+20% speed for first 3 seconds of the race");
+          p2.setToolTipText("Cancel one fall during the race");
+          p3.setToolTipText("+5% chance each second to ignore falls");
           p1.setSelected(true);
           powerupButtons.add(p1);
           powerupButtons.add(p2);
@@ -337,30 +333,72 @@ public class HorseSelection extends JFrame {
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
           
           // Store customisation data
-            //JRadioButton selectedRadioButton;
 
             // Store breed
-            //selectedRadioButton = (JRadioButton) breedButtons.getSelection();
             String breedInput = null;
+            if (b1.isSelected()) { 
+              breedInput = "Arabian"; // +10% speed
+
+            } else if (b2.isSelected()) {
+              breedInput = "Mustang"; // +5% stability
+
+            } else if (b3.isSelected()) {
+              breedInput = "Friesan"; // -5% stability
+
+            }
 
             // Store hair colour
-            //selectedRadioButton = (JRadioButton) hairButtons.getSelection();
             String hairInput = null;
+            if (h1.isSelected()) {
+              hairInput = "Black";
+            } else if (h2.isSelected()) {
+              hairInput = "Brown";
+            } else if (h3.isSelected()) {
+              hairInput = "Blonde";
+            }
 
             // Store saddle type
-            //selectedRadioButton = (JRadioButton) saddleButtons.getSelection();
             String saddleInput = null;
+            if (s1.isSelected()) {
+              saddleInput = "Crimson"; // +5% speed, -5% stability
+
+            } else if (s2.isSelected()) {
+              saddleInput = "Verdant"; // +10% speed
+
+            } else if (s3.isSelected()) {
+              saddleInput = "Azure"; // -5% speed, +10% stability
+
+            }
 
             // Store horseshoe type
-            //selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
             String horseshoeInput = null;
+            if (hs1.isSelected()) {
+              horseshoeInput = "Rusted"; // +10% stability
+
+            } else if (hs2.isSelected()) {
+              horseshoeInput = "Silver"; // +5% speed
+
+            } else if (hs3.isSelected()) {
+              horseshoeInput = "Golden"; // +10% speed, -5% stability
+
+            }
 
             // Store powerup
-            //selectedRadioButton = (JRadioButton) powerupButtons.getSelection();
             String accessoryInput = null;
+            if (p1.isSelected()) {
+              accessoryInput = "Ruby Patch"; // +20% speed for first 3 seconds
 
+            } else if (p2.isSelected()) {
+              accessoryInput = "Emerald Patch";  // Cancel one fall during the race
+
+            } else if (p3.isSelected()) {
+              accessoryInput = "Sapphire Patch"; // +5% chance each second to ignore falls
+
+            }
+
+          // Create and store horseCustomisation object
           HorseCustomisation horseCustomisation = new HorseCustomisation(horse, breedInput, hairInput, saddleInput, horseshoeInput, accessoryInput);
-          System.out.println(breedInput + hairInput + saddleInput + horseshoeInput + accessoryInput);
+          horse.setHorseCustomisation(horseCustomisation);
 
           // Assign horse to lane
           raceData.setLanes(horse, horseLane-1);
