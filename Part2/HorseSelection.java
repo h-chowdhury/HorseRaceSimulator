@@ -28,7 +28,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.8
+ * @version Version 3.9
  */
 public class HorseSelection extends JFrame {
 
@@ -146,6 +146,25 @@ public class HorseSelection extends JFrame {
           breedButtons.add(b1);
           breedButtons.add(b2);
           breedButtons.add(b3);
+
+
+          // Add action listeners for breed buttons
+            b1.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  // placeholder for Arabian
+              }
+            });
+            b2.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  // placeholder for Mustang
+              }
+            });
+            b3.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  // placeholder for Friesan
+              }
+            });
+
       
         breedBox.add(breedLabel);
         breedBox.add(b1);
@@ -168,6 +187,25 @@ public class HorseSelection extends JFrame {
           hairButtons.add(h1);
           hairButtons.add(h2);
           hairButtons.add(h3);
+
+
+          // Add action listeners for hair colour buttons
+            h1.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  // placeholder for Black hair
+              }
+            });
+            h2.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  // placeholder for Brown hair
+              }
+            });
+            h3.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  // placeholder for Blonde hair
+              }
+            });
+
       
         hairBox.add(hairLabel);
         hairBox.add(h1);
@@ -193,6 +231,25 @@ public class HorseSelection extends JFrame {
           saddleButtons.add(s1);
           saddleButtons.add(s2);
           saddleButtons.add(s3);
+
+
+        // Add action listeners for saddle buttons
+          s1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Crimson saddle
+            }
+          });
+          s2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Verdant saddle
+            }
+          });
+          s3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Azure saddle
+            }
+          });
+
       
       saddleBox.add(saddleLabel);
       saddleBox.add(s1);
@@ -218,7 +275,26 @@ public class HorseSelection extends JFrame {
           horseshoeButtons.add(hs1);
           horseshoeButtons.add(hs2);
           horseshoeButtons.add(hs3);
+
+
+        // Add action listeners for horseshoe buttons
+          hs1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Rusted horseshoe
+            }
+          });
+          hs2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Silver horseshoe
+            }
+          });
+          hs3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Golden horseshoe
+            }
+          });
       
+
         horseshoeBox.add(horseshoeLabel);
         horseshoeBox.add(hs1);
         horseshoeBox.add(hs2);
@@ -243,6 +319,25 @@ public class HorseSelection extends JFrame {
           powerupButtons.add(p1);
           powerupButtons.add(p2);
           powerupButtons.add(p3);
+
+
+        // Add action listeners for powerup buttons
+          p1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Ruby Patch
+            }
+          });
+          p2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Emerald Patch
+            }
+          });
+          p3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // placeholder for Sapphire Patch
+            }
+          });
+          
       
         powerupBox.add(powerupLabel);
         powerupBox.add(p1);
