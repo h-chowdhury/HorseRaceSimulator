@@ -338,6 +338,7 @@ public class HorseSelection extends JFrame {
             String breedInput = null;
             if (b1.isSelected()) { 
               breedInput = "Arabian"; // +10% speed
+              horse.setXVelocity(horse.getXVelocity() * 1.1);
 
             } else if (b2.isSelected()) {
               breedInput = "Mustang"; // +5% stability
@@ -361,12 +362,15 @@ public class HorseSelection extends JFrame {
             String saddleInput = null;
             if (s1.isSelected()) {
               saddleInput = "Crimson"; // +5% speed, -5% stability
+              horse.setXVelocity(horse.getXVelocity() * 1.05);
 
             } else if (s2.isSelected()) {
               saddleInput = "Verdant"; // +10% speed
+              horse.setXVelocity(horse.getXVelocity() * 1.1);
 
             } else if (s3.isSelected()) {
               saddleInput = "Azure"; // -5% speed, +10% stability
+              horse.setXVelocity(horse.getXVelocity() * 0.9);
 
             }
 
@@ -377,9 +381,11 @@ public class HorseSelection extends JFrame {
 
             } else if (hs2.isSelected()) {
               horseshoeInput = "Silver"; // +5% speed
+              horse.setXVelocity(horse.getXVelocity() * 1.05);
 
             } else if (hs3.isSelected()) {
               horseshoeInput = "Golden"; // +10% speed, -5% stability
+              horse.setXVelocity(horse.getXVelocity() * 1.1);
 
             }
 
