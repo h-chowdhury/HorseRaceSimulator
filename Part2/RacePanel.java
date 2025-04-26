@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.0
+ * @version Version 3.1
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -53,10 +53,20 @@ public class RacePanel extends JPanel implements ActionListener {
    */
   RacePanel (RaceData RD) {
 
+    raceData = RD;
+
+    numberOfHorses = raceData.getNumberOfHorses();
+    trackLength = raceData.getLengthOfTrack();
+    laneCount = raceData.getNumberOfLanes();
+    lanes = raceData.getLanesArray();
+
     this.setLayout(new BorderLayout(5, 5));
 
     // Set background image
-    trackBackground = new ImageIcon("Part2\\images\\straight track background.png");
+    String[] straightTrackImages = {"Part2\\images\\1-lane-straight.png", "Part2\\images\\2-lane-straight.png", 
+    "Part2\\images\\3-lane-straight.png", "Part2\\images\\4-lane-straight.png", "Part2\\images\\5-lane-straight.png", 
+    "Part2\\images\\6-lane-straight.png", "Part2\\images\\7-lane-straight.png", "Part2\\images\\8-lane-straight.png"};
+    trackBackground = new ImageIcon(straightTrackImages[laneCount - 1]);
 
     // Bottom panel
     JPanel bottomPanel = new JPanel();
@@ -75,14 +85,7 @@ public class RacePanel extends JPanel implements ActionListener {
     this.add(bottomPanel, BorderLayout.SOUTH);
     this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 
-    raceData = RD;
-
-    numberOfHorses = raceData.getNumberOfHorses();
-    trackLength = raceData.getLengthOfTrack();
-    laneCount = raceData.getNumberOfLanes();
-    lanes = raceData.getLanesArray();
-
-    FINISH_LINE_X = (PANEL_WIDTH-70) * ((double) trackLength/250.0); // PANEL_WIDTH-70 is full length (250m)
+    FINISH_LINE_X = (PANEL_WIDTH-90) * ((double) trackLength/250.0); // PANEL_WIDTH-70 is full length (250m)
 
 
     // Set velocity values (default = 5)
@@ -155,9 +158,6 @@ public class RacePanel extends JPanel implements ActionListener {
   private void drawTrackLines(Graphics2D g2D) {
     // set paint colour
     g2D.setColor(new Color(0xDDB771));
-
-    // draw start line
-    g2D.fillRect(xPosTrack[0]-5, yPosTrack[0], 10, yPosTrack[laneCount]-25); 
 
     // draw finish line
     g2D.fillRect((int) FINISH_LINE_X, yPosTrack[0], 10, yPosTrack[laneCount]-25); 
