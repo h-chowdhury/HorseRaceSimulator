@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.9
+ * @version Version 3.0
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -110,7 +110,7 @@ public class RacePanel extends JPanel implements ActionListener {
     // draw background
     g2D.drawImage(trackBackground.getImage(), 0, 0, getWidth(), getHeight(), this);
 
-    // draw the track lines and start/finish lines
+    // draw start and finish lines
     drawTrackLines(g2D);
 
     // update each horse repeatedly
@@ -153,11 +153,15 @@ public class RacePanel extends JPanel implements ActionListener {
    * @param g2D The graphics object that allows for drawing
    */
   private void drawTrackLines(Graphics2D g2D) {
+    // set paint colour
+    g2D.setColor(new Color(0xDDB771));
+
     // draw start line
-    g2D.drawLine(xPosTrack[0], yPosTrack[0], xPosTrack[0], yPosTrack[laneCount]);
+    g2D.fillRect(xPosTrack[0]-5, yPosTrack[0], 10, yPosTrack[laneCount]-25); 
 
     // draw finish line
-    g2D.drawLine((int) FINISH_LINE_X, yPosTrack[0], (int) FINISH_LINE_X, yPosTrack[laneCount]);
+    g2D.fillRect((int) FINISH_LINE_X, yPosTrack[0], 10, yPosTrack[laneCount]-25); 
+
   }
 
 
