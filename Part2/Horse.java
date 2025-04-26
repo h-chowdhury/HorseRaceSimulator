@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
  * Defines the attributes and actions of a race horse.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.0
+ * @version Version 2.1
  */
 public class Horse
 {
@@ -19,8 +19,8 @@ public class Horse
 
     private int xPos;
     private int yPos;
-    private int xVelocity;
-    private int yVelocity;
+    private double xVelocity;
+    private double yVelocity;
 
     private HorseCustomisation horseCustomisation;
 
@@ -102,7 +102,7 @@ public class Horse
      * Gets the horses X velocity.
      * @return A integer representing the horses X velocity.
      */
-    public int getXVelocity()
+    public double getXVelocity()
     {
         return this.xVelocity;
     }
@@ -112,7 +112,7 @@ public class Horse
      * Gets the horses Y velocity.
      * @return A integer representing the horses Y velocity.
      */
-    public int getYVelocity()
+    public double getYVelocity()
     {
         return this.yVelocity;
     }
@@ -214,7 +214,7 @@ public class Horse
      * Sets the horses X velocity.
      * @param A integer representing the horses X velocity.
      */
-    public void setXVelocity(int x)
+    public void setXVelocity(double x)
     {
         this.xVelocity = x;
     }
@@ -224,7 +224,7 @@ public class Horse
      * Sets the horses Y velocity.
      * @param A integer representing the horses Y velocity.
      */
-    public void setYVelocity(int y)
+    public void setYVelocity(double y)
     {
         this.yVelocity = y;
     }
