@@ -29,7 +29,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.5
+ * @version Version 3.6
  */
 public class HorseSelection extends JFrame {
 
@@ -54,6 +54,10 @@ public class HorseSelection extends JFrame {
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(5, 5));
+
+      // Set window icon
+      this.setIconImage(new ImageIcon("Part2\\images\\windowIcon.png").getImage());
+  
 
 
     // Title panel
@@ -139,6 +143,7 @@ public class HorseSelection extends JFrame {
           b1.setToolTipText("Adds effect xyz");
           b2.setToolTipText("Adds effect xyz");
           b3.setToolTipText("Adds effect xyz");
+          b1.setSelected(true);
           breedButtons.add(b1);
           breedButtons.add(b2);
           breedButtons.add(b3);
@@ -163,6 +168,7 @@ public class HorseSelection extends JFrame {
           h1.setToolTipText("Adds effect xyz");
           h2.setToolTipText("Adds effect xyz");
           h3.setToolTipText("Adds effect xyz");
+          h1.setSelected(true);
           hairButtons.add(h1);
           hairButtons.add(h2);
           hairButtons.add(h3);
@@ -187,6 +193,7 @@ public class HorseSelection extends JFrame {
           s1.setToolTipText("Adds effect xyz");
           s2.setToolTipText("Adds effect xyz");
           s3.setToolTipText("Adds effect xyz");
+          s1.setSelected(true);
           saddleButtons.add(s1);
           saddleButtons.add(s2);
           saddleButtons.add(s3);
@@ -211,6 +218,7 @@ public class HorseSelection extends JFrame {
           hs1.setToolTipText("Adds effect xyz");
           hs2.setToolTipText("Adds effect xyz");
           hs3.setToolTipText("Adds effect xyz");
+          hs1.setSelected(true);
           horseshoeButtons.add(hs1);
           horseshoeButtons.add(hs2);
           horseshoeButtons.add(hs3);
@@ -235,6 +243,7 @@ public class HorseSelection extends JFrame {
           p1.setToolTipText("Adds effect xyz");
           p2.setToolTipText("Adds effect xyz");
           p3.setToolTipText("Adds effect xyz");
+          p1.setSelected(true);
           powerupButtons.add(p1);
           powerupButtons.add(p2);
           powerupButtons.add(p3);
@@ -332,23 +341,23 @@ public class HorseSelection extends JFrame {
 
             // Store breed
             selectedRadioButton = (JRadioButton) breedButtons.getSelection();
-            String breedInput = selectedRadioButton.getText();
+            String breedInput = null;
 
             // Store hair colour
             selectedRadioButton = (JRadioButton) hairButtons.getSelection();
-            String hairInput = selectedRadioButton.getText();
+            String hairInput = null;
 
             // Store saddle type
             selectedRadioButton = (JRadioButton) saddleButtons.getSelection();
-            String saddleInput = selectedRadioButton.getText();
+            String saddleInput = null;
 
             // Store horseshoe type
             selectedRadioButton = (JRadioButton) horseshoeButtons.getSelection();
-            String horseshoeInput = selectedRadioButton.getText();
+            String horseshoeInput = null;
 
             // Store powerup
             selectedRadioButton = (JRadioButton) powerupButtons.getSelection();
-            String accessoryInput = selectedRadioButton.getText();
+            String accessoryInput = null;
 
           HorseCustomisation horseCustomisation = new HorseCustomisation(horse, breedInput, hairInput, saddleInput, horseshoeInput, accessoryInput);
           System.out.println(breedInput + hairInput + saddleInput + horseshoeInput + accessoryInput);
