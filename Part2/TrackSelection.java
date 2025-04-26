@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.5
+ * @version Version 2.6
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -137,6 +139,11 @@ public class TrackSelection extends JFrame implements ChangeListener {
     this.getContentPane().setBackground(Color.white);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout(5, 5));
+
+    // Set window icon
+    this.setIconImage(new ImageIcon("Part2\\images\\windowIcon.png").getImage());
+    
+
         
 
     // --------------------- sub panels ---------------------
