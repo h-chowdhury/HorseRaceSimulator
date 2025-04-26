@@ -117,14 +117,14 @@ public class TrackSelection extends JFrame implements ChangeListener {
       weatherConditionTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
   
       ButtonGroup weatherConditionButtons = new ButtonGroup();
-        JRadioButton w1 = new JRadioButton("None");
+        JRadioButton w1 = new JRadioButton("Clear");
         JRadioButton w2 = new JRadioButton("Rain");
         JRadioButton w3 = new JRadioButton("Wind");
         JRadioButton w4 = new JRadioButton("Fog");
-        w1.setToolTipText("Removes all weather effects.");
-        w2.setToolTipText("Horses will be more prone to falling.");
-        w3.setToolTipText("Horses will be more prone to falling and slowness.");
-        w4.setToolTipText("Horses will be more prone to slowness.");
+        w1.setToolTipText("No weather effects.");
+        w2.setToolTipText("Horses will be 10% more prone to falling due to muddy surfaces.");
+        w3.setToolTipText("Horses will be 5% more prone to falling and slowness.");
+        w4.setToolTipText("Horses will be 10% more prone to slowness due to reduced visibility.");
         w1.setSelected(true);
         weatherConditionButtons.add(w1);
         weatherConditionButtons.add(w2);
