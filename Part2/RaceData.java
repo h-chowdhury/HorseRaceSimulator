@@ -150,7 +150,7 @@ public class RaceData {
    * @param trackShape The weather condition.
    * e.g. Rain, Fog, Clear.
    */
-  public void setWeather(String weatherCondition) {
+  public void setWeatherCondition(String weatherCondition) {
       this.weatherCondition = weatherCondition;
   } 
 
