@@ -88,7 +88,7 @@ public class HorseSelection extends JFrame {
     // Right column
     JPanel rightColumnPanel = new JPanel();
     rightColumnPanel.setPreferredSize(new Dimension(235, 100));
-    rightColumnPanel.setLayout(new GridLayout(4, 1, 0, 10));
+    rightColumnPanel.setLayout(new GridLayout(4, 1));
 
     saddleImageIcon = new JLabel(new ImageIcon());
     horseshoeImageIcon = new JLabel(new ImageIcon());
@@ -377,17 +377,20 @@ public class HorseSelection extends JFrame {
         // Add action listeners for powerup buttons
           p1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Ruby Patch
+                // display Ruby Patch icon
+                accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png"));
             }
           });
           p2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Emerald Patch
+                // display Emerald Patch icon
+                accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryGreen.png"));
             }
           });
           p3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Sapphire Patch
+                // display Sapphire Patch icon
+                accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryBlue.png"));
             }
           });
           
