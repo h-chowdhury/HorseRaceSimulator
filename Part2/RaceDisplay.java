@@ -34,6 +34,9 @@ public class RaceDisplay extends JFrame {
   private int numberOfHorses;
   private Horse[] lanes;
 
+  private String trackShape;
+  private String weatherCondition;
+
   /**
    * Constructor of RaceDisplay
    */
@@ -42,6 +45,8 @@ public class RaceDisplay extends JFrame {
     raceData = RD;
     numberOfHorses = raceData.getNumberOfHorses();
     lanes = raceData.getLanesArray();
+    trackShape = raceData.getTrackShape();
+    weatherCondition = raceData.getWeatherCondition();
 
     // Creating main frame
     this.setTitle("Horse Racing Simulator - Race Display"); 
@@ -118,7 +123,7 @@ public class RaceDisplay extends JFrame {
       rightColumnPanel.add(trackTitle);
 
       JLabel trackSelected = new JLabel();
-      trackSelected.setText("[placeholder]");
+      trackSelected.setText(trackShape);
       trackSelected.setFont(new Font("Dialog", Font.PLAIN, 10));
       rightColumnPanel.add(trackSelected);
 
@@ -128,7 +133,7 @@ public class RaceDisplay extends JFrame {
       rightColumnPanel.add(weatherTitle);
 
       JLabel weatherSelected = new JLabel();
-      weatherSelected.setText("[placeholder]");
+      weatherSelected.setText(weatherCondition);
       weatherSelected.setFont(new Font("Dialog", Font.PLAIN, 10));
       rightColumnPanel.add(weatherSelected);
 
