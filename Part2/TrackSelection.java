@@ -23,7 +23,7 @@ import javax.swing.event.ChangeListener;
  * This class defines the track selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 2.8
+ * @version Version 2.9
  */
 public class TrackSelection extends JFrame implements ChangeListener {
 
@@ -152,6 +152,18 @@ public class TrackSelection extends JFrame implements ChangeListener {
       public void actionPerformed (ActionEvent e) {
 
         submitButton.setEnabled(false);
+
+        // Store selected track type
+        String trackShapeInput = null;
+        if (ts1.isSelected()) {
+          trackShapeInput = "Straight";
+
+        } else if (ts2.isSelected()) {
+          trackShapeInput = "Zig-Zag";
+          
+        } else if (ts3.isSelected()) {
+          trackShapeInput = "Rectangle";
+        }
 
         int numberOfHorses = numberOfHorsesSlider.getValue();
         int lengthOfTrack = lengthOfTrackSlider.getValue();
