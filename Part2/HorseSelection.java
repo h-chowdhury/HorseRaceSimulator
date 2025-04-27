@@ -498,10 +498,10 @@ public class HorseSelection extends JFrame {
 
         ButtonGroup powerupButtons = new ButtonGroup();
           JRadioButton p1 = new JRadioButton("Ruby Patch"); // +20% speed for first 3 seconds
-          JRadioButton p2 = new JRadioButton("Emerald Patch"); // Cancel one fall during the race
+          JRadioButton p2 = new JRadioButton("Emerald Patch"); // +5% chance to move forward
           JRadioButton p3 = new JRadioButton("Sapphire Patch"); // +5% chance each second to ignore falls
           p1.setToolTipText("+20% speed for first 3 seconds of the race");
-          p2.setToolTipText("Cancel one fall during the race");
+          p2.setToolTipText("+5% chance to move forward");
           p3.setToolTipText("+5% chance each second to ignore falls");
           p1.setSelected(true);
           powerupButtons.add(p1);
@@ -621,8 +621,8 @@ public class HorseSelection extends JFrame {
               breedInput = "Mustang"; // +5% stability
 
             } else if (b3.isSelected()) {
-              breedInput = "Friesan"; // -5% stability
-
+              breedInput = "Friesan"; // -5% speed, +10% stability
+              horse.setXVelocity(horse.getXVelocity() * 0.95);
             }
 
             // Store hair colour
@@ -638,16 +638,16 @@ public class HorseSelection extends JFrame {
             // Store saddle type
             String saddleInput = null;
             if (s1.isSelected()) {
-              saddleInput = "Crimson"; // +5% speed, -5% stability
+              saddleInput = "Blaze"; // +5% speed
               horse.setXVelocity(horse.getXVelocity() * 1.05);
 
             } else if (s2.isSelected()) {
-              saddleInput = "Verdant"; // +10% speed
-              horse.setXVelocity(horse.getXVelocity() * 1.1);
+              saddleInput = "Geo"; // +10% stability
+              //
 
             } else if (s3.isSelected()) {
-              saddleInput = "Azure"; // -5% speed, +10% stability
-              horse.setXVelocity(horse.getXVelocity() * 0.9);
+              saddleInput = "Wind"; // +10% speed -5% stability
+              horse.setXVelocity(horse.getXVelocity() * 1.1);
 
             }
 
@@ -672,7 +672,7 @@ public class HorseSelection extends JFrame {
               accessoryInput = "Ruby Patch"; // +20% speed for first 3 seconds
 
             } else if (p2.isSelected()) {
-              accessoryInput = "Emerald Patch";  // Cancel one fall during the race
+              accessoryInput = "Emerald Patch";  // +5% chance of moving forward
 
             } else if (p3.isSelected()) {
               accessoryInput = "Sapphire Patch"; // +5% chance each second to ignore falls
