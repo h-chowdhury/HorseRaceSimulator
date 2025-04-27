@@ -28,7 +28,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 4.1
+ * @version Version 4.2
  */
 public class HorseSelection extends JFrame {
 
@@ -124,28 +124,27 @@ public class HorseSelection extends JFrame {
 
     // Center panel
     JPanel centerPanel = new JPanel();
+    centerPanel.setLayout(null);
     centerPanel.setPreferredSize(new Dimension(100, 100));
 
       // Create images to place horse body in
-      horseImageFull = new JLabel(new ImageIcon());
-      horseImageFull.setBounds(365, 100, 1075, 820);
-
       saddleImageFull = new JLabel(new ImageIcon());
-      saddleImageFull.setBounds(365, 100, 1075, 820);
+      saddleImageFull.setBounds(-90, -90, 1075, 820);
 
       accessoryImageFull = new JLabel(new ImageIcon());
-      accessoryImageFull.setBounds(365, 100, 1075, 820);
+      accessoryImageFull.setBounds(-90, -90, 1075, 820);
 
+      horseImageFull = new JLabel(new ImageIcon());
+      horseImageFull.setBounds(-90, -90, 1075, 820);
 
       // Set default images
-      horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlack.png"));
       saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleRed.png"));
       accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryRed.png"));
+      horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlack.png"));
 
-
-      centerPanel.add(horseImageFull);
       centerPanel.add(saddleImageFull);
       centerPanel.add(accessoryImageFull);
+      centerPanel.add(horseImageFull);
 
     this.add(centerPanel, BorderLayout.CENTER);
 
@@ -451,18 +450,25 @@ public class HorseSelection extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // display Ruby Patch icon
                 accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png"));
+
+                // display Ruby Patch on horse body
             }
           });
           p2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // display Emerald Patch icon
                 accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryGreen.png"));
+
+                // display Emerald Patch on horse body
+
             }
           });
           p3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // display Sapphire Patch icon
                 accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryBlue.png"));
+
+                // display Sapphire Patch on horse body
             }
           });
           
