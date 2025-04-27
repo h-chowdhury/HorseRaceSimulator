@@ -28,7 +28,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 4.0
+ * @version Version 4.1
  */
 public class HorseSelection extends JFrame {
 
@@ -40,6 +40,10 @@ public class HorseSelection extends JFrame {
   JLabel horseshoeImageIcon;
   JLabel accessoryImageIcon;
   JLabel horseImageIcon;
+
+  JLabel horseImageFull;
+  JLabel saddleImageFull;
+  JLabel accessoryImageFull;
 
   /**
    * Constructor of HorseSelection
@@ -90,21 +94,29 @@ public class HorseSelection extends JFrame {
     rightColumnPanel.setPreferredSize(new Dimension(235, 100));
     rightColumnPanel.setLayout(new GridLayout(4, 1));
 
-    saddleImageIcon = new JLabel(new ImageIcon());
-    horseshoeImageIcon = new JLabel(new ImageIcon());
-    accessoryImageIcon = new JLabel(new ImageIcon());
-    horseImageIcon = new JLabel(new ImageIcon());
-    
-    rightColumnPanel.add(saddleImageIcon);
-    saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png")); // default
+      // Create images to place icons in
+      saddleImageIcon = new JLabel(new ImageIcon());
+      horseshoeImageIcon = new JLabel(new ImageIcon());
+      accessoryImageIcon = new JLabel(new ImageIcon());
+      horseImageIcon = new JLabel(new ImageIcon());
 
-    rightColumnPanel.add(horseshoeImageIcon);
-    horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeRusty.png")); // default
+      saddleImageIcon.setSize(260, 205);
+      horseshoeImageIcon.setSize(260, 205);
+      accessoryImageIcon.setSize(260, 205);
+      horseImageIcon.setSize(260, 205);
+      
+      // Set default images for icons
+      rightColumnPanel.add(saddleImageIcon);
+      saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png")); // default
 
-    rightColumnPanel.add(accessoryImageIcon);
-    accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png")); // default
+      rightColumnPanel.add(horseshoeImageIcon);
+      horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeRusty.png")); // default
 
-    rightColumnPanel.add(horseImageIcon);
+      rightColumnPanel.add(accessoryImageIcon);
+      accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png")); // default
+
+      rightColumnPanel.add(horseImageIcon);
+      horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png")); // default
 
     this.add(rightColumnPanel, BorderLayout.EAST);
 
@@ -113,6 +125,27 @@ public class HorseSelection extends JFrame {
     // Center panel
     JPanel centerPanel = new JPanel();
     centerPanel.setPreferredSize(new Dimension(100, 100));
+
+      // Create images to place horse body in
+      horseImageFull = new JLabel(new ImageIcon());
+      horseImageFull.setBounds(365, 100, 1075, 820);
+
+      saddleImageFull = new JLabel(new ImageIcon());
+      saddleImageFull.setBounds(365, 100, 1075, 820);
+
+      accessoryImageFull = new JLabel(new ImageIcon());
+      accessoryImageFull.setBounds(365, 100, 1075, 820);
+
+
+      // Set default images
+      horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlack.png"));
+      saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleRed.png"));
+      accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryRed.png"));
+
+
+      centerPanel.add(horseImageFull);
+      centerPanel.add(saddleImageFull);
+      centerPanel.add(accessoryImageFull);
 
     this.add(centerPanel, BorderLayout.CENTER);
 
@@ -188,25 +221,6 @@ public class HorseSelection extends JFrame {
           breedButtons.add(b1);
           breedButtons.add(b2);
           breedButtons.add(b3);
-
-
-          // Add action listeners for breed buttons
-            b1.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                  // placeholder for Arabian
-              }
-            });
-            b2.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                  // placeholder for Mustang
-              }
-            });
-            b3.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                  // placeholder for Friesan
-              }
-            });
-
       
         breedBox.add(breedLabel);
         breedBox.add(b1);
@@ -231,20 +245,77 @@ public class HorseSelection extends JFrame {
           hairButtons.add(h3);
 
 
+
+          // Add action listeners for breed buttons
+          b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // display arabian horse icon
+                if (h1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png"));} // black hair
+                else if (h2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBrown.png"));} // brown hair 
+                else if (h3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlonde.png"));} // blonde hair
+
+                // display arabian horse body
+
+            }
+          });
+          b2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // display mustang horse icon
+                if (h1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlack.png"));} // black hair
+                else if (h2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBrown.png"));} // brown hair 
+                else if (h3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlonde.png"));} // blonde hair
+
+                // display mustang horse body
+              
+            }
+          });
+          b3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // display friesan horse icon
+                if (h1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlack.png"));} // black hair
+                else if (h2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBrown.png"));} // brown hair 
+                else if (h3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlonde.png"));} // blonde hair
+
+                
+                // display friesan horse body
+
+            }
+          });
+
+
+
           // Add action listeners for hair colour buttons
             h1.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                  // placeholder for Black hair
+                  // display black hair horse icon
+                  if (b1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png"));} // arabian horse
+                  else if (b2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlack.png"));} // mustang horse
+                  else if (b3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlack.png"));} // friesan horse
+
+                  // display black hair horse body
+
               }
             });
             h2.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                  // placeholder for Brown hair
+                  // display brown hair horse icon
+                  if (b1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBrown.png"));} // arabian horse
+                  else if (b2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBrown.png"));} // mustang horse
+                  else if (b3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBrown.png"));} // friesan horse
+
+                  // display brown hair horse body
+
               }
             });
             h3.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                  // placeholder for Blonde hair
+                  // display blonde hair horse icon
+                  if (b1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlonde.png"));} // arabian horse
+                  else if (b2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlonde.png"));} // mustang horse
+                  else if (b3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlonde.png"));} // friesan horse
+
+                  // display blonde hair horse body
+
               }
             });
 
@@ -296,6 +367,7 @@ public class HorseSelection extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // display azure saddle icon
                 saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleBlue.png"));
+                
                 // display azure saddle on horse body
             }
           });
@@ -455,7 +527,8 @@ public class HorseSelection extends JFrame {
           int horseLane = (int) laneInput.getValue();
 
           // Placeholder image
-          ImageIcon symbol = new ImageIcon("Part2\\images\\placeholder.png");
+          ImageIcon symbol = (ImageIcon) horseImageIcon.getIcon();
+  
           
           // Create horse object
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
