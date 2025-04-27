@@ -88,7 +88,7 @@ public class HorseSelection extends JFrame {
     // Right column
     JPanel rightColumnPanel = new JPanel();
     rightColumnPanel.setPreferredSize(new Dimension(235, 100));
-    rightColumnPanel.setLayout(new GridLayout(4, 1));
+    rightColumnPanel.setLayout(new GridLayout(4, 1, 0, 10));
 
     saddleImageIcon = new JLabel(new ImageIcon());
     horseshoeImageIcon = new JLabel(new ImageIcon());
@@ -99,7 +99,11 @@ public class HorseSelection extends JFrame {
     saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png")); // default
 
     rightColumnPanel.add(horseshoeImageIcon);
+    horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeRusty.png")); // default
+
     rightColumnPanel.add(accessoryImageIcon);
+    accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png")); // default
+
     rightColumnPanel.add(horseImageIcon);
 
     this.add(rightColumnPanel, BorderLayout.EAST);
@@ -326,17 +330,20 @@ public class HorseSelection extends JFrame {
         // Add action listeners for horseshoe buttons
           hs1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Rusted horseshoe
+                // display Rusted horseshoe icon
+                horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeRusty.png"));
             }
           });
           hs2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Silver horseshoe
+                // display Silver horseshoe icon
+                horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeSilver.png"));
             }
           });
           hs3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Golden horseshoe
+                // display Golden horseshoe icon
+                horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeGolden.png"));
             }
           });
       
