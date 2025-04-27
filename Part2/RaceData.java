@@ -6,14 +6,14 @@ package Part2;
  * and setters.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.6
+ * @version Version 1.7
  */
 public class RaceData {
   private int numberOfHorses;
   private int lengthOfTrack;
   private int numberOfLanes;
-  // private String trackShape;
-  // private String weather;
+  private String trackShape;
+  private String weatherCondition;
   private Horse[] lanes;
   private int horsesProcessed = 0;
 
@@ -67,15 +67,22 @@ public class RaceData {
     return lanes;
   }
   
-
-  /* public String getTrackShape() {
+  /** 
+   * Gets the track shape.
+   * @return A String naming the track shape.
+   */
+  public String getTrackShape() {
       return trackShape;
-  } */
+  }
 
 
-  /* public String getWeather() {
-      return weather;
-  } */
+  /** 
+   * Gets the weather condition.
+   * @return A String naming weather condition.
+   */
+  public String getWeatherCondition() {
+      return weatherCondition;
+  } 
 
 
   /** 
@@ -129,15 +136,23 @@ public class RaceData {
     this.lanes[index] = h;
   }
 
-
-  /* public void setTrackShape(String trackShape) {
+  /**
+   * Sets the track shape.
+   * @param trackShape The name of the track shape.
+   */
+  public void setTrackShape(String trackShape) {
       this.trackShape = trackShape;
-  } */
+  }
 
 
-  /* public void setWeather(String weather) {
-      this.weather = weather;
-  } */
+  /**
+   * Sets the weather condition.
+   * @param trackShape The weather condition.
+   * e.g. Rain, Fog, Clear.
+   */
+  public void setWeather(String weatherCondition) {
+      this.weatherCondition = weatherCondition;
+  } 
 
 
    /**
