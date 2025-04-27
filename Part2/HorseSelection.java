@@ -497,10 +497,10 @@ public class HorseSelection extends JFrame {
         powerupLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup powerupButtons = new ButtonGroup();
-          JRadioButton p1 = new JRadioButton("Ruby Patch"); // +20% speed for first 3 seconds
+          JRadioButton p1 = new JRadioButton("Ruby Patch"); // +5% speed for the whole race
           JRadioButton p2 = new JRadioButton("Emerald Patch"); // +10% chance each second to move forward
           JRadioButton p3 = new JRadioButton("Sapphire Patch"); // +5% chance each second to ignore falls
-          p1.setToolTipText("+20% speed for first 3 seconds of the race");
+          p1.setToolTipText("+5% speed for the whole race");
           p2.setToolTipText("+10% chance each second to move forward");
           p3.setToolTipText("+5% chance each second to ignore falls");
           p1.setSelected(true);
@@ -669,7 +669,7 @@ public class HorseSelection extends JFrame {
             // Store powerup
             String accessoryInput = null;
             if (p1.isSelected()) {
-              accessoryInput = "Ruby Patch"; // +20% speed for first 3 seconds
+              accessoryInput = "Ruby Patch"; // +5% speed
 
             } else if (p2.isSelected()) {
               accessoryInput = "Emerald Patch";  // +10% chance each second of moving forward
