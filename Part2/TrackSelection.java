@@ -165,6 +165,21 @@ public class TrackSelection extends JFrame implements ChangeListener {
           trackShapeInput = "Rectangle";
         }
 
+        // Store selected weather condition
+        String weatherConditionInput = null;
+        if (w1.isSelected()) {
+          weatherConditionInput = "Clear";
+
+        } else if (w2.isSelected()) {
+          weatherConditionInput = "Rain";
+          
+        } else if (w3.isSelected()) {
+          weatherConditionInput = "Wind";
+
+        } else if (w4.isSelected()) {
+          weatherConditionInput = "Fog";
+        }
+
         int numberOfHorses = numberOfHorsesSlider.getValue();
         int lengthOfTrack = lengthOfTrackSlider.getValue();
         int numberOfLanes = numberOfLanesSlider.getValue();
