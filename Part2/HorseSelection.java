@@ -352,6 +352,7 @@ public class HorseSelection extends JFrame {
                 saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png"));
 
                 // display crimson saddle on horse body
+                saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleRed.png"));
             }
           });
           s2.addActionListener(new ActionListener() {
@@ -360,6 +361,7 @@ public class HorseSelection extends JFrame {
                 saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleGreen.png"));
 
                 // display verdant saddle on horse body
+                saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleGreen.png"));
             }
           });
           s3.addActionListener(new ActionListener() {
@@ -368,6 +370,7 @@ public class HorseSelection extends JFrame {
                 saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleBlue.png"));
                 
                 // display azure saddle on horse body
+                saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleBlue.png"));
             }
           });
 
