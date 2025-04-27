@@ -452,6 +452,7 @@ public class HorseSelection extends JFrame {
                 accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png"));
 
                 // display Ruby Patch on horse body
+                accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryRed.png"));
             }
           });
           p2.addActionListener(new ActionListener() {
@@ -460,6 +461,7 @@ public class HorseSelection extends JFrame {
                 accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryGreen.png"));
 
                 // display Emerald Patch on horse body
+                accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryGreen.png"));
 
             }
           });
@@ -469,6 +471,7 @@ public class HorseSelection extends JFrame {
                 accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryBlue.png"));
 
                 // display Sapphire Patch on horse body
+                accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryBlue.png"));
             }
           });
           
