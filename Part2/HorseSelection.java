@@ -526,10 +526,12 @@ public class HorseSelection extends JFrame {
           horseConfidence = Math.round(horseConfidence * 100.0) / 100.0;
           int horseLane = (int) laneInput.getValue();
 
-          // Placeholder image
           ImageIcon symbol = (ImageIcon) horseImageIcon.getIcon();
-  
-          
+
+          // Resize symbol
+          Image scaledSymbol = symbol.getImage().getScaledInstance(65, 51, Image.SCALE_SMOOTH);
+          symbol = new ImageIcon(scaledSymbol);
+      
           // Create horse object
           Horse horse = new Horse(symbol, horseName, horseConfidence, horseLane);
           
