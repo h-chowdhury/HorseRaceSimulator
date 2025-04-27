@@ -190,14 +190,30 @@ public class RacePanel extends JPanel implements ActionListener {
       // Check if the lane value is null (empty lane)
       if (lanes[i] != null && lanes[i].getXpos() <= FINISH_LINE_X && (lanes[i].hasFallen() == false)) {
 
+        // Fetch data regarding horse customisation input
+        HorseCustomisation horseData = lanes[i].getHorseCustomisation();
+
         //the probability that the horse will move forward depends on the confidence
-        if (Math.random() < lanes[i].getConfidence())
-        {
-          int xPos = lanes[i].getXpos();
-          double xVelocity = lanes[i].getXVelocity();
-          lanes[i].setXpos((int) (xPos + xVelocity));
-        }
+          // Note that certain customisation features will impact the chance of falling
+          // e.g:
+          // The emerald accessory increases the chance of movement by 10%
+
+          double moveChanceSubtractor = 0.0; 
+
+          //+10% chance of movement
+          if (horseData.getAccessoryType()=="Emerald Patch") {
+            moveChanceSubtractor += 0.1;
+          }
+
+          if (Math.random() < Math.max(0, lanes[i].getConfidence() - moveChanceSubtractor))
+          {
+            int xPos = lanes[i].getXpos();
+            double xVelocity = lanes[i].getXVelocity();
+            lanes[i].setXpos((int) (xPos + xVelocity));
+          }
         
+
+
         //the probability that the horse will fall is very small (max is 0.1)
         //but will also will depends exponentially on confidence 
         //so if you double the confidence, the probability that it will fall is *2
@@ -207,36 +223,36 @@ public class RacePanel extends JPanel implements ActionListener {
           // The breed Friesan decreases the chance by 10%
           // The golden horseshoe increases the chance by 5%
 
-          double chanceMultiplier = 1.0;
+          double fallChanceMultiplier = 1.0;
   
-          // Fetch data regarding horse customisation input
-          HorseCustomisation horseData = lanes[i].getHorseCustomisation();
-
           // -5% chance of falling
           if (horseData.getBreedType() == "Mustang") {
-            chanceMultiplier -= 0.05;
+            fallChanceMultiplier -= 0.05;
           }
           if (horseData.getSaddleType() == "Geo") {
-            chanceMultiplier -= 0.05;
+            fallChanceMultiplier -= 0.05;
+          }
+          if (horseData.getAccessoryType() == "Sapphire Patch") {
+            fallChanceMultiplier -= 0.05;
           }
 
           // -10% chance of falling
           if (horseData.getBreedType() == "Friesan") {
-            chanceMultiplier -= 0.1;
+            fallChanceMultiplier -= 0.1;
           }
           if (horseData.getHorseshoeType() == "Rusted") {
-            chanceMultiplier -= 0.1;
+            fallChanceMultiplier -= 0.1;
           }
 
           // +5% chance of falling
           if (horseData.getSaddleType() == "Wind") {
-            chanceMultiplier += 0.05;
+            fallChanceMultiplier += 0.05;
           }
           if (horseData.getHorseshoeType() == "Golden") {
-            chanceMultiplier += 0.05;
+            fallChanceMultiplier += 0.05;
           }
 
-          if (Math.random() < (0.1*lanes[i].getConfidence()/16) * chanceMultiplier)
+          if (Math.random() < (0.1*lanes[i].getConfidence()/16) * fallChanceMultiplier)
           {
             lanes[i].fall();
             // Set horse icon to an X to indicate it has fallen
