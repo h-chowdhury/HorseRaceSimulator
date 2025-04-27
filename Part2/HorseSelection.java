@@ -248,36 +248,64 @@ public class HorseSelection extends JFrame {
           // Add action listeners for breed buttons
           b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display arabian horse icon
-                if (h1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png"));} // black hair
-                else if (h2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBrown.png"));} // brown hair 
-                else if (h3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlonde.png"));} // blonde hair
-
-                // display arabian horse body
-
+              // display arabian horse icon and body
+              if (h1.isSelected()) 
+              { // black hair
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlack.png"));
+              } 
+              else if (h2.isSelected()) 
+              { // brown hair 
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBrown.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBrown.png"));
+              } 
+              else if (h3.isSelected()) 
+              { // blonde hair
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlonde.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlonde.png"));
+              } 
             }
           });
+
           b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display mustang horse icon
-                if (h1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlack.png"));} // black hair
-                else if (h2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBrown.png"));} // brown hair 
-                else if (h3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlonde.png"));} // blonde hair
-
-                // display mustang horse body
-              
+              // display mustang horse icon and body
+              if (h1.isSelected()) 
+              { // black hair
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlack.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\mustangBlack.png"));
+              }
+              else if (h2.isSelected()) 
+              { // brown hair 
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBrown.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\mustangBrown.png"));
+              } 
+              else if (h3.isSelected()) 
+              { // blonde hair
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlonde.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\mustangBlonde.png"));
+              } 
             }
           });
+
           b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display friesan horse icon
-                if (h1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlack.png"));} // black hair
-                else if (h2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBrown.png"));} // brown hair 
-                else if (h3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlonde.png"));} // blonde hair
-
-                
-                // display friesan horse body
-
+              // display friesan horse icon and body
+              if (h1.isSelected()) 
+              { // black hair
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlack.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\friesanBlack.png"));
+              }
+              else if (h2.isSelected()) 
+              { // brown hair 
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBrown.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\friesanBrowm.png"));
+              }
+              else if (h3.isSelected()) 
+              { // blonde hair
+                horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlonde.png"));
+                horseImageFull.setIcon(new ImageIcon("Part2\\images\\friesanBlonde.png"));
+              } 
             }
           });
 
@@ -286,35 +314,64 @@ public class HorseSelection extends JFrame {
           // Add action listeners for hair colour buttons
             h1.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                  // display black hair horse icon
-                  if (b1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png"));} // arabian horse
-                  else if (b2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlack.png"));} // mustang horse
-                  else if (b3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlack.png"));} // friesan horse
-
-                  // display black hair horse body
-
+                // display black hair horse icon and body
+                if (b1.isSelected()) 
+                { // arabian horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlack.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlack.png"));
+                }
+                else if (b2.isSelected()) 
+                { // mustang horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlack.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\mustangBlack.png"));
+                } 
+                else if (b3.isSelected()) 
+                { // friesan horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlack.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\friesanBlack.png"));
+                } 
               }
-            });
+             });
+
             h2.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                  // display brown hair horse icon
-                  if (b1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBrown.png"));} // arabian horse
-                  else if (b2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBrown.png"));} // mustang horse
-                  else if (b3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBrown.png"));} // friesan horse
-
-                  // display brown hair horse body
-
+                // display brown hair horse icon and body
+                if (b1.isSelected()) 
+                { // arabian horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBrown.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBrown.png"));
+                } // mustang horse
+                else if (b2.isSelected()) 
+                {
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBrown.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\mustangBrown.png"));
+                } 
+                else if (b3.isSelected()) 
+                { // friesan horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBrown.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\friesanBrown.png"));
+                } 
               }
             });
+
             h3.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                  // display blonde hair horse icon
-                  if (b1.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlonde.png"));} // arabian horse
-                  else if (b2.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlonde.png"));} // mustang horse
-                  else if (b3.isSelected()) {horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlonde.png"));} // friesan horse
-
-                  // display blonde hair horse body
-
+                // display blonde hair horse icon and body
+                if (b1.isSelected()) 
+                { // arabian horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-arabianBlonde.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\arabianBlonde.png"));
+                }
+                else if (b2.isSelected()) 
+                { // mustang horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-mustangBlonde.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\mustangBlonde.png"));
+                } 
+                else if (b3.isSelected()) 
+                { // friesan horse
+                  horseImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-friesanBlonde.png"));
+                  horseImageFull.setIcon(new ImageIcon("Part2\\images\\friesanBlonde.png"));
+                } 
               }
             });
 
@@ -348,29 +405,31 @@ public class HorseSelection extends JFrame {
         // Add action listeners for saddle buttons
           s1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display crimson saddle icon
-                saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png"));
+              // display crimson saddle icon
+              saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png"));
 
-                // display crimson saddle on horse body
-                saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleRed.png"));
+              // display crimson saddle on horse body
+              saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleRed.png"));
             }
           });
+
           s2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display verdant saddle icon
-                saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleGreen.png"));
+              // display verdant saddle icon
+              saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleGreen.png"));
 
-                // display verdant saddle on horse body
-                saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleGreen.png"));
+              // display verdant saddle on horse body
+              saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleGreen.png"));
             }
           });
+
           s3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display azure saddle icon
-                saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleBlue.png"));
-                
-                // display azure saddle on horse body
-                saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleBlue.png"));
+              // display azure saddle icon
+              saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleBlue.png"));
+              
+              // display azure saddle on horse body
+              saddleImageFull.setIcon(new ImageIcon("Part2\\images\\full-saddleBlue.png"));
             }
           });
 
@@ -404,20 +463,22 @@ public class HorseSelection extends JFrame {
         // Add action listeners for horseshoe buttons
           hs1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display Rusted horseshoe icon
-                horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeRusty.png"));
+              // display Rusted horseshoe icon
+              horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeRusty.png"));
             }
           });
+
           hs2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display Silver horseshoe icon
-                horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeSilver.png"));
+              // display Silver horseshoe icon
+              horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeSilver.png"));
             }
           });
+
           hs3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display Golden horseshoe icon
-                horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeGolden.png"));
+              // display Golden horseshoe icon
+              horseshoeImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-horseshoeGolden.png"));
             }
           });
       
@@ -451,30 +512,31 @@ public class HorseSelection extends JFrame {
         // Add action listeners for powerup buttons
           p1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display Ruby Patch icon
-                accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png"));
+              // display Ruby Patch icon
+              accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryRed.png"));
 
-                // display Ruby Patch on horse body
-                accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryRed.png"));
+              // display Ruby Patch on horse body
+              accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryRed.png"));
             }
           });
+
           p2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display Emerald Patch icon
-                accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryGreen.png"));
+              // display Emerald Patch icon
+              accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryGreen.png"));
 
-                // display Emerald Patch on horse body
-                accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryGreen.png"));
-
+              // display Emerald Patch on horse body
+              accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryGreen.png"));
             }
           });
+
           p3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // display Sapphire Patch icon
-                accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryBlue.png"));
+              // display Sapphire Patch icon
+              accessoryImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-accessoryBlue.png"));
 
-                // display Sapphire Patch on horse body
-                accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryBlue.png"));
+              // display Sapphire Patch on horse body
+              accessoryImageFull.setIcon(new ImageIcon("Part2\\images\\full-accessoryBlue.png"));
             }
           });
           
