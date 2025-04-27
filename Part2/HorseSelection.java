@@ -28,7 +28,7 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 4.2
+ * @version Version 4.3
  */
 public class HorseSelection extends JFrame {
 
@@ -390,12 +390,12 @@ public class HorseSelection extends JFrame {
         saddleLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 
         ButtonGroup saddleButtons = new ButtonGroup();
-          JRadioButton s1 = new JRadioButton("Crimson"); // +5% speed, -5% stability
-          JRadioButton s2 = new JRadioButton("Verdant"); // +10% speed
-          JRadioButton s3 = new JRadioButton("Azure"); // -5% speed, +10% stability
-          s1.setToolTipText("+5% speed, -5% stability");
-          s2.setToolTipText("+10% speed");
-          s3.setToolTipText("-5% speed, +10% stability");
+          JRadioButton s1 = new JRadioButton("Blaze"); // +5% speed
+          JRadioButton s2 = new JRadioButton("Geo"); // +10% stability
+          JRadioButton s3 = new JRadioButton("Wind"); // +10% speed -5% stability
+          s1.setToolTipText("Invigorates the horses inner flame. \n+5% speed");
+          s2.setToolTipText("Enhances the horses footing with the power of soil.\n+10% stability");
+          s3.setToolTipText("Embraces the vigorous winds at a cost.\n+10% speed, -5% stability");
           s1.setSelected(true);
           saddleButtons.add(s1);
           saddleButtons.add(s2);
@@ -451,9 +451,9 @@ public class HorseSelection extends JFrame {
           JRadioButton hs1 = new JRadioButton("Rusted"); // +10% stability
           JRadioButton hs2 = new JRadioButton("Silver"); // +5% speed
           JRadioButton hs3 = new JRadioButton("Golden"); // +10% speed, -5% stability
-          hs1.setToolTipText("+10% stability");
-          hs2.setToolTipText("+5% speed");
-          hs3.setToolTipText("+10% speed, -5% stability");
+          hs1.setToolTipText("An old, but trustworthy racing companion.\n+10% stability");
+          hs2.setToolTipText("A mediocre but sturdy component.\n+5% speed");
+          hs3.setToolTipText("Worn by the fastest, but comes at a cost.\n+10% speed, -5% stability");
           hs1.setSelected(true);
           horseshoeButtons.add(hs1);
           horseshoeButtons.add(hs2);
