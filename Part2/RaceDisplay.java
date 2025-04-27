@@ -24,7 +24,7 @@ import javax.swing.SpinnerNumberModel;
  * This class defines the race display window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.7
+ * @version Version 1.8
  */
 public class RaceDisplay extends JFrame {
 
@@ -79,11 +79,11 @@ public class RaceDisplay extends JFrame {
       // Fill left column with horse info
 
       JLabel horsesTitle = new JLabel();
-      horsesTitle.setText("Horses participating: ");
+      horsesTitle.setText("Horses: ");
       horsesTitle.setFont(new Font("Dialog", Font.PLAIN, 15));
       leftColumnPanel.add(horsesTitle);
   
-      for (int i=0; i<numberOfHorses; i++) {
+      for (int i=0; i<lanes.length; i++) {
         if (lanes[i] != null) {
           horseInfo = new JPanel();
           horseInfo.setLayout(new BoxLayout(horseInfo, BoxLayout.X_AXIS));
