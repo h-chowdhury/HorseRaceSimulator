@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * The horse race animation will be displayed within this panel.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.1
+ * @version Version 3.2
  */
 public class RacePanel extends JPanel implements ActionListener {
 
@@ -193,18 +193,26 @@ public class RacePanel extends JPanel implements ActionListener {
         // Fetch data regarding horse customisation input
         HorseCustomisation horseData = lanes[i].getHorseCustomisation();
 
-        //the probability that the horse will move forward depends on the confidence
-          // Note that certain customisation features will impact the chance of falling
-          // e.g:
-          // The emerald accessory increases the chance of movement by 10%
+        // The probability that the horse will move forward depends on the confidence
+          // Note that certain customisation features will impact the chance of falling.
+          // e.g: 
+          // The emerald accessory increases the chance of movement by 10%.
+          // The weather condition fog decreases the chance of movement by 10%.
 
           double moveChanceSubtractor = 0.0; 
 
-          //+10% chance of movement
+          // -10% chance of movement
+          if (raceData.getWeatherCondition()=="Fog") {
+            moveChanceSubtractor -= 0.1;
+          }
+
+          // +10% chance of movement
           if (horseData.getAccessoryType()=="Emerald Patch") {
             moveChanceSubtractor += 0.1;
           }
 
+          // The chance variable decreases the chance that the random value (0-1) is
+          // less than the modified confidence, reducing movement
           if (Math.random() < Math.max(0, lanes[i].getConfidence() - moveChanceSubtractor))
           {
             int xPos = lanes[i].getXpos();
@@ -251,6 +259,14 @@ public class RacePanel extends JPanel implements ActionListener {
           if (horseData.getHorseshoeType() == "Golden") {
             fallChanceMultiplier += 0.05;
           }
+          if (raceData.getWeatherCondition() == "Wind") {
+            fallChanceMultiplier += 0.05;
+          }
+
+          // +10% chance of falling
+          if (raceData.getWeatherCondition()=="Rain") {
+            fallChanceMultiplier += 0.1;
+          }
 
           if (Math.random() < (0.1*lanes[i].getConfidence()/16) * fallChanceMultiplier)
           {
@@ -258,6 +274,7 @@ public class RacePanel extends JPanel implements ActionListener {
             // Set horse icon to an X to indicate it has fallen
             lanes[i].setSymbol(new ImageIcon("Part2\\images\\cross.png"));
           }
+
       }
     }
     repaint();
