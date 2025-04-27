@@ -28,13 +28,18 @@ import javax.swing.border.Border;
  * This class defines the horse selection window of the program.
  * 
  * @author Humayra Chowdhury
- * @version Version 3.9
+ * @version Version 4.0
  */
 public class HorseSelection extends JFrame {
 
   private RaceData raceData;
   private int numberOfLanes;
   private int numberOfHorses;
+
+  JLabel saddleImageIcon;
+  JLabel horseshoeImageIcon;
+  JLabel accessoryImageIcon;
+  JLabel horseImageIcon;
 
   /**
    * Constructor of HorseSelection
@@ -361,7 +366,17 @@ public class HorseSelection extends JFrame {
     // Right column
     JPanel rightColumnPanel = new JPanel();
     rightColumnPanel.setPreferredSize(new Dimension(200, 100));
-    rightColumnPanel.setLayout(new GridLayout(3, 1));
+    rightColumnPanel.setLayout(new GridLayout(4, 1));
+
+    saddleImageIcon = new JLabel(new ImageIcon());
+    horseshoeImageIcon = new JLabel(new ImageIcon());
+    accessoryImageIcon = new JLabel(new ImageIcon());
+    horseImageIcon = new JLabel(new ImageIcon());
+    
+    rightColumnPanel.add(saddleImageIcon);
+    rightColumnPanel.add(horseshoeImageIcon);
+    rightColumnPanel.add(accessoryImageIcon);
+    rightColumnPanel.add(horseImageIcon);
 
     this.add(rightColumnPanel, BorderLayout.EAST);
 
