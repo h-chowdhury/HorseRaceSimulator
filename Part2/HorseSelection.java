@@ -84,9 +84,42 @@ public class HorseSelection extends JFrame {
     this.add(titlePanel, BorderLayout.NORTH);
 
 
+
+    // Right column
+    JPanel rightColumnPanel = new JPanel();
+    rightColumnPanel.setPreferredSize(new Dimension(235, 100));
+    rightColumnPanel.setLayout(new GridLayout(4, 1));
+
+    saddleImageIcon = new JLabel(new ImageIcon());
+    horseshoeImageIcon = new JLabel(new ImageIcon());
+    accessoryImageIcon = new JLabel(new ImageIcon());
+    horseImageIcon = new JLabel(new ImageIcon());
+    
+    rightColumnPanel.add(saddleImageIcon);
+    saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png")); // default
+
+    rightColumnPanel.add(horseshoeImageIcon);
+    rightColumnPanel.add(accessoryImageIcon);
+    rightColumnPanel.add(horseImageIcon);
+
+    this.add(rightColumnPanel, BorderLayout.EAST);
+
+
+
+    // Center panel
+    JPanel centerPanel = new JPanel();
+    centerPanel.setPreferredSize(new Dimension(100, 100));
+
+    this.add(centerPanel, BorderLayout.CENTER);
+
+    this.setVisible(true); 
+
+
+
+
     // Left column
     JPanel leftColumnPanel = new JPanel(); 
-    leftColumnPanel.setPreferredSize(new Dimension(400, 100));
+    leftColumnPanel.setPreferredSize(new Dimension(365, 100));
     leftColumnPanel.setLayout(new GridLayout(4, 2, 30, 10));
     leftColumnPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 
@@ -241,17 +274,25 @@ public class HorseSelection extends JFrame {
         // Add action listeners for saddle buttons
           s1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Crimson saddle
+                // display crimson saddle icon
+                saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleRed.png"));
+
+                // display crimson saddle on horse body
             }
           });
           s2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Verdant saddle
+                // display verdant saddle icon
+                saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleGreen.png"));
+
+                // display verdant saddle on horse body
             }
           });
           s3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // placeholder for Azure saddle
+                // display azure saddle icon
+                saddleImageIcon.setIcon(new ImageIcon("Part2\\images\\icon-saddleBlue.png"));
+                // display azure saddle on horse body
             }
           });
 
@@ -360,39 +401,6 @@ public class HorseSelection extends JFrame {
     leftColumnPanel.add(powerupBox);
 
     this.add(leftColumnPanel, BorderLayout.WEST);
-    
-
-
-    // Right column
-    JPanel rightColumnPanel = new JPanel();
-    rightColumnPanel.setPreferredSize(new Dimension(200, 100));
-    rightColumnPanel.setLayout(new GridLayout(4, 1));
-
-    saddleImageIcon = new JLabel(new ImageIcon());
-    horseshoeImageIcon = new JLabel(new ImageIcon());
-    accessoryImageIcon = new JLabel(new ImageIcon());
-    horseImageIcon = new JLabel(new ImageIcon());
-    
-    rightColumnPanel.add(saddleImageIcon);
-    rightColumnPanel.add(horseshoeImageIcon);
-    rightColumnPanel.add(accessoryImageIcon);
-    rightColumnPanel.add(horseImageIcon);
-
-    this.add(rightColumnPanel, BorderLayout.EAST);
-
-
-
-
-    // Center panel
-    JPanel centerPanel = new JPanel();
-    centerPanel.setPreferredSize(new Dimension(100, 100));
-
-    this.add(centerPanel, BorderLayout.CENTER);
-
-    this.setVisible(true); 
-
-
-
 
 
 
