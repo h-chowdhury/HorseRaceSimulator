@@ -124,7 +124,7 @@ public class TrackSelection extends JFrame implements ChangeListener {
         w1.setToolTipText("No weather effects.");
         w2.setToolTipText("Horses will be 10% more prone to falling due to muddy surfaces.");
         w3.setToolTipText("Horses will be 5% more prone to falling and slowness.");
-        w4.setToolTipText("Horses will be 10% more prone to slowness due to reduced visibility.");
+        w4.setToolTipText("Horses will be 10% less likely to move due to reduced visibility.");
         w1.setSelected(true);
         weatherConditionButtons.add(w1);
         weatherConditionButtons.add(w2);
@@ -199,6 +199,8 @@ public class TrackSelection extends JFrame implements ChangeListener {
           raceData.setNumberOfHorses(numberOfHorses);
           raceData.setLengthOfTrack(lengthOfTrack);
           raceData.setNumberOfLanes(numberOfLanes);
+          raceData.setTrackShape(trackShapeInput);
+          raceData.setWeatherCondition(weatherConditionInput);
   
           // Display HorseSelection window
           HorseSelection horseSelectionPage = new HorseSelection(raceData);
