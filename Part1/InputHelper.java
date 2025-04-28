@@ -113,5 +113,19 @@ class InputHelper {
 
     return confidence;
   }
+
+
+  /***
+   * Recieve and validate the lane input.
+   */
+  public int getLane(Horse[] lanes, String prompt) {
+    int lane = getPosInt(prompt);
+
+    while (lane > lanes.length || lane < 1 || lanes[lane-1] != null) {
+      lane = getPosInt(prompt);
+    }
+
+    return lane;
+  }
   
 }
