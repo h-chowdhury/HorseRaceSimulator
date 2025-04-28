@@ -33,31 +33,31 @@ winner upon the end of the race.
   **Running the terminal version:**
     - Navigate to the project directory's 'Part1' folder and compile the project:
 
-        javac FILENAME.java
+        `javac FILENAME.java`
       
       where FILENAME should be replaced with the name of each java file found in the folder.
     
     - Run the project:
 
-        java Main
+        `java Main`
 
   **Running the GUI version:**
     - Navigate to the project directory
     - Compile the Java files into the 'bin' folder in 'Part2':
 
-        javac -d Part2/bin Part2/*.java
+        `javac -d Part2/bin Part2/*.java`
 
     - Run the project:
 
-        java -cp Part2/bin Part2.StartRaceGUI
+        `java -cp Part2/bin Part2.StartRaceGUI`
 
 
 ## Dependencies
 ### Ensure all dependencies are installed before running the project.
 - Java 8 or higher must be installed.
 - Note that no additional items are required for download when running the GUI as it is
-built only using Swing which is part of the standard JDK. This is also true for the 
-terminal version of the project.
+built only using Swing which is part of the standard JDK. 
+- This is also true for the terminal version of the project.
 
 
 ## Usage Guidelines
