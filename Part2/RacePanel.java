@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -26,7 +25,6 @@ public class RacePanel extends JPanel implements ActionListener {
 
   // Class variables of RacePanel
   private RaceData raceData;
-  private int numberOfHorses;
   private int trackLength;
   private int laneCount;
 
@@ -55,7 +53,6 @@ public class RacePanel extends JPanel implements ActionListener {
 
     raceData = RD;
 
-    numberOfHorses = raceData.getNumberOfHorses();
     trackLength = raceData.getLengthOfTrack();
     laneCount = raceData.getNumberOfLanes();
     lanes = raceData.getLanesArray();
