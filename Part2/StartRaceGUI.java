@@ -21,7 +21,7 @@ public class StartRaceGUI
    /**
    * Displays the launch page of the GUI
    */
-  public static void startRaceGUI() {
+  private static void startRaceGUI() {
     new LaunchPage();
   }
 
