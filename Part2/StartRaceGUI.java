@@ -7,7 +7,7 @@ package Part2;
  * @author Humayra Chowdhury
  * @version Version 1.2
  */
-public class startRaceGUI
+public class StartRaceGUI
 {
   /**
    * Main method containing the run of startRaceGUI()
