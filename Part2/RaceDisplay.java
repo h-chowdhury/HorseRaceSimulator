@@ -4,21 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.util.Timer;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
-import javax.swing.SpinnerNumberModel;
 
 /**
  * This class defines the race display window of the program.
@@ -31,7 +22,6 @@ public class RaceDisplay extends JFrame {
   private RacePanel racePanel;
   private RaceData raceData;
 
-  private int numberOfHorses;
   private Horse[] lanes;
 
   private String trackShape;
@@ -43,7 +33,6 @@ public class RaceDisplay extends JFrame {
   public RaceDisplay (RaceData RD) {
 
     raceData = RD;
-    numberOfHorses = raceData.getNumberOfHorses();
     lanes = raceData.getLanesArray();
     trackShape = raceData.getTrackShape();
     weatherCondition = raceData.getWeatherCondition();
