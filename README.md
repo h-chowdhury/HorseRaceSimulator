@@ -33,23 +33,31 @@ winner upon the end of the race.
   **Running the terminal version:**
     - Navigate to the project directory's 'Part1' folder and compile the project:
 
-        `javac FILENAME.java`
+        ```bash
+        javac FILENAME.java
+        ```
       
       where FILENAME should be replaced with the name of each java file found in the folder.
     
     - Run the project:
 
-        `java Main`
+        ```bash
+        java Main
+        ```
 
   **Running the GUI version:**
     - Navigate to the project directory
     - Compile the Java files into the 'bin' folder in 'Part2':
 
-        `javac -d Part2/bin Part2/*.java`
+        ```bash
+        javac -d Part2/bin Part2/*.java
+        ```
 
     - Run the project:
 
-        `java -cp Part2/bin Part2.StartRaceGUI`
+        ```bash
+        java -cp Part2/bin Part2.StartRaceGUI
+        ```
 
 
 ## Dependencies
