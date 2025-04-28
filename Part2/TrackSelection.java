@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -39,49 +38,52 @@ public class TrackSelection extends JFrame implements ChangeListener {
   // Constructor for the TrackSelection window
   public TrackSelection() {
 
-    // Page title
-    JLabel title = new JLabel("Track Selection");
-    title.setFont(new Font("Dialog", Font.BOLD, 50));
+    // Creating main frame
+    this.setTitle("Horse Racing Simulator - Track Selection"); 
+    this.setVisible(true); 
+    this.setSize(1500, 800);
+    this.setResizable(false); // prevents resizing window
+    this.getContentPane().setBackground(Color.white);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new BorderLayout(5, 5));
 
-    // Slider to select number of horses
-    numberOfHorsesLabel = new JLabel();
-    numberOfHorsesSlider = new JSlider(1, 8, 1);
-    numberOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
-    numberOfHorsesSlider.setPaintTicks(true);
-    numberOfHorsesSlider.setMinorTickSpacing(1);
-    numberOfHorsesSlider.setPaintTrack(true);
-    numberOfHorsesSlider.setMajorTickSpacing(1);
-    numberOfHorsesSlider.setPaintLabels(true);
-    numberOfHorsesSlider.addChangeListener(this);
-    numberOfHorsesLabel.setText("Number of horses: " + numberOfHorsesSlider.getValue());
-    numberOfHorsesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
+    // Set window icon
+    this.setIconImage(new ImageIcon("Part2\\images\\windowIcon.png").getImage());
+    
+    // Title panel
+    JPanel titlePanel = new JPanel();
+        // Page title
+        JLabel title = new JLabel("Track Selection");
+        title.setFont(new Font("Dialog", Font.BOLD, 50));
+    titlePanel.add(title);
 
-    // Slider to select length of track
-    lengthOfTrackLabel = new JLabel();
-    lengthOfTrackSlider = new JSlider(0, 250, 1);
-    lengthOfTrackSlider.setPreferredSize(new Dimension(300, 100));
-    lengthOfTrackSlider.setPaintTicks(true);
-    lengthOfTrackSlider.setMinorTickSpacing(10);
-    lengthOfTrackSlider.setPaintTrack(true);
-    lengthOfTrackSlider.setMajorTickSpacing(50);
-    lengthOfTrackSlider.setPaintLabels(true);
-    lengthOfTrackSlider.addChangeListener(this);
-    lengthOfTrackLabel.setText("Length of track: " + numberOfHorsesSlider.getValue() + "m");
-    lengthOfTrackLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
+    // Content panel
+    JPanel contentPanel = new JPanel();
+    contentPanel.setLayout(new GridLayout(1, 3));
 
-    // Slider to select number of lanes
-    numberOfLanesLabel = new JLabel();
-    numberOfLanesSlider = new JSlider(1, 8, 1);
-    numberOfLanesSlider.setPreferredSize(new Dimension(300, 100));
-    numberOfLanesSlider.setPaintTicks(true);
-    numberOfLanesSlider.setMinorTickSpacing(1);
-    numberOfLanesSlider.setPaintTrack(true);
-    numberOfLanesSlider.setMajorTickSpacing(1);
-    numberOfLanesSlider.setPaintLabels(true);
-    numberOfLanesSlider.addChangeListener(this);
-    numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue());
-    numberOfLanesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
 
+
+    // Column 1 - (2 stacked panels)
+    JPanel contentColumn1 = new JPanel();
+    contentColumn1.setLayout(new GridLayout(2, 1));
+
+    // Select number of horses
+    JPanel selectHorseNumPanel = new JPanel();
+
+        numberOfHorsesLabel = new JLabel();
+        numberOfHorsesSlider = new JSlider(1, 8, 1);
+        numberOfHorsesSlider.setPreferredSize(new Dimension(300, 100));
+        numberOfHorsesSlider.setPaintTicks(true);
+        numberOfHorsesSlider.setMinorTickSpacing(1);
+        numberOfHorsesSlider.setPaintTrack(true);
+        numberOfHorsesSlider.setMajorTickSpacing(1);
+        numberOfHorsesSlider.setPaintLabels(true);
+        numberOfHorsesSlider.addChangeListener(this);
+        numberOfHorsesLabel.setText("Number of horses: " + numberOfHorsesSlider.getValue());
+        numberOfHorsesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
+    
+    selectHorseNumPanel.add(numberOfHorsesLabel);
+    selectHorseNumPanel.add(numberOfHorsesSlider);
 
     // Select track shape
     JPanel trackShapeBox = new JPanel();
@@ -107,41 +109,107 @@ public class TrackSelection extends JFrame implements ChangeListener {
       trackShapeBox.add(ts2);
       trackShapeBox.add(ts3);
 
+    contentColumn1.add(selectHorseNumPanel);
+    contentColumn1.add(trackShapeBox);
+    contentPanel.add(contentColumn1);
 
 
-    // Select weather conditions
-    JPanel weatherBox = new JPanel();
-    weatherBox.setLayout(new GridLayout(5, 1));
 
-      JLabel weatherConditionTitle = new JLabel("Select weather");
-      weatherConditionTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+    // Column 2 - (2 stacked panels)
+    JPanel contentColumn2 = new JPanel();
+    contentColumn2.setLayout(new GridLayout(2, 1));
+
+    JPanel selectLengthPanel = new JPanel();
+
+      // Slider to select length of track
+      lengthOfTrackLabel = new JLabel();
+      lengthOfTrackSlider = new JSlider(0, 250, 1);
+      lengthOfTrackSlider.setPreferredSize(new Dimension(300, 100));
+      lengthOfTrackSlider.setPaintTicks(true);
+      lengthOfTrackSlider.setMinorTickSpacing(10);
+      lengthOfTrackSlider.setPaintTrack(true);
+      lengthOfTrackSlider.setMajorTickSpacing(50);
+      lengthOfTrackSlider.setPaintLabels(true);
+      lengthOfTrackSlider.addChangeListener(this);
+      lengthOfTrackLabel.setText("Length of track: " + numberOfHorsesSlider.getValue() + "m");
+      lengthOfTrackLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
   
-      ButtonGroup weatherConditionButtons = new ButtonGroup();
-        JRadioButton w1 = new JRadioButton("Clear");
-        JRadioButton w2 = new JRadioButton("Rain");
-        JRadioButton w3 = new JRadioButton("Wind");
-        JRadioButton w4 = new JRadioButton("Fog");
-        w1.setToolTipText("No weather effects.");
-        w2.setToolTipText("Horses will be 10% more prone to falling due to muddy surfaces.");
-        w3.setToolTipText("Horses will be 5% more prone to falling and slowness.");
-        w4.setToolTipText("Horses will be 10% less likely to move due to reduced visibility.");
-        w1.setSelected(true);
-        weatherConditionButtons.add(w1);
-        weatherConditionButtons.add(w2);
-        weatherConditionButtons.add(w3);
-        weatherConditionButtons.add(w4);
+    selectLengthPanel.add(lengthOfTrackLabel);
+    selectLengthPanel.add(lengthOfTrackSlider);
+
+    JPanel selectLaneNumPanel = new JPanel();
+
+      // Slider to select number of lanes
+      numberOfLanesLabel = new JLabel();
+      numberOfLanesSlider = new JSlider(1, 8, 1);
+      numberOfLanesSlider.setPreferredSize(new Dimension(300, 100));
+      numberOfLanesSlider.setPaintTicks(true);
+      numberOfLanesSlider.setMinorTickSpacing(1);
+      numberOfLanesSlider.setPaintTrack(true);
+      numberOfLanesSlider.setMajorTickSpacing(1);
+      numberOfLanesSlider.setPaintLabels(true);
+      numberOfLanesSlider.addChangeListener(this);
+      numberOfLanesLabel.setText("Number of lanes: " + numberOfHorsesSlider.getValue());
+      numberOfLanesLabel.setFont(new Font("Dialog", Font.PLAIN, 25));
+  
+    selectLaneNumPanel.add(numberOfLanesLabel);
+    selectLaneNumPanel.add(numberOfLanesSlider);
+
+    contentColumn2.add(selectLengthPanel);
+    contentColumn2.add(selectLaneNumPanel);
+    contentPanel.add(contentColumn2);
+
+
+
+    // Column 3 - (2 panel)
+    JPanel contentColumn3 = new JPanel();
+    contentColumn3.setLayout(new GridLayout(2, 1));
+
+    JPanel selectConditionPanel = new JPanel();
+
+        // Select weather conditions
+        JPanel weatherBox = new JPanel();
+        weatherBox.setLayout(new GridLayout(5, 1));
     
-      weatherBox.add(weatherConditionTitle);
-      weatherBox.add(w1);
-      weatherBox.add(w2);
-      weatherBox.add(w3);
-      weatherBox.add(w4);
+          JLabel weatherConditionTitle = new JLabel("Select weather");
+          weatherConditionTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+      
+          ButtonGroup weatherConditionButtons = new ButtonGroup();
+            JRadioButton w1 = new JRadioButton("Clear");
+            JRadioButton w2 = new JRadioButton("Rain");
+            JRadioButton w3 = new JRadioButton("Wind");
+            JRadioButton w4 = new JRadioButton("Fog");
+            w1.setToolTipText("No weather effects.");
+            w2.setToolTipText("Horses will be 10% more prone to falling due to muddy surfaces.");
+            w3.setToolTipText("Horses will be 5% more prone to falling and slowness.");
+            w4.setToolTipText("Horses will be 10% less likely to move due to reduced visibility.");
+            w1.setSelected(true);
+            weatherConditionButtons.add(w1);
+            weatherConditionButtons.add(w2);
+            weatherConditionButtons.add(w3);
+            weatherConditionButtons.add(w4);
+        
+          weatherBox.add(weatherConditionTitle);
+          weatherBox.add(w1);
+          weatherBox.add(w2);
+          weatherBox.add(w3);
+          weatherBox.add(w4);
 
+    selectConditionPanel.add(weatherBox);
 
-    // Submit button - submit all data
-    JButton submitButton = new JButton("Submit");
-    submitButton.setSize(200, 100);
-    submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
+    JPanel submitButtonPanel = new JPanel();
+
+      // Submit button - submit all data
+      JButton submitButton = new JButton("Submit");
+      submitButton.setSize(200, 100);
+      submitButton.setFont(new Font("Dialog", Font.BOLD, 30));
+  
+    submitButtonPanel.add(submitButton);
+
+    contentColumn3.add(selectConditionPanel);
+    contentColumn3.add(submitButtonPanel);
+    contentPanel.add(contentColumn3);
+
 
     // This allows for the submit button to process the input data, store it in an
     // object of type RaceData, pass this object to a HorseSelection object, and
@@ -209,81 +277,6 @@ public class TrackSelection extends JFrame implements ChangeListener {
         }
       }
     });
-
-    // Creating main frame
-    this.setTitle("Horse Racing Simulator - Track Selection"); 
-    this.setVisible(true); 
-    this.setSize(1500, 800);
-    this.setResizable(false); // prevents resizing window
-    this.getContentPane().setBackground(Color.white);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setLayout(new BorderLayout(5, 5));
-
-    // Set window icon
-    this.setIconImage(new ImageIcon("Part2\\images\\windowIcon.png").getImage());
-    
-
-        
-
-    // --------------------- sub panels ---------------------
-
-    // Title panel
-    JPanel titlePanel = new JPanel();
-    titlePanel.add(title);
-
-
-    // Content panel
-    JPanel contentPanel = new JPanel();
-    contentPanel.setLayout(new GridLayout(1, 3));
-
-
-    // Column 1 - (2 stacked panels)
-    JPanel contentColumn1 = new JPanel();
-    contentColumn1.setLayout(new GridLayout(2, 1));
-
-    JPanel selectHorseNumPanel = new JPanel();
-    selectHorseNumPanel.add(numberOfHorsesLabel);
-    selectHorseNumPanel.add(numberOfHorsesSlider);
-
-    contentColumn1.add(selectHorseNumPanel);
-    contentColumn1.add(trackShapeBox);
-    contentPanel.add(contentColumn1);
-
-
-    // Column 2 - (2 stacked panels)
-    JPanel contentColumn2 = new JPanel();
-    contentColumn2.setLayout(new GridLayout(2, 1));
-
-    JPanel selectLengthPanel = new JPanel();
-    selectLengthPanel.add(lengthOfTrackLabel);
-    selectLengthPanel.add(lengthOfTrackSlider);
-
-    JPanel selectLaneNumPanel = new JPanel();
-    selectLaneNumPanel.add(numberOfLanesLabel);
-    selectLaneNumPanel.add(numberOfLanesSlider);
-
-    contentColumn2.add(selectLengthPanel);
-    contentColumn2.add(selectLaneNumPanel);
-    contentPanel.add(contentColumn2);
-
-
-    // Column 3 - (2 panel)
-    JPanel contentColumn3 = new JPanel();
-    contentColumn3.setLayout(new GridLayout(2, 1));
-
-    JPanel selectConditionPanel = new JPanel();
-    selectConditionPanel.add(weatherBox);
-
-    JPanel submitButtonPanel = new JPanel();
-    submitButtonPanel.add(submitButton);
-
-    contentColumn3.add(selectConditionPanel);
-    contentColumn3.add(submitButtonPanel);
-    contentPanel.add(contentColumn3);
-
-
-
-    // -------------------------------------------------------
 
     this.add(titlePanel, BorderLayout.NORTH);
     this.add(contentPanel, BorderLayout.CENTER);
