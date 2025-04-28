@@ -192,7 +192,7 @@ public class Horse
 
     /**
      * Sets the horses X position.
-     * @param A integer representing the horses X position.
+     * @param x An integer representing the horses X position.
      */
     public void setXpos(int x)
     {
@@ -202,7 +202,7 @@ public class Horse
 
     /**
      * Sets the horses Y position.
-     * @param A integer representing the horses Y position.
+     * @param y Am integer representing the horses Y position.
      */
     public void setYpos(int y)
     {
@@ -212,7 +212,7 @@ public class Horse
     
     /**
      * Sets the horses X velocity.
-     * @param A integer representing the horses X velocity.
+     * @param x An integer representing the horses X velocity.
      */
     public void setXVelocity(double x)
     {
@@ -222,7 +222,7 @@ public class Horse
 
     /**
      * Sets the horses Y velocity.
-     * @param A integer representing the horses Y velocity.
+     * @param y An integer representing the horses Y velocity.
      */
     public void setYVelocity(double y)
     {
@@ -231,8 +231,8 @@ public class Horse
 
 
     /**
-     * Gets the HorseCustomisation object belonging to the Horse.
-     * @return A Horse object.
+     * Sets the HorseCustomisation object belonging to the Horse.
+     * @param HorseCustomisation A horseCustomisation object.
      */
     public void setHorseCustomisation (HorseCustomisation horseCustomisation) {
         this.horseCustomisation = horseCustomisation;
