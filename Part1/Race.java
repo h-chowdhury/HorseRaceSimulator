@@ -6,25 +6,30 @@ import java.lang.Math;
  * for a given distance
  * 
  * @author Humayra Chowdhury
- * @version 2.8
+ * @version 3.0
  */
 public class Race
 {
     private int raceLength;
     private Horse[] laneHorses;
+    private int laneCount;
 
     /**
      * Constructor for objects of class Race
      * Initially there are no horses in the lanes
      * 
      * @param distance the length of the racetrack (in metres/yards...)
+     * @param numberOfHorses the number of horses participating in the race
+     * @param numberOfLanes the number of lanes on the track, it should be
+     * equal to or exceed the number of horses.
      */
-    public Race(int distance, int noOfHorses)
+    public Race(int distance, int numberOfHorses, int numberOfLanes)
     {
         // initialise instance variables
         raceLength = distance;
-        laneHorses = new Horse[noOfHorses];
-        for (int i=0; i<noOfHorses; i++) {
+        laneCount = numberOfLanes;
+        laneHorses = new Horse[laneCount];
+        for (int i=0; i<numberOfHorses; i++) {
             laneHorses[i] = null;
         }
     }
@@ -35,8 +40,7 @@ public class Race
      * @param theHorse the horse to be added to the race
      * @param laneNumber the lane that the horse will be added to
      */
-    public void addHorse(Horse theHorse, int laneNumber)
-    {
+    public void addHorse(Horse theHorse, int laneNumber) {
         laneHorses[laneNumber-1] = theHorse;
     }
     
@@ -86,7 +90,9 @@ public class Race
      */
     private void resetLanes() {
         for (int i=0; i<laneHorses.length; i++) {
-            laneHorses[i].goBackToStart();
+            if (laneHorses[i] != null) {
+                laneHorses[i].goBackToStart();
+            }
         }
     }
     
@@ -126,7 +132,9 @@ public class Race
      */
     private void moveHorses () {
         for (int i=0; i<laneHorses.length; i++) {
-            moveHorse(laneHorses[i]);
+            if (laneHorses[i] != null) {
+                moveHorse(laneHorses[i]);
+            }
         }
     }
 
@@ -155,7 +163,7 @@ public class Race
     private boolean raceWonByAny()
     {
         for (int i=0; i<laneHorses.length; i++) {
-            if (raceWonBy(laneHorses[i]) == true) {
+            if (laneHorses[i] != null && raceWonBy(laneHorses[i]) == true) {
                 System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
                 return true;
             }
@@ -170,7 +178,7 @@ public class Race
      */
     private boolean allHaveFallen() {
         for (int i=0; i<laneHorses.length; i++) {
-            if (laneHorses[i].hasFallen() != true) {
+            if (laneHorses[i] != null && laneHorses[i].hasFallen() != true) {
                 return false;
             }  
         }
@@ -193,6 +201,13 @@ public class Race
             printLane(laneHorses[i]);
             System.out.println();
         }
+
+        if (laneCount > laneHorses.length) {
+            for (int i=laneHorses.length; i<=laneCount; i++) {
+                printLane(null);
+                System.out.println();
+            }
+        }
         
         multiplePrint('=',raceLength+3); //bottom edge of track
         System.out.println();    
@@ -206,48 +221,62 @@ public class Race
      */
     private void printLane(Horse theHorse)
     {
-        //calculate how many spaces are needed before
-        //and after the horse
-        int spacesBefore = theHorse.getDistanceTravelled();
-        int spacesAfter = raceLength - theHorse.getDistanceTravelled();
-        
-        //print a | for the beginning of the lane
-        System.out.print('|');
-        
-        //print the spaces before the horse
-        if (theHorse.getDistanceTravelled() == raceLength)
-        {
-            multiplePrint(' ',spacesBefore +1);
+        // print blank lane
+        if (theHorse == null) {
+            //print a | for the beginning of the lane
+            System.out.print('|');
+
+            // print blank spaces
+            multiplePrint(' ', raceLength + 1);
+
+            // print a | for the end of the lane
+            System.out.print('|');
+
         }
         else {
-            multiplePrint(' ',spacesBefore);
-        }
-        
-        //if the horse has fallen then print dead
-        //else print the horse's symbol
-        if(theHorse.hasFallen() && theHorse.getDistanceTravelled() != raceLength)
-        {
-            System.out.print('X');
-        }
-        else
-        {
-            System.out.print(theHorse.getSymbol());
-        }
-        
-        //print the spaces after the horse
-        multiplePrint(' ',spacesAfter);
-        
-        //print the | for the end of the track
-        if (theHorse.getDistanceTravelled() != raceLength)
-        {
+            //calculate how many spaces are needed before
+            //and after the horse
+            int spacesBefore = theHorse.getDistanceTravelled();
+            int spacesAfter = raceLength - theHorse.getDistanceTravelled();
+            
+            //print a | for the beginning of the lane
             System.out.print('|');
+            
+            //print the spaces before the horse
+            if (theHorse.getDistanceTravelled() == raceLength)
+            {
+                multiplePrint(' ',spacesBefore +1);
+            }
+            else {
+                multiplePrint(' ',spacesBefore);
+            }
+            
+            //if the horse has fallen then print dead
+            //else print the horse's symbol
+            if(theHorse.hasFallen() && theHorse.getDistanceTravelled() != raceLength)
+            {
+                System.out.print('X');
+            }
+            else
+            {
+                System.out.print(theHorse.getSymbol());
+            }
+            
+            //print the spaces after the horse
+            multiplePrint(' ',spacesAfter);
+            
+            //print the | for the end of the track
+            if (theHorse.getDistanceTravelled() != raceLength)
+            {
+                System.out.print('|');
+            }
+
+            //print horse details
+            System.out.print("   " + theHorse.getName().toUpperCase() + " (Current confidence " + theHorse.getConfidence() + ")");
         }
-
-        //print horse details
-        System.out.print("   " + theHorse.getName().toUpperCase() + " (Current confidence " + theHorse.getConfidence() + ")");
-
+            
     }
-        
+    
     
     /***
      * print a character a given number of times.
@@ -264,4 +293,7 @@ public class Race
             i = i + 1;
         }
     }
+
+    
 }
+

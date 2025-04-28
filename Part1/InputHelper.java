@@ -5,7 +5,7 @@ import java.util.Scanner;
  * It contains methods that help with input validation.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.0
+ * @version Version 1.1
  */
 class InputHelper {
 
@@ -55,6 +55,19 @@ class InputHelper {
     return input;
   }
 
+   /***
+   * Recieve and validate an input as an integer larger than the one provided
+   * e.g. getInt(10) will re-prompt for a positive integer if 9 is provided
+   */
+  public int getLargerInt(int n, String prompt) {
+    int input = 0;
+
+    while (input < n) {
+      input = getInt(prompt);
+    }
+    return input;
+  }
+
   /***
    * Recieve and validate an input as an integer
    * e.g. getInt('a') will re-prompt for an integer
@@ -99,6 +112,20 @@ class InputHelper {
     }
 
     return confidence;
+  }
+
+
+  /***
+   * Recieve and validate the lane input.
+   */
+  public int getLane(Horse[] lanes, String prompt) {
+    int lane = getPosInt(prompt);
+
+    while (lane > lanes.length || lane < 1 || lanes[lane-1] != null) {
+      lane = getPosInt(prompt);
+    }
+
+    return lane;
   }
   
 }
