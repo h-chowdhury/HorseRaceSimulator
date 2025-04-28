@@ -27,11 +27,11 @@ public class Race
     {
         // initialise instance variables
         raceLength = distance;
-        laneHorses = new Horse[numberOfHorses];
+        laneCount = numberOfLanes;
+        laneHorses = new Horse[laneCount];
         for (int i=0; i<numberOfHorses; i++) {
             laneHorses[i] = null;
         }
-        laneCount = numberOfLanes;
     }
     
     /**
@@ -40,8 +40,7 @@ public class Race
      * @param theHorse the horse to be added to the race
      * @param laneNumber the lane that the horse will be added to
      */
-    public void addHorse(Horse theHorse, int laneNumber)
-    {
+    public void addHorse(Horse theHorse, int laneNumber) {
         laneHorses[laneNumber-1] = theHorse;
     }
     
@@ -91,7 +90,9 @@ public class Race
      */
     private void resetLanes() {
         for (int i=0; i<laneHorses.length; i++) {
-            laneHorses[i].goBackToStart();
+            if (laneHorses[i] != null) {
+                laneHorses[i].goBackToStart();
+            }
         }
     }
     
@@ -131,7 +132,9 @@ public class Race
      */
     private void moveHorses () {
         for (int i=0; i<laneHorses.length; i++) {
-            moveHorse(laneHorses[i]);
+            if (laneHorses[i] != null) {
+                moveHorse(laneHorses[i]);
+            }
         }
     }
 
@@ -160,7 +163,7 @@ public class Race
     private boolean raceWonByAny()
     {
         for (int i=0; i<laneHorses.length; i++) {
-            if (raceWonBy(laneHorses[i]) == true) {
+            if (laneHorses[i] != null && raceWonBy(laneHorses[i]) == true) {
                 System.out.println("And the winner is... " + laneHorses[i].getName().toUpperCase() + "!");
                 return true;
             }
@@ -175,7 +178,7 @@ public class Race
      */
     private boolean allHaveFallen() {
         for (int i=0; i<laneHorses.length; i++) {
-            if (laneHorses[i].hasFallen() != true) {
+            if (laneHorses[i] != null && laneHorses[i].hasFallen() != true) {
                 return false;
             }  
         }
