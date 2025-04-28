@@ -26,21 +26,19 @@ public class Main
 
     // Create Horse objects
     Horse horse;
-    Horse[] horses = new Horse[noOfHorses];
+    Horse[] horses = new Horse[noOfLanes];
 
     for (int i=0; i<noOfHorses; i++) {
       System.out.println("\n\nHORSE #" + ((int) i+1));
       char symbol = inputHelper.getChar("Enter the symbol representing the horse: ");
       String name = inputHelper.getString("Enter the horse's name: ");
       double confidence = inputHelper.getConfidence("Enter the horse's confidence (0-1): ");
+      int lane = inputHelper.getLane(horses, "Enter the lane of the horse.");
 
       horse = new Horse(symbol, name, confidence);
       horses[i] = horse;
-    }
 
-    // Add horses to the race
-    for (int i=0; i<noOfHorses; i++) {
-      race.addHorse(horses[i], i+1);
+      race.addHorse(horse, lane);
     }
 
     // Start the race
