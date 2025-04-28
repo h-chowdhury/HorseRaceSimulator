@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.5
+ * @version Version 1.6
  */
 public class LaunchPage extends JFrame {
   
@@ -30,7 +30,7 @@ public class LaunchPage extends JFrame {
     title.setFont(new Font("Dialog", Font.BOLD, 50));
 
     // Description label
-    JLabel description = new JLabel("<html><body>This simulation runs <br>a race on a set of horses.</body></html>");
+    JLabel description = new JLabel("<html><body>This simulation runs <br>a race on a set of horses.<br> As the user, you will be<br>able to customise the track<br>and design your own horses<br>to participate in the race.</body></html>");
     description.setHorizontalAlignment(JLabel.CENTER);
     description.setVerticalAlignment(JLabel.CENTER);
     description.setFont(new Font("Dialog", Font.BOLD, 25));
