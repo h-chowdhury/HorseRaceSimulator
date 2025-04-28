@@ -5,9 +5,9 @@ package Part2;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.0
+ * @version Version 1.1
  */
-public class Main
+public class startRaceGUI
 {
   /**
    * Main method containing the creation of the LaunchPage.
