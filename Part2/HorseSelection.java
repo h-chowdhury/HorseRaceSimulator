@@ -629,8 +629,10 @@ public class HorseSelection extends JFrame {
             String hairInput = null;
             if (h1.isSelected()) {
               hairInput = "Black";
+
             } else if (h2.isSelected()) {
               hairInput = "Brown";
+              
             } else if (h3.isSelected()) {
               hairInput = "Blonde";
             }
@@ -663,20 +665,19 @@ public class HorseSelection extends JFrame {
             } else if (hs3.isSelected()) {
               horseshoeInput = "Golden"; // +10% speed, -5% stability
               horse.setXVelocity(horse.getXVelocity() * 1.1);
-
             }
 
             // Store powerup
             String accessoryInput = null;
             if (p1.isSelected()) {
               accessoryInput = "Ruby Patch"; // +5% speed
+              horse.setXVelocity(horse.getXVelocity() * 1.05);
 
             } else if (p2.isSelected()) {
               accessoryInput = "Emerald Patch";  // +10% chance each second of moving forward
 
             } else if (p3.isSelected()) {
               accessoryInput = "Sapphire Patch"; // +5% chance each second to ignore falls
-
             }
 
           // Create and store horseCustomisation object
