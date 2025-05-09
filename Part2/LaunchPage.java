@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * It currently acts as the main entry point.
  * 
  * @author Humayra Chowdhury
- * @version Version 1.6
+ * @version Version 1.7
  */
 public class LaunchPage extends JFrame {
   
@@ -42,7 +42,7 @@ public class LaunchPage extends JFrame {
     
     // Main frame
     JFrame frame = new JFrame();
-    frame.setTitle("Horse Racing Simulator"); 
+    frame.setTitle("Eccentric Equestrian 2D"); 
     frame.setVisible(true); 
     frame.setSize(1500, 800);
     frame.setResizable(false); // prevents resizing window
